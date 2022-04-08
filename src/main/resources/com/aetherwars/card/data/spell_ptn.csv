@@ -1,0 +1,19 @@
+id	name	description	imagepath	attack	hp	mana	duration
+101	Deathly Magic	The magic that is deadly	card/image/spell/potion/Deathly Magic.png	2	2	2	2
+102	Herobrine's Blessing	The blessing from Herobrine	card/image/spell/potion/Herobrine's Blessing.png	3	1	2	3
+103	Witch's Eye	The powerful eye of a powerful witch	card/image/spell/potion/Witch's Eye.png	-4	3	4	0
+104	Divine Wind	Sacrifice for The Descendants of The Sun	card/image/spell/potion/Divine Wind.png	0	-4	2	0
+105	Yoasobi	Racing Into The Night to meet a Monster	card/image/spell/potion/Yoasobi.png	-3	-2	3	2
+106	Grabkeun	Discount for food purchases in Bandung	card/image/spell/potion/Grabkeun.png	0	2	1	2
+107	Honey Bottle	A bottle of a bee secretion	card/image/spell/potion/Honey Bottle.png	0	4	2	0
+108	Spectral Power	The cursed spectre's power	card/image/spell/potion/Spectral Power.png	4	-3	4	1
+109	Mother's Prayer	The most effective prayer	card/image/spell/potion/Mother's Prayer.png	-4	3	4	1
+110	Aromatic Ginger Rice	Indonesia's famous beras kencur	card/image/spell/potion/Aromatic Ginger Rice.png	0	1	1	1
+111	GPU Very Good	Powerful computing component	card/image/spell/potion/GPU Very Good.png	1	0	1	0
+112	Sadikin Elixir	The best elixir in the world	card/image/spell/potion/Sadikin Elixir.png	4	2	3	2
+113	Contract of Living Space	Contract with the Fatherland	card/image/spell/potion/Contract of Living Space.png	0	3	2	0
+114	Halal Porkchop	Anything is possible in Minecraft	card/image/spell/potion/Halal Porkchop.png	3	3	3	2
+115	Bad Alcohol	Not a good alcohol	card/image/spell/potion/Bad Alcohol.png	-5	-5	5	0
+116	Kordas' Curse	God of Death's most horrific curse	card/image/spell/potion/Kordas' Curse.png	-10	0	5	4
+117	SNMPTN Rejection Letter	Rejection of SNMPTN 2022	card/image/spell/potion/SNMPTN Rejection Letter.png	-2	-2	2	1
+118	SNMPTN Acceptance Letter	Acceptance of SNMPTN 2022	card/image/spell/potion/SNMPTN Acceptance Letter.png	-4	-4	4	0

@@ -1,0 +1,19 @@
+id	name	type	description	imagepath	attack	health	mana	attackup	healthup
+1	Creeper	OVERWORLD	A creeper is a common hostile mob that silently approaches players and explodes.	card/image/character/Creeper.png	10	2	4	1	1
+2	Sheep	OVERWORLD	Sheep are common passive mobs that supply wool and mutton and are found in many of the grassy biomes.	card/image/character/Sheep.png	1	1	1	0	0
+3	Zombie	OVERWORLD	Zombies are common undead hostile mobs that deal melee damage and attack in groups.	card/image/character/Zombie.png	3	3	2	2	2
+4	Skeleton	OVERWORLD	A skeleton is a common undead hostile mob equipped with a bow.	card/image/character/Skeleton.png	4	4	3	3	1
+5	Enderman	END	An enderman is a neutral mob found in all four dimensions. Endermen can teleport and pick up blocks.	card/image/character/Enderman.png	8	6	5	4	3
+6	Villager	OVERWORLD	Villagers are passive mobs that inhabit villages, work at their professions, breed, and interact with each other.	card/image/character/Villager.png	2	4	2	1	2
+7	Wither Skeleton	NETHER	Wither skeletons are tall variants of skeletons equipped with stone swords and found in nether fortresses.	card/image/character/Wither Skeleton.png	8	10	6	3	4
+8	Magma Cube	NETHER	A magma cube is a hostile mob found in the Nether. A magma cube behaves similarly to a slime, but has higher jumps and more powerful hits.	card/image/character/Magma Cube.png	3	3	3	5	5
+9	Slime	OVERWORLD	Slimes are bouncy, cube-shaped hostile mobs that spawn deep underground in particular chunks, or at night in swamp biomes.	card/image/character/Slime.png	2	4	3	5	5
+10	Shulker	END	Shulkers are box-shaped hostile mobs found in end cities.	card/image/character/Shulker.png	4	6	3	1	2
+11	Endermite	END	An endermite is the smallest hostile mob. An endermite emits purple 'portal' particles.	card/image/character/Endermite.png	2	2	2	2	2
+12	Ender Dragon	END	The ender dragon is a gigantic flying hostile boss mob found when first entering the End.	card/image/character/Ender Dragon.png	10	20	9	4	4
+13	Piglin Brute	NETHER	A piglin brute is a hostile and stronger variant of piglins that appears in all types of bastion remnants.	card/image/character/Piglin Brute.png	8	5	4	3	2
+14	Wither	NETHER	The wither is a player-constructed undead hostile boss mob that floats and shoots explosive skulls at players and mobs.	card/image/character/Wither.png	8	10	6	4	5
+15	Warden	OVERWORLD	The warden is a hostile mob summoned by sculk shriekers. They are completely blind, and thus rely on vibrations and their sense of smell to identify players and other mobs.	card/image/character/Warden.png	9	15	8	6	8
+16	Ghast	NETHER	A ghast is a large white floating ghost-like hostile mob in the Nether that shoots explosive fireballs at the player. 	card/image/character/Ghast.png	7	3	4	4	4
+17	Drowned	OVERWORLD	Drowned are common underwater zombie variants that spawn in oceans and rivers, or when zombies drown.	card/image/character/Drowned.png	4	5	4	4	5
+18	Obsidian	OVERWORLD	An obsidian block used to create Nether portals.	card/image/character/Obsidian.png	1	25	8	0	5
