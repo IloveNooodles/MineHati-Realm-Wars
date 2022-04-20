@@ -5,15 +5,16 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import com.aetherwars.enums.CharacterType;
+import com.aetherwars.models.card.Character;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import com.aetherwars.model.Type;
-import com.aetherwars.model.Character;
 import com.aetherwars.util.CSVReader;
+import com.aetherwars.models.extras.Type;
 
 public class AetherWars extends Application {
   private static final String CHARACTER_CSV_FILE_PATH = "card/data/character.csv";
@@ -24,7 +25,7 @@ public class AetherWars extends Application {
     characterReader.setSkipHeader(true);
     List<String[]> characterRows = characterReader.read();
     for (String[] row : characterRows) {
-      Character c = new Character(row[1], row[3], Type.valueOf(row[2]));
+      Character c = new Character(row[1], row[3], new Type(CharacterType.valueOf(row[2])), row[4],Integer.valueOf(row[5]), Integer.valueOf(row[6]), Integer.valueOf(row[7]), Integer.valueOf(row[8]), Integer.valueOf(row[9]));
       System.out.println(c);
     }
   }
