@@ -6,8 +6,8 @@ import com.aetherwars.models.activecard.ActiveCharacter;
 import com.aetherwars.models.activecard.ActiveSpell;
 
 public class PTN extends Spell {
-    private int atkBonus;
-    private int hpBonus;
+    private final int atkBonus;
+    private final int hpBonus;
 
     public PTN(String name, String description, int mana, int duration, int atkBonus, int hpBonus, String image) {
         super(name, description, mana, SpellEffect.TEMPORARY, image);

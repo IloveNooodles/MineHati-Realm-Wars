@@ -7,7 +7,7 @@ import com.aetherwars.models.activecard.ActiveCharacter;
 import com.aetherwars.models.activecard.ActiveSpell;
 
 public class LVL extends Spell {
-    private LVLSpell type;
+    private final LVLSpell type;
 
     public LVL(String name, String description, int mana, LVLSpell type, String image) {
         super(name, description, mana, SpellEffect.PERMANENT, image);

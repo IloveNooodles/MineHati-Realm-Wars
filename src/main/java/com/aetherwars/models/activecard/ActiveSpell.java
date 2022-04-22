@@ -7,7 +7,7 @@ import com.aetherwars.models.carddata.spell.Spell;
 
 public class ActiveSpell extends ActiveCard {
     private int activeDuration;
-    private SpellEffect spellEffect;
+    private final SpellEffect spellEffect;
 
     public ActiveSpell(CardData card) {
         super(card);

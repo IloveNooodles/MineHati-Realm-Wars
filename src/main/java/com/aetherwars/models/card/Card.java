@@ -8,7 +8,7 @@ import com.aetherwars.models.carddata.Character;
 import com.aetherwars.models.carddata.spell.Spell;
 
 public class Card {
-    private CardData data;
+    private final CardData data;
 
     public Card(CardData data) {
         this.data = data;

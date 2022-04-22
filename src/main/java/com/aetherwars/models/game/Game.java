@@ -58,7 +58,7 @@ public class Game {
 
     private void nextTurn() {
         for (Player player : players) {
-            player.setMana(state.getTurn() > 10 ? 10 : state.getTurn());
+            player.setMana(Math.min(state.getTurn(), 10));
         }
 
         for (Board board : player_boards) {
@@ -67,12 +67,10 @@ public class Game {
     }
 
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Game State: ").append(state.toString()).append("\n");
-        sb.append("Player 1: ").append(players[0].toString()).append("\n");
-        sb.append("Player 2: ").append(players[1].toString()).append("\n");
-        sb.append("Player 1 Board: ").append(player_boards[0].toString()).append("\n");
-        sb.append("Player 2 Board: ").append(player_boards[1].toString()).append("\n");
-        return sb.toString();
+        return "Game State: " + state.toString() + "\n" +
+                "Player 1: " + players[0].toString() + "\n" +
+                "Player 2: " + players[1].toString() + "\n" +
+                "Player 1 Board: " + player_boards[0].toString() + "\n" +
+                "Player 2 Board: " + player_boards[1].toString() + "\n";
     }
 }

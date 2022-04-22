@@ -3,7 +3,7 @@ package com.aetherwars.models.extras;
 import com.aetherwars.enums.CharacterType;
 
 public class Type implements Comparable<Type> {
-    private CharacterType type;
+    private final CharacterType type;
     private CharacterType strong_against;
     private CharacterType weak_against;
 

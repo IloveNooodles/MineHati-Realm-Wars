@@ -5,11 +5,11 @@ import com.aetherwars.models.activecard.ActiveCard;
 import com.aetherwars.models.activecard.ActiveCharacter;
 
 public class Character extends CardData {
-    private Type type;
-    private int baseAtk;
-    private int baseHp;
-    private int atkUp;
-    private int hpUp;
+    private final Type type;
+    private final int baseAtk;
+    private final int baseHp;
+    private final int atkUp;
+    private final int hpUp;
 
     public Character() {
         super();

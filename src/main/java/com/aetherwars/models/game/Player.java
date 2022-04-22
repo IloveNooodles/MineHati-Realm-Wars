@@ -6,7 +6,7 @@ import com.aetherwars.models.cardcontainer.Deck;
 import com.aetherwars.models.cardcontainer.Hand;
 
 public class Player implements Attackable {
-    private String name;
+    private final String name;
     private int hp;
     private int mana;
     private Deck deck;
