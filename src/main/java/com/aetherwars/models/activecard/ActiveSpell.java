@@ -2,14 +2,14 @@ package com.aetherwars.models.activecard;
 
 
 import com.aetherwars.enums.SpellEffect;
-import com.aetherwars.models.card.Card;
-import com.aetherwars.models.card.spell.Spell;
+import com.aetherwars.models.carddata.CardData;
+import com.aetherwars.models.carddata.spell.Spell;
 
 public class ActiveSpell extends ActiveCard {
     private int activeDuration;
     private SpellEffect spellEffect;
 
-    public ActiveSpell(Card card) {
+    public ActiveSpell(CardData card) {
         super(card);
         this.activeDuration = ((Spell) card).getDuration();
         this.spellEffect = ((Spell) card).getEffect();

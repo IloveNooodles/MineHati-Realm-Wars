@@ -1,10 +1,10 @@
-package com.aetherwars.models.card;
+package com.aetherwars.models.carddata;
 
 import com.aetherwars.models.extras.Type;
 import com.aetherwars.models.activecard.ActiveCard;
 import com.aetherwars.models.activecard.ActiveCharacter;
 
-public class Character extends Card {
+public class Character extends CardData {
     private Type type;
     private int baseAtk;
     private int baseHp;
@@ -20,8 +20,8 @@ public class Character extends Card {
         this.hpUp = 0;
     }
 
-    public Character(String name, String description, Type type,String image, int baseAtk, int baseHp,int manaCost, int atkUp, int hpUp) {
-        super(name, description, manaCost,image);
+    public Character(String name, String description, Type type, String image, int baseAtk, int baseHp, int manaCost, int atkUp, int hpUp) {
+        super(name, description, manaCost, image);
         this.type = type;
         this.baseAtk = baseAtk;
         this.baseHp = baseHp;
@@ -50,11 +50,8 @@ public class Character extends Card {
         return type;
     }
 
-    public ActiveCard activate() {
-        return new ActiveCharacter(this);
-    }
 
-    public String toString(){
+    public String toString() {
         return this.name;
     }
 

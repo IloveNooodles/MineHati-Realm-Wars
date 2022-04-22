@@ -1,4 +1,4 @@
-package com.aetherwars.models.card.spell;
+package com.aetherwars.models.carddata.spell;
 
 import com.aetherwars.enums.LVLSpell;
 import com.aetherwars.enums.SpellEffect;
@@ -23,10 +23,6 @@ public class LVL extends Spell {
         return -1;
     }
 
-    @Override
-    public ActiveCard activate() {
-        return new ActiveSpell(this);
-    }
 
     public void activateEffect(ActiveCharacter character) {
         switch (type) {

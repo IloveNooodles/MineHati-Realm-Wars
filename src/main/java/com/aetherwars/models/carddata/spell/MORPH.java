@@ -1,10 +1,10 @@
-package com.aetherwars.models.card.spell;
+package com.aetherwars.models.carddata.spell;
 
 import com.aetherwars.enums.SpellEffect;
 import com.aetherwars.models.activecard.ActiveCard;
 import com.aetherwars.models.activecard.ActiveCharacter;
 import com.aetherwars.models.activecard.ActiveSpell;
-import com.aetherwars.models.card.Character;
+import com.aetherwars.models.carddata.Character;
 
 public class MORPH extends Spell {
     Character character;
@@ -17,11 +17,6 @@ public class MORPH extends Spell {
     @Override
     public int getDuration() {
         return -1;
-    }
-
-    @Override
-    public ActiveCard activate() {
-        return new ActiveSpell(this);
     }
 
     public void activateEffect(ActiveCharacter character) {

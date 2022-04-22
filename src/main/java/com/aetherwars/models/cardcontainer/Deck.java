@@ -2,6 +2,8 @@ package com.aetherwars.models.cardcontainer;
 
 
 import com.aetherwars.models.card.Card;
+import com.aetherwars.models.carddata.CardData;
+
 import java.util.Collections;
 
 public class Deck extends CardContainer<Card> {

@@ -2,9 +2,9 @@ package com.aetherwars.models.activecard;
 
 
 import com.aetherwars.interfaces.Attackable;
-import com.aetherwars.models.card.*;
-import com.aetherwars.models.card.Character;
-import com.aetherwars.models.card.spell.PTN;
+import com.aetherwars.models.carddata.*;
+import com.aetherwars.models.carddata.Character;
+import com.aetherwars.models.carddata.spell.PTN;
 
 import java.util.ArrayList;
 
@@ -26,7 +26,7 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
         this.activeSpells = new ArrayList<ActiveSpell>();
     }
 
-    public ActiveCharacter(Card card) {
+    public ActiveCharacter(CardData card) {
         super(card);
         this.exp = 0;
         this.level = 1;
@@ -126,13 +126,11 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     }
 
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(this.getName() + " " + this.getHp() + "/" + this.getMaxHp() + " " + this.getAtk() + " " + this.getDescription());
 
-        return sb.toString();
+        return this.getName() + " " + this.getHp() + "/" + this.getMaxHp() + " " + this.getAtk() + " " + this.getDescription();
     }
 
-    public void morph(Card card) {
+    public void morph(CardData card) {
         this.card = card;
         this.exp = 0;
         this.level = 1;
@@ -162,9 +160,9 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     }
 
     public void swap() {
-        Double maxhp = this.maxHp;
+        double maxHp = this.maxHp;
         this.maxHp = this.atk;
-        this.atk = maxhp;
+        this.atk = maxHp;
     }
 
     public void increaseStats(double atk, double hp) {

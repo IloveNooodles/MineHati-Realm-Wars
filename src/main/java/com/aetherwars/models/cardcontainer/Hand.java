@@ -2,6 +2,7 @@ package com.aetherwars.models.cardcontainer;
 
 import com.aetherwars.models.activecard.*;
 import com.aetherwars.models.card.Card;
+import com.aetherwars.models.carddata.CardData;
 import com.aetherwars.models.game.Game;
 
 

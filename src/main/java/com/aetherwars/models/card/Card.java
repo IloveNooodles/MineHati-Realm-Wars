@@ -1,41 +1,29 @@
 package com.aetherwars.models.card;
 
 import com.aetherwars.models.activecard.ActiveCard;
-public abstract class Card {
-    protected String name;
-    protected String description;
-    protected int manaCost;
-    protected String image;
+import com.aetherwars.models.activecard.ActiveCharacter;
+import com.aetherwars.models.activecard.ActiveSpell;
+import com.aetherwars.models.carddata.CardData;
+import com.aetherwars.models.carddata.Character;
+import com.aetherwars.models.carddata.spell.Spell;
 
-    public Card() {
-        this.name = "";
-        this.description = "An Empty Card";
-        this.manaCost = 0;
-        this.image = "";
+public class Card {
+    private CardData data;
+
+    public Card(CardData data) {
+        this.data = data;
     }
 
-    public Card(String name, String description, int manaCost, String image) {
-        this.name = name;
-        this.description = description;
-        this.manaCost = manaCost;
-        this.image = image;
+    public CardData getCardData() {
+        return this.data;
     }
 
-    public String getName() {
-        return name;
+    public ActiveCard activate() {
+        if (this.data instanceof Character) {
+            return new ActiveCharacter(this.data);
+        } else {
+            return new ActiveSpell(this.data);
+        }
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public int getManaCost() {
-        return manaCost;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public abstract ActiveCard activate();
 }

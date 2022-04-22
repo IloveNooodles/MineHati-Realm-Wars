@@ -1,11 +1,11 @@
-package com.aetherwars.models.card.spell;
+package com.aetherwars.models.carddata.spell;
 
 import com.aetherwars.enums.SpellEffect;
 import com.aetherwars.models.activecard.ActiveCard;
 import com.aetherwars.models.activecard.ActiveCharacter;
-import com.aetherwars.models.card.Card;
+import com.aetherwars.models.carddata.CardData;
 
-public abstract class Spell extends Card {
+public abstract class Spell extends CardData {
     protected int mana;
     protected SpellEffect effect;
     protected int duration;
@@ -21,7 +21,6 @@ public abstract class Spell extends Card {
 
     public abstract int getDuration();
 
-    public abstract ActiveCard activate();
 
     public abstract void activateEffect(ActiveCharacter activeCharacter);
 }

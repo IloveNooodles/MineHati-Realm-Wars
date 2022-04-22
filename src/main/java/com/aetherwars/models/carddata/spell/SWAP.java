@@ -1,4 +1,4 @@
-package com.aetherwars.models.card.spell;
+package com.aetherwars.models.carddata.spell;
 
 import com.aetherwars.enums.SpellEffect;
 import com.aetherwars.models.activecard.ActiveCard;
@@ -16,10 +16,6 @@ public class SWAP extends Spell {
         return duration;
     }
 
-    @Override
-    public ActiveCard activate() {
-        return new ActiveSpell(this);
-    }
 
     @Override
     public void activateEffect(ActiveCharacter activeCharacter) {
