@@ -19,7 +19,8 @@ public class ActiveSpell extends ActiveCard {
         return (Spell) this.card;
     }
 
-    public void updateActiveSpells() {
+    public void activateEffect(ActiveCharacter activeCharacter) {
+        this.getCard().activateEffect(activeCharacter);
         activeDuration--;
     }
 

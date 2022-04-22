@@ -2,6 +2,7 @@ package com.aetherwars.models.card.spell;
 
 import com.aetherwars.enums.SpellEffect;
 import com.aetherwars.models.activecard.ActiveCard;
+import com.aetherwars.models.activecard.ActiveCharacter;
 import com.aetherwars.models.activecard.ActiveSpell;
 
 public class SWAP extends Spell {
@@ -18,6 +19,11 @@ public class SWAP extends Spell {
     @Override
     public ActiveCard activate() {
         return new ActiveSpell(this);
+    }
+
+    @Override
+    public void activateEffect(ActiveCharacter activeCharacter) {
+        activeCharacter.swap();
     }
 }
 

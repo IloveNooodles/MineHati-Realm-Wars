@@ -2,6 +2,7 @@ package com.aetherwars.models.card.spell;
 
 import com.aetherwars.enums.SpellEffect;
 import com.aetherwars.models.activecard.ActiveCard;
+import com.aetherwars.models.activecard.ActiveCharacter;
 import com.aetherwars.models.activecard.ActiveSpell;
 
 public class PTN extends Spell {
@@ -32,4 +33,10 @@ public class PTN extends Spell {
     public ActiveCard activate() {
         return new ActiveSpell(this);
     }
+
+    @Override
+    public void activateEffect(ActiveCharacter activeCharacter) {
+        activeCharacter.increaseStats(atkBonus, hpBonus);
+    }
+
 }

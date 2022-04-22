@@ -44,28 +44,6 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
         }
     }
 
-    public void levelUp() {
-        if (this.level < 10) {
-            this.level++;
-            this.exp = 0;
-            this.atk += this.getCard().getAtkUp();
-            this.maxHp += this.getCard().getHpUp();
-            this.hp = this.maxHp;
-        }
-    }
-
-    public void levelDown() {
-        if (this.level > 1) {
-            this.level--;
-            this.exp = 0;
-            this.atk -= this.getCard().getAtkUp();
-            this.maxHp -= this.getCard().getHpUp();
-            if (this.hp > this.maxHp) {
-                this.hp = this.maxHp;
-            }
-        }
-    }
-
     public void attacked(ActiveCharacter attacker) {
         this.hp -= attacker.getAtk(); //TODO: Tambah modifier
 
@@ -123,12 +101,35 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     }
 
     public void updateState() {
+        this.maxHp = this.getCard().getBaseHp() + (this.level - 1) * this.getCard().getHpUp();
+        this.atk = this.getCard().getBaseAtk() + (this.level - 1) * this.getCard().getAtkUp();
+
         for (ActiveSpell activeSpell : activeSpells) {
-            activeSpell.updateActiveSpells();
+            activeSpell.activateEffect(this);
             if (activeSpell.getActiveDuration() <= 0) {
                 activeSpells.remove(activeSpell);
             }
         }
+
+        if (this.hp > this.maxHp) {
+            this.hp = this.maxHp;
+        }
+
+        if (this.hp <= 0) {
+            this.die();
+        }
+    }
+
+    private void die() {
+        // Masukin animasi mati :D
+        this.morph(new Character());
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.getName() + " " + this.getHp() + "/" + this.getMaxHp() + " " + this.getAtk() + " " + this.getDescription());
+
+        return sb.toString();
     }
 
     public void morph(Card card) {
@@ -140,10 +141,34 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
         this.maxHp = this.getCard().getBaseHp();
     }
 
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(this.getName() + " " + this.getHp() + "/" + this.getMaxHp() + " " + this.getAtk() + " " + this.getDescription());
+    public void levelUp() {
+        if (this.level < 10) {
+            this.level++;
+            this.exp = 0;
+            this.increaseStats(this.getCard().getAtkUp(), this.getCard().getHpUp());
+            this.hp = this.maxHp;
+        }
+    }
 
-        return sb.toString();
+    public void levelDown() {
+        if (this.level > 1) {
+            this.level--;
+            this.exp = 0;
+            this.increaseStats(-this.getCard().getAtkUp(), -this.getCard().getHpUp());
+            if (this.hp > this.maxHp) {
+                this.hp = this.maxHp;
+            }
+        }
+    }
+
+    public void swap() {
+        Double maxhp = this.maxHp;
+        this.maxHp = this.atk;
+        this.atk = maxhp;
+    }
+
+    public void increaseStats(double atk, double hp) {
+        this.atk += atk;
+        this.maxHp += hp;
     }
 }

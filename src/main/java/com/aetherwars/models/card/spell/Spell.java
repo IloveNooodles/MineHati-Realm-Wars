@@ -23,8 +23,5 @@ public abstract class Spell extends Card {
 
     public abstract ActiveCard activate();
 
-    public void activateEffect(ActiveCharacter activeCharacter) {
-        // Semi Abstract Method
-        return;
-    };
+    public abstract void activateEffect(ActiveCharacter activeCharacter);
 }
