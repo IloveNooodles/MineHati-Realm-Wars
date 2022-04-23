@@ -4,6 +4,7 @@ import com.aetherwars.models.activecard.*;
 import com.aetherwars.models.card.Card;
 import com.aetherwars.models.carddata.CardData;
 import com.aetherwars.models.game.Game;
+import com.aetherwars.exception.*;
 
 
 public class Hand extends CardContainer<Card> {
@@ -21,7 +22,7 @@ public class Hand extends CardContainer<Card> {
         cards.add(card);
     }
 
-    public void activate(int hand_idx, int board_idx) {
+    public void activate(int hand_idx, int board_idx) throws Exception {
         ActiveCard active = this.remove(hand_idx).activate();
         if (active instanceof ActiveCharacter) {
             Game.getInstance().getPlayerBoard().add((ActiveCharacter) active);
@@ -31,7 +32,7 @@ public class Hand extends CardContainer<Card> {
             if (!character.getName().equals("")) {
                 character.addActiveSpell((ActiveSpell) active);
             } else {
-                // TODO: Raise selected board slot is empty exception
+                throw new EmptySlotException();
             }
 
         }

@@ -44,11 +44,11 @@ public class Player implements Attackable {
         return hand;
     }
 
-    public void draw() {
+    public void draw() throws Exception {
         hand.add(deck.remove(0));
     }
 
-    public void play(int hand_idx, int board_idx) {
+    public void play(int hand_idx, int board_idx) throws Exception {
         hand.activate(hand_idx, board_idx);
     }
 

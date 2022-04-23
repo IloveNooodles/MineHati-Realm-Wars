@@ -10,7 +10,7 @@ public class Game {
     private Player[] players;
     private GameState state;
 
-    public Game(String player1, String player2) {
+    public Game(String player1, String player2) throws Exception {
         player_boards = new Board[2];
         players = new Player[2];
         players[0] = new Player(player1);
@@ -20,7 +20,7 @@ public class Game {
         state = new GameState();
     }
 
-    public static Game getInstance() {
+    public static Game getInstance() throws Exception {
         if (current_game == null) {
             current_game = new Game("Player 1", "Player 2");
         }
@@ -39,7 +39,7 @@ public class Game {
         return player_boards[state.getPlayerTurn()];
     }
 
-    public void nextPhase() {
+    public void nextPhase() throws Exception {
         switch (state.getPhase()) {
             case DRAW:
                 getPlayer().draw();

@@ -3,6 +3,7 @@ package com.aetherwars.models.cardcontainer;
 
 import com.aetherwars.models.card.Card;
 import com.aetherwars.models.carddata.CardData;
+import com.aetherwars.exception.*;
 
 import java.util.Collections;
 
@@ -11,16 +12,16 @@ public class Deck extends CardContainer<Card> {
         super();
     }
 
-    public Card remove(int idx) {
+    public Card remove(int idx) throws Exception {
         if (cards.size() == 0) {
-            // TODO: Raise deck is empty exception
+            throw new EmptyDeckException();
         }
         Card temp = cards.get(idx);
         cards.remove(idx);
         return temp;
     }
 
-    public void add(Card card) {
+    public void add(Card card){
         cards.add(card);
     }
 
