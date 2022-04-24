@@ -21,6 +21,13 @@ public abstract class Spell extends CardData {
 
     public abstract int getDuration();
 
+    public int getMana() {
+        return mana;
+    }
 
     public abstract void activateEffect(ActiveCharacter activeCharacter);
+
+    public String toString() {
+        return "Spell: " + name + " \n" + description + " \n" + mana + " \n" + effect + " \n" + duration;
+    }
 }

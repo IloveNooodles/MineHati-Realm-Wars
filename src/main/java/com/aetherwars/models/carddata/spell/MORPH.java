@@ -9,7 +9,7 @@ import com.aetherwars.models.carddata.Character;
 public class MORPH extends Spell {
     Character character;
 
-    public MORPH(String name, String description, int mana, Character character, String image) {
+    public MORPH(String name, String description, String image, Character character, int mana) {
         super(name, description, mana, SpellEffect.PERMANENT, image);
         this.character = character;
     }

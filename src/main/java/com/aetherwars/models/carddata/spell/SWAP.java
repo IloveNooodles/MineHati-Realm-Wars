@@ -6,7 +6,7 @@ import com.aetherwars.models.activecard.ActiveCharacter;
 import com.aetherwars.models.activecard.ActiveSpell;
 
 public class SWAP extends Spell {
-    public SWAP(String name, String description, int mana, int duration, String image) {
+    public SWAP(String name, String description, String image, int duration, int mana) {
         super(name, description, mana, SpellEffect.TEMPORARY, image);
         this.duration = duration;
     }

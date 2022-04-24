@@ -52,7 +52,7 @@ public class Character extends CardData {
 
 
     public String toString() {
-        return this.name;
+        return "Character: " + name + " \n" + description + " \n" + type + " \n" + image + " \n" + baseAtk + " \n" + baseHp + " \n" + manaCost + " \n" + atkUp + " \n" + hpUp;
     }
 
 }

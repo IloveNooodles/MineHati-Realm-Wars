@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.aetherwars.enums.CharacterType;
 import com.aetherwars.models.carddata.Character;
+import com.aetherwars.models.game.Game;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -17,18 +18,7 @@ import com.aetherwars.util.CSVReader;
 import com.aetherwars.models.extras.Type;
 
 public class AetherWars extends Application {
-    private static final String CHARACTER_CSV_FILE_PATH = "card/data/character.csv";
-
-    public void loadCards() throws IOException, URISyntaxException {
-        File characterCSVFile = new File(getClass().getResource(CHARACTER_CSV_FILE_PATH).toURI());
-        CSVReader characterReader = new CSVReader(characterCSVFile, "\t");
-        characterReader.setSkipHeader(true);
-        List<String[]> characterRows = characterReader.read();
-        for (String[] row : characterRows) {
-            Character c = new Character(row[1], row[3], new Type(CharacterType.valueOf(row[2])), row[4], Integer.valueOf(row[5]), Integer.valueOf(row[6]), Integer.valueOf(row[7]), Integer.valueOf(row[8]), Integer.valueOf(row[9]));
-            System.out.println(c);
-        }
-    }
+    public Game game;
 
     @Override
     public void start(Stage stage) {
@@ -47,9 +37,11 @@ public class AetherWars extends Application {
         stage.show();
 
         try {
-            this.loadCards();
-            text.setText("Minecraft: Aether Wars!");
+            game = Game.getInstance();
+            System.out.print(game.getCards());
+            text.setText(game.getCards());
         } catch (Exception e) {
+            e.printStackTrace();
             text.setText("Failed to load cards: " + e);
         }
     }

@@ -21,7 +21,7 @@ public class Deck extends CardContainer<Card> {
         return temp;
     }
 
-    public void add(Card card){
+    public void add(Card card) {
         cards.add(card);
     }
 

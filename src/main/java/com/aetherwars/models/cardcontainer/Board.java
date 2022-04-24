@@ -6,11 +6,10 @@ import com.aetherwars.models.game.Game;
 
 public class Board extends CardContainer<ActiveCharacter> {
 
-    public Board() throws Exception {
-
+    public Board() {
         super();
         for (int i = 0; i < Game.MAX_CARDS_ON_BOARD; i++) {
-            this.add(new ActiveCharacter());
+            this.cards.add(new ActiveCharacter());
         }
     }
 

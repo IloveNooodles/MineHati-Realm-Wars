@@ -9,7 +9,7 @@ public class PTN extends Spell {
     private final int atkBonus;
     private final int hpBonus;
 
-    public PTN(String name, String description, int mana, int duration, int atkBonus, int hpBonus, String image) {
+    public PTN(String name, String description, String image, int atkBonus, int hpBonus, int mana, int duration) {
         super(name, description, mana, SpellEffect.TEMPORARY, image);
         this.atkBonus = atkBonus;
         this.hpBonus = hpBonus;

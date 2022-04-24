@@ -1,6 +1,7 @@
 package com.aetherwars.models.game;
 
 import com.aetherwars.models.cardcontainer.Board;
+import com.aetherwars.models.carddata.Character;
 
 public class Game {
     public static final int MAX_CARDS_ON_BOARD = 5;
@@ -9,6 +10,8 @@ public class Game {
     private Board[] player_boards;
     private Player[] players;
     private GameState state;
+    private IO io;
+
 
     public Game(String player1, String player2) throws Exception {
         player_boards = new Board[2];
@@ -18,6 +21,7 @@ public class Game {
         player_boards[0] = new Board();
         player_boards[1] = new Board();
         state = new GameState();
+        io = new IO();
     }
 
     public static Game getInstance() throws Exception {
@@ -25,6 +29,23 @@ public class Game {
             current_game = new Game("Player 1", "Player 2");
         }
         return current_game;
+    }
+
+    public String getCards() {
+        if (io == null) {
+            return "babi";
+        }
+        String res = "";
+        for (Integer characterId : io.getCharacters().keySet()) {
+            res += characterId.toString() + " ";
+            res += io.getCharacters().get(characterId).toString() + "\n";
+        }
+
+        for (Integer spellId : io.getSpells().keySet()) {
+            res += spellId.toString() + " ";
+            res += io.getSpells().get(spellId).toString() + "\n";
+        }
+        return res;
     }
 
     public Board[] getBoards() {
