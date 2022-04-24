@@ -17,22 +17,21 @@ public class GameState {
         return "Turn: " + turn + " Player: " + player_turn + " Phase: " + phase;
     }
 
-    public boolean nextPhase() {
+    public void nextPhase() {
         switch (phase) {
             case DRAW:
                 phase = TurnPhase.PLAN;
-                return false;
+                break;
             case PLAN:
                 phase = TurnPhase.ATTACK;
-                return false;
+                break;
             case ATTACK:
                 phase = TurnPhase.END;
-                return false;
+                break;
             default:
                 phase = TurnPhase.DRAW;
                 turn += 1;
                 player_turn = (player_turn + 1) % 2;
-                return true;
         }
     }
 

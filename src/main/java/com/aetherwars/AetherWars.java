@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Scanner;
 
 import com.aetherwars.enums.CharacterType;
 import com.aetherwars.models.carddata.Character;
@@ -48,6 +49,17 @@ public class AetherWars extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        try {
+            System.out.println("Aether Wars");
+            Game game = Game.getInstance();
+            System.out.println("Aether Wars");
+            // TODO: Nanti apus soalnya ini buat debug doang
+            do {
+                game.nextPhase();
+            } while (true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

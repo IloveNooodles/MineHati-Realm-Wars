@@ -42,6 +42,7 @@ public class IO {
 
     private void loadCharacter() throws IOException, URISyntaxException, NullPointerException {
         URL resource = getClass().getResource(DATA_FILE_PATH + "/character.csv");
+        assert resource != null;
         File characterCSVFile = new File(resource.toURI());
         CSVReader reader = new CSVReader(characterCSVFile, "\t");
         reader.setSkipHeader(true);
@@ -72,22 +73,44 @@ public class IO {
                 this.Spells.put(402, lvl2);
                 continue;
             }
-            File csvFile = new File(getClass().getResource(DATA_FILE_PATH + "/spell_" + kind + ".csv").toURI());
+            URL resource = getClass().getResource(DATA_FILE_PATH + "/spell_" + kind + ".csv");
+            assert resource != null;
+            File csvFile = new File(resource.toURI());
             CSVReader reader = new CSVReader(csvFile, "\t");
             reader.setSkipHeader(true);
             List<String[]> lines = reader.read();
             for (String[] line : lines) {
                 switch (kind) {
                     case "morph":
-                        MORPH morph = new MORPH(line[1], line[2], line[3], this.Characters.get(Integer.valueOf(line[4])), Integer.parseInt(line[5]));
+                        MORPH morph = new MORPH(
+                                line[1],
+                                line[2],
+                                line[3],
+                                this.Characters.get(Integer.valueOf(line[4])),
+                                Integer.parseInt(line[5])
+                        );
                         this.Spells.put(Integer.valueOf(line[0]), morph);
                         break;
                     case "ptn":
-                        PTN ptn = new PTN(line[1], line[2], line[3], Integer.parseInt(line[4]), Integer.parseInt(line[5]), Integer.parseInt(line[6]), Integer.parseInt(line[7]));
+                        PTN ptn = new PTN(
+                                line[1],
+                                line[2],
+                                line[3],
+                                Integer.parseInt(line[4]),
+                                Integer.parseInt(line[5]),
+                                Integer.parseInt(line[6]),
+                                Integer.parseInt(line[7])
+                        );
                         this.Spells.put(Integer.valueOf(line[0]), ptn);
                         break;
                     case "swap":
-                        SWAP swap = new SWAP(line[1], line[2], line[3], Integer.parseInt(line[4]), Integer.parseInt(line[5]));
+                        SWAP swap = new SWAP(
+                                line[1],
+                                line[2],
+                                line[3],
+                                Integer.parseInt(line[4]),
+                                Integer.parseInt(line[5])
+                        );
                         this.Spells.put(Integer.valueOf(line[0]), swap);
                         break;
                 }
@@ -97,14 +120,15 @@ public class IO {
 
     private void loadDeck(Player player) throws IOException, URISyntaxException {
         URL resource = getClass().getResource(DATA_FILE_PATH + "/deck_" + player.getName() + ".txt");
+        assert resource != null;
         List<String> lines = Files.readAllLines(Paths.get(resource.toURI()), StandardCharsets.UTF_8);
-        Integer N = Integer.parseInt(lines.get(0));
-        for (int i = 1; i <= N; i++) {
+        for (int i = 0; i < lines.size(); i++) {
             if (Integer.parseInt(lines.get(i)) >= 100) {
                 player.getDeck().add(this.Spells.get(Integer.parseInt(lines.get(i))).createCard());
             } else {
                 player.getDeck().add(this.Characters.get(Integer.parseInt(lines.get(i))).createCard());
             }
         }
+        player.getDeck().shuffle();
     }
 }

@@ -6,6 +6,8 @@ import com.aetherwars.models.carddata.CardData;
 import com.aetherwars.models.game.Game;
 import com.aetherwars.exception.*;
 
+import java.util.List;
+
 
 public class Hand extends CardContainer<Card> {
     public Hand() {
@@ -25,7 +27,7 @@ public class Hand extends CardContainer<Card> {
     public void activate(int hand_idx, int board_idx) throws Exception {
         ActiveCard active = this.remove(hand_idx).activate();
         if (active instanceof ActiveCharacter) {
-            Game.getInstance().getPlayerBoard().add((ActiveCharacter) active);
+            Game.getInstance().getPlayerBoard().add(board_idx, (ActiveCharacter) active);
         } else if (active instanceof ActiveSpell) {
             ActiveCharacter character = Game.getInstance().getBoards()[Math.floorDiv(board_idx,
                     Game.MAX_CARDS_ON_BOARD)].get(board_idx % Game.MAX_CARDS_ON_BOARD);
@@ -36,6 +38,18 @@ public class Hand extends CardContainer<Card> {
             }
 
         }
+    }
+
+    public String toString() {
+        String res = "";
+        for (Card card : cards) {
+            res += card.getCardData().getName() + " " + card.getCardData().getManaCost() + "\n";
+        }
+        return res;
+    }
+
+    public List<Card> getCards() {
+        return cards;
     }
 }
 

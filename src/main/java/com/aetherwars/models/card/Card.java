@@ -26,6 +26,19 @@ public class Card {
         }
     }
 
+    public String getName() {
+        return this.data.getName();
+    }
+
+    public String getDescription() {
+        return this.data.getDescription();
+    }
+
+    public int getCost() {
+        return this.data.getManaCost();
+    }
+
+
     public String toString() {
         return this.data.toString();
     }

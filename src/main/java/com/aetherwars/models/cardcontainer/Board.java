@@ -27,12 +27,25 @@ public class Board extends CardContainer<ActiveCharacter> {
         throw new BoardFullException();
     }
 
+    public void add(int idx, ActiveCharacter card) {
+        cards.set(idx, card);
+    }
+
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+        String res = "";
         for (ActiveCharacter card : cards) {
-            sb.append(card.toString());
+            res += card.toString() + "\n";
         }
-        return sb.toString();
+        return res;
+    }
+
+    public boolean isEmpty() {
+        for (ActiveCharacter card : cards) {
+            if (!card.getName().equals("")) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void updateState() {

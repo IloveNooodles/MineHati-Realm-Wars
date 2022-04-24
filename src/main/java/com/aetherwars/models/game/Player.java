@@ -1,5 +1,6 @@
 package com.aetherwars.models.game;
 
+import com.aetherwars.exception.EmptyDeckException;
 import com.aetherwars.interfaces.Attackable;
 import com.aetherwars.models.activecard.ActiveCharacter;
 import com.aetherwars.models.cardcontainer.Deck;
@@ -44,17 +45,38 @@ public class Player implements Attackable {
         return hand;
     }
 
-    public void draw() throws Exception {
+    public void draw() throws EmptyDeckException {
         hand.add(deck.remove(0));
     }
 
     public void play(int hand_idx, int board_idx) throws Exception {
-        hand.activate(hand_idx, board_idx);
+        System.out.println("Hand Size: " + hand.getCards().size());
+        if (hand.get(hand_idx).getCardData().getManaCost() <= mana) {
+            mana -= hand.get(hand_idx).getCardData().getManaCost();
+
+            hand.activate(hand_idx, board_idx);
+        }
+
+    }
+
+    public void attack(int from, int to) {
+        Game game = Game.getInstance();
+        if (to == -1) {
+            game.getPlayerBoard().get(from).attack(game.getEnemy());
+        } else {
+            game.getPlayerBoard().get(from).attack(game.getPlayerBoard().get(to));
+        }
     }
 
     public void attacked(ActiveCharacter attacker) {
         hp -= attacker.getAtk();
     }
 
+    public String toString() {
+        String res = name + ": " + hp + " hp, " + mana + " mana";
+        res += "\n" + deck.toString();
+        res += "\n" + hand.toString();
+        return res;
+    }
 }
 

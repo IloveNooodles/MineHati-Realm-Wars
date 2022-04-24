@@ -33,6 +33,7 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
         this.atk = this.getCard().getBaseAtk();
         this.hp = this.getCard().getBaseHp();
         this.maxHp = this.getCard().getBaseHp();
+        this.activeSpells = new ArrayList<ActiveSpell>();
     }
 
     public void addExp(int exp) {
@@ -70,13 +71,7 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     }
 
     public double getAtk() {
-        int bonusAtk = 0;
-        for (ActiveSpell activeSpell : this.activeSpells) {
-            if (activeSpell.card instanceof PTN) {
-                bonusAtk += ((PTN) activeSpell.card).getAtkBonus();
-            }
-        }
-        return atk + bonusAtk;
+        return atk;
     }
 
     public double getHp() {
@@ -87,12 +82,21 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
         return maxHp;
     }
 
+    public Integer getLevel() {
+        return level;
+    }
+
+    public Integer getExp() {
+        return exp;
+    }
+
     public void addActiveSpell(ActiveSpell activeSpell) {
         switch (activeSpell.getSpellEffect()) {
             case PERMANENT:
                 activeSpell.getCard().activateEffect(this);
                 break;
             case TEMPORARY:
+                activeSpell.getCard().activateEffect(this);
                 activeSpells.add(activeSpell);
                 break;
         }
@@ -104,10 +108,10 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
         this.maxHp = this.getCard().getBaseHp() + (this.level - 1) * this.getCard().getHpUp();
         this.atk = this.getCard().getBaseAtk() + (this.level - 1) * this.getCard().getAtkUp();
 
-        for (ActiveSpell activeSpell : activeSpells) {
-            activeSpell.activateEffect(this);
-            if (activeSpell.getActiveDuration() <= 0) {
-                activeSpells.remove(activeSpell);
+        for (int i = this.activeSpells.size() - 1; i > -1; i--) {
+            this.activeSpells.get(i).activateEffect(this);
+            if (this.activeSpells.get(i).getActiveDuration() <= 0) {
+                this.activeSpells.remove(i);
             }
         }
 
@@ -126,8 +130,7 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     }
 
     public String toString() {
-
-        return this.getName() + " " + this.getHp() + "/" + this.getMaxHp() + " " + this.getAtk() + " " + this.getDescription();
+        return this.getName() + " lvl" + this.getLevel() + " " + this.getExp() + " " + this.getHp() + "/" + this.getMaxHp() + " " + this.getAtk();
     }
 
     public void morph(CardData card) {
@@ -168,5 +171,9 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     public void increaseStats(double atk, double hp) {
         this.atk += atk;
         this.maxHp += hp;
+    }
+
+    public void attack(Attackable target) {
+        target.attacked(this);
     }
 }
