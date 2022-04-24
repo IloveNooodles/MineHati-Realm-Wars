@@ -1,5 +1,6 @@
 package com.aetherwars.models.carddata;
 
+import com.aetherwars.models.card.Card;
 import com.aetherwars.models.extras.Type;
 import com.aetherwars.models.activecard.ActiveCard;
 import com.aetherwars.models.activecard.ActiveCharacter;
@@ -53,6 +54,10 @@ public class Character extends CardData {
 
     public String toString() {
         return "Character: " + name + " \n" + description + " \n" + type + " \n" + image + " \n" + baseAtk + " \n" + baseHp + " \n" + manaCost + " \n" + atkUp + " \n" + hpUp;
+    }
+
+    public Card createCard() {
+        return new Card(this);
     }
 
 }

@@ -1,7 +1,11 @@
 package com.aetherwars.models.game;
 
+import com.aetherwars.models.card.Card;
 import com.aetherwars.models.cardcontainer.Board;
 import com.aetherwars.models.carddata.Character;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class Game {
     public static final int MAX_CARDS_ON_BOARD = 5;
@@ -13,7 +17,7 @@ public class Game {
     private IO io;
 
 
-    public Game(String player1, String player2) throws Exception {
+    public Game(String player1, String player2) throws IOException, URISyntaxException {
         player_boards = new Board[2];
         players = new Player[2];
         players[0] = new Player(player1);
@@ -21,30 +25,29 @@ public class Game {
         player_boards[0] = new Board();
         player_boards[1] = new Board();
         state = new GameState();
-        io = new IO();
+        io = new IO(players[0], players[1]);
     }
 
-    public static Game getInstance() throws Exception {
+    public static Game getInstance() throws IOException, URISyntaxException {
         if (current_game == null) {
             current_game = new Game("Player 1", "Player 2");
         }
         return current_game;
     }
 
+    // TODO: Nanti apus soalnya ini buat debug doang
     public String getCards() {
-        if (io == null) {
-            return "babi";
-        }
         String res = "";
-        for (Integer characterId : io.getCharacters().keySet()) {
-            res += characterId.toString() + " ";
-            res += io.getCharacters().get(characterId).toString() + "\n";
+        for (Card card : players[0].getDeck().getCards()) {
+            res += card.toString() + "\n";
         }
 
-        for (Integer spellId : io.getSpells().keySet()) {
-            res += spellId.toString() + " ";
-            res += io.getSpells().get(spellId).toString() + "\n";
+        for (Card card : players[1].getDeck().getCards()) {
+            res += card.toString() + "\n";
         }
+
+        res += "player 1 decklength: " + players[0].getDeck().getCards().size() + "\n";
+        res += "player 2 decklength: " + players[1].getDeck().getCards().size() + "\n";
         return res;
     }
 

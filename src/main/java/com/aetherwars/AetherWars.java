@@ -38,6 +38,7 @@ public class AetherWars extends Application {
 
         try {
             game = Game.getInstance();
+            // TODO: Nanti apus soalnya ini buat debug doang
             System.out.print(game.getCards());
             text.setText(game.getCards());
         } catch (Exception e) {

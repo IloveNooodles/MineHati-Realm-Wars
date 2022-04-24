@@ -3,6 +3,7 @@ package com.aetherwars.models.carddata.spell;
 import com.aetherwars.enums.SpellEffect;
 import com.aetherwars.models.activecard.ActiveCard;
 import com.aetherwars.models.activecard.ActiveCharacter;
+import com.aetherwars.models.card.Card;
 import com.aetherwars.models.carddata.CardData;
 
 public abstract class Spell extends CardData {
@@ -29,5 +30,9 @@ public abstract class Spell extends CardData {
 
     public String toString() {
         return "Spell: " + name + " \n" + description + " \n" + mana + " \n" + effect + " \n" + duration;
+    }
+
+    public Card createCard() {
+        return new Card(this);
     }
 }

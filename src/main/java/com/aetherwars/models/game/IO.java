@@ -11,22 +11,25 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Arrays;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class IO {
-    public static final String CSV_FILE_PATH = "/com/aetherwars/card/data";
+    public static final String DATA_FILE_PATH = "/com/aetherwars/card/data";
     private Map<Integer, Character> Characters;
     private Map<Integer, Spell> Spells;
 
-    public IO() throws IOException, URISyntaxException {
+    public IO(Player player1, Player player2) throws IOException, URISyntaxException {
         this.Characters = new HashMap<>();
         this.Spells = new HashMap<>();
         this.loadCharacter();
         this.loadSpells();
-        //this.loadDeck();
+        this.loadDeck(player1);
+        this.loadDeck(player2);
     }
 
     public Map<Integer, Character> getCharacters() {
@@ -38,7 +41,7 @@ public class IO {
     }
 
     private void loadCharacter() throws IOException, URISyntaxException, NullPointerException {
-        URL resource = getClass().getResource(CSV_FILE_PATH + "/character.csv");
+        URL resource = getClass().getResource(DATA_FILE_PATH + "/character.csv");
         File characterCSVFile = new File(resource.toURI());
         CSVReader reader = new CSVReader(characterCSVFile, "\t");
         reader.setSkipHeader(true);
@@ -69,7 +72,7 @@ public class IO {
                 this.Spells.put(402, lvl2);
                 continue;
             }
-            File csvFile = new File(getClass().getResource(CSV_FILE_PATH + "/spell_" + kind + ".csv").toURI());
+            File csvFile = new File(getClass().getResource(DATA_FILE_PATH + "/spell_" + kind + ".csv").toURI());
             CSVReader reader = new CSVReader(csvFile, "\t");
             reader.setSkipHeader(true);
             List<String[]> lines = reader.read();
@@ -88,6 +91,19 @@ public class IO {
                         this.Spells.put(Integer.valueOf(line[0]), swap);
                         break;
                 }
+            }
+        }
+    }
+
+    private void loadDeck(Player player) throws IOException, URISyntaxException {
+        URL resource = getClass().getResource(DATA_FILE_PATH + "/deck_" + player.getName() + ".txt");
+        List<String> lines = Files.readAllLines(Paths.get(resource.toURI()), StandardCharsets.UTF_8);
+        Integer N = Integer.parseInt(lines.get(0));
+        for (int i = 1; i <= N; i++) {
+            if (Integer.parseInt(lines.get(i)) >= 100) {
+                player.getDeck().add(this.Spells.get(Integer.parseInt(lines.get(i))).createCard());
+            } else {
+                player.getDeck().add(this.Characters.get(Integer.parseInt(lines.get(i))).createCard());
             }
         }
     }

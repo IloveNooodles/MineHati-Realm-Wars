@@ -6,6 +6,7 @@ import com.aetherwars.models.carddata.CardData;
 import com.aetherwars.exception.*;
 
 import java.util.Collections;
+import java.util.List;
 
 public class Deck extends CardContainer<Card> {
     public Deck() {
@@ -27,5 +28,9 @@ public class Deck extends CardContainer<Card> {
 
     public void shuffle() {
         Collections.shuffle(cards);
+    }
+
+    public List<Card> getCards() {
+        return cards;
     }
 }
