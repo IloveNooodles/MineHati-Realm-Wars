@@ -14,7 +14,7 @@ public class GameState {
     }
 
     public String toString() {
-        return "Turn: " + turn + " Player: " + player_turn + " Phase: " + phase;
+        return "Turn: " + turn + " Player Turn: " + player_turn + " Phase: " + phase;
     }
 
     public void nextPhase() {
@@ -47,4 +47,3 @@ public class GameState {
         return phase;
     }
 }
-

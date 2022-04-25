@@ -75,8 +75,7 @@ public class Player implements Attackable {
     public String toString() {
         String res = name + ": " + hp + " hp, " + mana + " mana";
         res += "\n" + deck.toString();
-        res += "\n" + hand.toString();
+        res += "\nHand:\n" + hand.toString();
         return res;
     }
 }
-
