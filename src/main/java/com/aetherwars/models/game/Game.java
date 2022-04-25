@@ -128,6 +128,7 @@ public class Game {
                     inp2 = sc.nextInt();
                     while (inp1 >= 0) {
                         getPlayer().attack(inp1, inp2);
+                        System.out.println(this);
                         System.out.print("from: ");
                         inp1 = sc.nextInt();
                         System.out.print("to: ");
@@ -147,7 +148,8 @@ public class Game {
     }
 
     private void nextTurn() {
-        System.out.println(Math.min(state.getTurn() + 5, 10));
+        System.out.println(Math.min(state.getTurn() + 5, 10)); // TODO : i assume ini harusnya ga + 5, jadi ntar delete
+                                                               // + 5 nya
         for (Player player : players) {
             player.setMana(Math.min(state.getTurn() + 5, 10));
         }

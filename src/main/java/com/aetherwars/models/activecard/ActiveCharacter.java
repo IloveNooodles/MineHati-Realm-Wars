@@ -24,7 +24,7 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
         this.hp = 0;
         this.maxHp = 0;
         this.activeSpells = new ArrayList<ActiveSpell>();
-        this.hasAttacked = false;
+        this.hasAttacked = false; // TODO : kalau udah ada ui, bisa diganti dengan disable button
     }
 
     public ActiveCharacter(CardData card) {
@@ -37,7 +37,8 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
         this.activeSpells = new ArrayList<ActiveSpell>();
     }
 
-    public void addExp(int exp) {
+    public void addExp(int exp) { // TODO : harus bisa nge handle penambahan exp yang menyebabkan naik lebih dari
+                                  // 1 level
         if (this.level < 10) {
             this.exp += exp;
             if (this.exp >= level * 2 - 1) {
@@ -47,15 +48,29 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     }
 
     public void attacked(ActiveCharacter attacker) {
-        this.hp -= attacker.getAtk(); // TODO: Tambah modifier
+        double attackingModifier = 1; // dari this ke musuh damagenya dikali berapa
+        double attackedModifier = 1; // dari musuh ke this damagenya dikali berapa
+        if (this.getCard().getType().compareTo(attacker.getCard().getType()) > 0) {
+            attackingModifier = 2;
+            attackedModifier = 0.5;
+        } else if (this.getCard().getType().compareTo(attacker.getCard().getType()) < 0) {
+            attackingModifier = 0.5;
+            attackedModifier = 2;
+        }
+        this.hp -= attacker.getAtk() * attackedModifier;
 
         if (this.hp <= 0) {
             this.hp = 0;
         }
 
-        attacker.hp -= this.atk; // TODO: Tambah modifier
+        attacker.hp -= this.atk * attackingModifier;
         if (attacker.hp <= 0) {
             attacker.hp = 0;
+            attacker.die();
+        }
+        if (this.hp <= 0) {
+            attacker.addExp(this.level);
+            this.die();
         }
     }
 
@@ -132,8 +147,9 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     }
 
     public String toString() {
-        return this.getName() + " lvl" + this.getLevel() + " " + this.getExp() + " " + this.getHp() + "/"
-                + this.getMaxHp() + " " + this.getAtk();
+        return this.getName() + " lvl" + this.getLevel() + " exp: (" + this.getExp() + "/" + (level * 2 - 1) + ") hp: ("
+                + this.getHp() + "/"
+                + this.getMaxHp() + ") atk: " + this.getAtk();
     }
 
     public void morph(CardData card) {
@@ -147,8 +163,8 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
 
     public void levelUp() {
         if (this.level < 10) {
-            this.level++;
             this.exp = 0;
+            this.level++;
             this.increaseStats(this.getCard().getAtkUp(), this.getCard().getHpUp());
             this.hp = this.maxHp;
         }
@@ -177,15 +193,15 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     }
 
     public void attack(Attackable target) {
-        if (!hasAttacked) {
+        if (!hasAttacked) { // TODO : kalau udah ada ui, bisa diganti dengan disable button
             target.attacked(this);
             this.hasAttacked = true;
         } else {
-            System.out.println("sudah menyerang"); // TODO: nanti ganti exception
+            System.out.println("sudah menyerang");
         }
     }
 
-    public boolean hasAttacked() {
+    public boolean hasAttacked() { // TODO : kalau udah ada ui, bisa diganti dengan disable button
         return this.hasAttacked;
     }
 }

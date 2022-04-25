@@ -1,6 +1,5 @@
 package com.aetherwars.models.cardcontainer;
 
-
 import com.aetherwars.models.card.Card;
 import com.aetherwars.exception.*;
 
@@ -11,7 +10,7 @@ import java.util.Random;
 public class Deck extends CardContainer<Card> {
     public Deck() {
         super();
-        initializeDeck();
+        // initializeDeck(); TODO : uncomment kalau udah bisa initializeDeck
     }
 
     public void initializeDeck() {
@@ -21,14 +20,14 @@ public class Deck extends CardContainer<Card> {
         int totalCharacter = 20 + x;
         int totalSpell = 20 + y;
         while (totalCharacter > 0) {
-            //TODO : bikin kartu karakter terus add
+            // TODO : bikin kartu karakter terus add
         }
         while (totalSpell > 0) {
-            //TODO : bikin kartu spell terus add
+            // TODO : bikin kartu spell terus add
         }
         this.shuffle();
     }
-    
+
     public Card remove(int idx) throws EmptyDeckException {
         if (cards.size() == 0) {
             throw new EmptyDeckException();

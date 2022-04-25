@@ -62,9 +62,12 @@ public class Player implements Attackable {
     public void attack(int from, int to) {
         Game game = Game.getInstance();
         if (to == -1) {
+            System.out.println(game.getPlayerBoard().get(from).getName() + " attacked " + game.getEnemy().getName());
             game.getPlayerBoard().get(from).attack(game.getEnemy());
         } else {
-            game.getPlayerBoard().get(from).attack(game.getPlayerBoard().get(to));
+            System.out.println(
+                    game.getPlayerBoard().get(from).getName() + " attacked " + game.getEnemyBoard().get(to).getName());
+            game.getPlayerBoard().get(from).attack(game.getEnemyBoard().get(to));
         }
     }
 
