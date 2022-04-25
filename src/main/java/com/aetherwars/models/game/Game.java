@@ -19,9 +19,8 @@ public class Game {
     private GameState state;
     private IO io;
 
-    //TODO: Hapus klo gamake cli
+    // TODO: Hapus klo gamake cli
     private Scanner sc;
-
 
     public Game(String player1, String player2) throws IOException, URISyntaxException, EmptyDeckException {
         player_boards = new Board[2];
@@ -98,11 +97,14 @@ public class Game {
             case DRAW:
                 getPlayer().draw();
                 System.out.println(this);
-                sc.nextLine();
+                System.out.print("ok? ");
+                System.out.println(sc.nextLine());
                 break;
             case PLAN:
                 System.out.println(this);
+                System.out.print("hand index: ");
                 inp1 = sc.nextInt();
+                System.out.print("board index: ");
                 inp2 = sc.nextInt();
                 while (inp1 >= 0) {
                     try {
@@ -111,26 +113,34 @@ public class Game {
                         System.out.println("Slot is empty");
                     }
                     System.out.println(this);
+                    System.out.print("hand index: ");
                     inp1 = sc.nextInt();
+                    System.out.print("board index: ");
                     inp2 = sc.nextInt();
                 }
                 break;
             case ATTACK:
                 System.out.println(this);
                 if (!this.getPlayerBoard().isEmpty()) {
+                    System.out.print("from: ");
                     inp1 = sc.nextInt();
+                    System.out.print("to: ");
                     inp2 = sc.nextInt();
                     while (inp1 >= 0) {
                         getPlayer().attack(inp1, inp2);
+                        System.out.print("from: ");
                         inp1 = sc.nextInt();
+                        System.out.print("to: ");
                         inp2 = sc.nextInt();
                     }
                 }
                 break;
             case END:
                 System.out.println(this);
+                System.out.print("ok? ");
                 sc.nextLine();
                 nextTurn();
+                System.out.println("===================next turn===================");
                 break;
         }
         state.nextPhase();
@@ -148,7 +158,7 @@ public class Game {
     }
 
     public String toString() {
-        return "Game State: \n" + state.toString() + "\n" +
+        return "Game State: \n" + state.toString() + "\n\n" +
                 "Player 1: " + players[0].toString() + "\n\n" +
                 "Player 2: " + players[1].toString() + "\n" +
                 "Player 1 Board: \n" + player_boards[0].toString() + "\n" +

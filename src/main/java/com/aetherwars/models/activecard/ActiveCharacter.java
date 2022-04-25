@@ -1,6 +1,5 @@
 package com.aetherwars.models.activecard;
 
-
 import com.aetherwars.interfaces.Attackable;
 import com.aetherwars.models.carddata.*;
 import com.aetherwars.models.carddata.Character;
@@ -15,6 +14,7 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     private double hp;
     private double maxHp;
     private ArrayList<ActiveSpell> activeSpells;
+    private boolean hasAttacked;
 
     public ActiveCharacter() {
         super(new Character());
@@ -24,6 +24,7 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
         this.hp = 0;
         this.maxHp = 0;
         this.activeSpells = new ArrayList<ActiveSpell>();
+        this.hasAttacked = false;
     }
 
     public ActiveCharacter(CardData card) {
@@ -46,7 +47,7 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     }
 
     public void attacked(ActiveCharacter attacker) {
-        this.hp -= attacker.getAtk(); //TODO: Tambah modifier
+        this.hp -= attacker.getAtk(); // TODO: Tambah modifier
 
         if (this.hp <= 0) {
             this.hp = 0;
@@ -107,6 +108,7 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     public void updateState() {
         this.maxHp = this.getCard().getBaseHp() + (this.level - 1) * this.getCard().getHpUp();
         this.atk = this.getCard().getBaseAtk() + (this.level - 1) * this.getCard().getAtkUp();
+        this.hasAttacked = false;
 
         for (int i = this.activeSpells.size() - 1; i > -1; i--) {
             this.activeSpells.get(i).activateEffect(this);
@@ -130,7 +132,8 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     }
 
     public String toString() {
-        return this.getName() + " lvl" + this.getLevel() + " " + this.getExp() + " " + this.getHp() + "/" + this.getMaxHp() + " " + this.getAtk();
+        return this.getName() + " lvl" + this.getLevel() + " " + this.getExp() + " " + this.getHp() + "/"
+                + this.getMaxHp() + " " + this.getAtk();
     }
 
     public void morph(CardData card) {
@@ -174,6 +177,15 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     }
 
     public void attack(Attackable target) {
-        target.attacked(this);
+        if (!hasAttacked) {
+            target.attacked(this);
+            this.hasAttacked = true;
+        } else {
+            System.out.println("sudah menyerang"); // TODO: nanti ganti exception
+        }
+    }
+
+    public boolean hasAttacked() {
+        return this.hasAttacked;
     }
 }

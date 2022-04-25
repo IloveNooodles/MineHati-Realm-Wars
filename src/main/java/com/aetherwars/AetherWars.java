@@ -54,8 +54,10 @@ public class AetherWars extends Application {
             Game game = Game.getInstance();
             System.out.println("Aether Wars");
             // TODO: Nanti apus soalnya ini buat debug doang
+            System.out.println("-------------------start game-------------------");
             do {
                 game.nextPhase();
+                System.out.println("-------------------next phase-------------------");
             } while (true);
         } catch (Exception e) {
             e.printStackTrace();
