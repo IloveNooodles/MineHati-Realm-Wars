@@ -118,6 +118,28 @@ public class Game {
                     System.out.print("board index: ");
                     inp2 = sc.nextInt();
                 }
+
+                // TODO : kalau ada gui, ini hapus, biar langsung panggil fungsi dari button
+                // saja
+                System.out.println(this);
+                System.out.print("mana to convert to exp: ");
+                inp1 = sc.nextInt();
+                System.out.print("board index: ");
+                inp2 = sc.nextInt();
+                while (inp1 > 0) {
+                    try {
+                        manaToExp(inp1, inp2);
+                    } catch (EmptySlotException e) {
+                        System.out.println("Empty slot");
+                    } catch (Exception e) {
+                        System.out.println("Not enough mana");
+                    }
+                    System.out.println(this);
+                    System.out.print("mana to convert to exp: ");
+                    inp1 = sc.nextInt();
+                    System.out.print("board index: ");
+                    inp2 = sc.nextInt();
+                }
                 break;
             case ATTACK:
                 System.out.println(this);
@@ -148,7 +170,7 @@ public class Game {
     }
 
     private void nextTurn() {
-        System.out.println(Math.min(state.getTurn() + 5, 10)); // TODO : i assume ini harusnya ga + 5, jadi ntar delete
+        System.out.println(Math.min(state.getTurn() + 5, 10)); // TODO : I assume ini harusnya ga + 5, jadi ntar delete
                                                                // + 5 nya
         for (Player player : players) {
             player.setMana(Math.min(state.getTurn() + 5, 10));
@@ -157,6 +179,19 @@ public class Game {
         for (Board board : player_boards) {
             board.updateState();
         }
+    }
+
+    public void manaToExp(int mana, int target) throws EmptySlotException, Exception { // TODO : bikin exception buat
+                                                                                       // ini
+        int playerMana = getPlayer().getMana();
+        if (getPlayerBoard().get(target).getName().equals("")) {
+            throw new EmptySlotException();
+        }
+        if (mana > playerMana) {
+            throw new Exception();
+        }
+        getPlayer().setMana(playerMana - mana);
+        getPlayerBoard().get(target).addExp(mana);
     }
 
     public String toString() {

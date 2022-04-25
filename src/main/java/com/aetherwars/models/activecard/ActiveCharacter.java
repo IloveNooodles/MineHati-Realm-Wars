@@ -37,14 +37,18 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
         this.activeSpells = new ArrayList<ActiveSpell>();
     }
 
-    public void addExp(int exp) { // TODO : harus bisa nge handle penambahan exp yang menyebabkan naik lebih dari
-                                  // 1 level
-        if (this.level < 10) {
-            this.exp += exp;
-            if (this.exp >= level * 2 - 1) {
-                this.levelUp();
+    public void addExp(int addedExp) {
+        if (addedExp > 0) {
+            if (this.level < 10) {
+                this.exp += addedExp;
+                if (this.exp >= level * 2 - 1) {
+                    this.levelUp();
+                    int carry = addedExp - ((level - 1) * 2 - 1);
+                    addExp(carry);
+                }
             }
         }
+
     }
 
     public void attacked(ActiveCharacter attacker) {
@@ -64,13 +68,12 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
         }
 
         attacker.hp -= this.atk * attackingModifier;
-        if (attacker.hp <= 0) {
-            attacker.hp = 0;
-            attacker.die();
-        }
         if (this.hp <= 0) {
             attacker.addExp(this.level);
             this.die();
+        }
+        if (attacker.hp <= 0) {
+            attacker.die();
         }
     }
 
