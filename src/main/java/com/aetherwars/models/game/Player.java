@@ -15,7 +15,7 @@ public class Player implements Attackable {
 
     public Player(String name) {
         this.name = name;
-        this.hp = 30;
+        this.hp = 80;
         this.mana = 1;
         this.deck = new Deck();
         this.hand = new Hand();

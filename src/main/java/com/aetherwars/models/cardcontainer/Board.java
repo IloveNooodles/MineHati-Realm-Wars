@@ -17,7 +17,7 @@ public class Board extends CardContainer<ActiveCharacter> {
         return cards.set(idx, new ActiveCharacter());
     }
 
-    public void add(ActiveCharacter card) throws Exception {
+    public void add(ActiveCharacter card) throws BoardFullException {
         for (int i = 0; i < Game.MAX_CARDS_ON_BOARD; i++) {
             if (cards.get(i).getName().equals("")) {
                 cards.set(i, card);

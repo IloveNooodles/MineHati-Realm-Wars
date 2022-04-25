@@ -24,7 +24,7 @@ public class Hand extends CardContainer<Card> {
         cards.add(card);
     }
 
-    public void activate(int hand_idx, int board_idx) throws Exception {
+    public void activate(int hand_idx, int board_idx) throws EmptySlotException {
         ActiveCard active = this.remove(hand_idx).activate();
         if (active instanceof ActiveCharacter) {
             Game.getInstance().getPlayerBoard().add(board_idx, (ActiveCharacter) active);
