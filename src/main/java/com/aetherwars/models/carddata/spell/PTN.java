@@ -1,9 +1,7 @@
 package com.aetherwars.models.carddata.spell;
 
 import com.aetherwars.enums.SpellEffect;
-import com.aetherwars.models.activecard.ActiveCard;
 import com.aetherwars.models.activecard.ActiveCharacter;
-import com.aetherwars.models.activecard.ActiveSpell;
 
 public class PTN extends Spell {
     private final int atkBonus;
@@ -28,7 +26,6 @@ public class PTN extends Spell {
     public int getDuration() {
         return duration;
     }
-
 
     @Override
     public void activateEffect(ActiveCharacter activeCharacter) {
