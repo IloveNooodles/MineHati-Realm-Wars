@@ -1,7 +1,11 @@
 package com.aetherwars.models.activecard;
 
 import com.aetherwars.enums.CharacterType;
+import com.aetherwars.enums.LVLSpell;
 import com.aetherwars.models.carddata.Character;
+import com.aetherwars.models.carddata.spell.LVL;
+import com.aetherwars.models.carddata.spell.MORPH;
+import com.aetherwars.models.carddata.spell.PTN;
 import com.aetherwars.models.extras.Type;
 import org.junit.Test;
 
@@ -180,6 +184,54 @@ public class ActiveCharacterTest {
         Endermen.attack(Zombie);
         assertNotSame(Zombie.getHp(), 3.0);
         assertEquals(Zombie.getHp(), 3.0);
+    }
+
+    @Test
+    public void morphTest() {
+        Character zombie = new Character("zombie", "Pedang", new Type(CharacterType.OVERWORLD), "-", 5, 5, 1, 2, 3);
+        ActiveCharacter Zombie = new ActiveCharacter(zombie);
+
+        Zombie.addExp(99999);
+
+        Character endermen = new Character("endermen", "Bau", new Type(CharacterType.END), "-", 8, 20, 5, 5, 5);
+        Zombie.morph(endermen);
+        assertNotSame(Zombie.getLevel(), 10);
+        assertEquals((int) Zombie.getLevel(), 1);
+
+        assertNotSame(Zombie.getAtk(), 5);
+        assertEquals(Zombie.getAtk(), 8.0);
+
+        assertNotSame(Zombie.getHp(), 5.0);
+        assertEquals(Zombie.getHp(), 20.0);
+
+        assertEquals(Zombie.getMaxHp(), 20.0);
+    }
+
+    @Test
+    public void activeSpellTest() {
+        Character zombie = new Character("zombie", "Pedang", new Type(CharacterType.OVERWORLD), "-", 5, 5, 1, 2, 3);
+        ActiveCharacter Zombie = new ActiveCharacter(zombie);
+
+        //LEVEL
+        ActiveSpell lvlup = new ActiveSpell(new LVL("Obat mujarap", "iyah", "-", LVLSpell.LVLUP));
+        ActiveSpell lvldown = new ActiveSpell(new LVL("Obat mujarap", "iyah", "-", LVLSpell.LVLDOWN));
+
+        Zombie.addActiveSpell(lvlup);
+        Zombie.addActiveSpell(lvlup);
+        assertEquals((int) Zombie.getLevel(), 3);
+
+        Zombie.addActiveSpell(lvldown);
+        assertEquals((int) Zombie.getLevel(), 2);
+
+        //PTN
+        ActiveSpell ptn = new ActiveSpell(new PTN("idiotic", "-", "-", -999, -999, -999, -999));
+        Zombie.addActiveSpell(ptn);
+        System.out.println(Zombie);
+
+
+        //MORPH
+        ActiveSpell morph = new ActiveSpell(new MORPH("Ramuan ajaib", "-", "-", new Character("pigmen", "Bau", new Type(CharacterType.NETHER), "-", 7, 10, 3, 3, 4), 10));
+
     }
 }
 
