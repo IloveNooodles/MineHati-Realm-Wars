@@ -373,7 +373,7 @@
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="nextPhase" alignment="CENTER" layoutX="878.0" layoutY="355.0" onMouseClicked="#nextPhaseClicked" prefHeight="15.0" prefWidth="115.0" text="&gt;&gt;" textFill="WHITE">
+      <Label fx:id="nextPhase" alignment="CENTER" layoutX="878.0" layoutY="355.0" onMouseClicked="#click" prefHeight="15.0" prefWidth="115.0" text="&gt;&gt;" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
@@ -573,58 +573,5 @@
       <Rectangle fx:id="hand3Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="189.0" layoutY="402.0" onMouseEntered="#enterHand3" onMouseExited="#exitHand" stroke="BLACK" strokeType="INSIDE" width="81.0" />
       <Rectangle fx:id="hand4Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="270.0" layoutY="402.0" onMouseEntered="#enterHand4" onMouseExited="#exitHand" stroke="BLACK" strokeType="INSIDE" width="81.0" />
       <Rectangle fx:id="hand5Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="351.0" layoutY="402.0" onMouseEntered="#enterHand5" onMouseExited="#exitHand" stroke="BLACK" strokeType="INSIDE" width="81.0" />
-      <Rectangle fx:id="drawOverlay" arcHeight="5.0" arcWidth="5.0" fill="#00000080" height="576.0" stroke="BLACK" strokeType="INSIDE" width="1024.0" />
-      <Rectangle fx:id="drawCard1Back" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="319.0" layoutX="122.0" layoutY="106.0" stroke="BLACK" strokeType="INSIDE" width="220.0" />
-      <Rectangle fx:id="drawCard2Back" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="319.0" layoutX="402.0" layoutY="106.0" stroke="BLACK" strokeType="INSIDE" width="220.0" />
-      <Rectangle fx:id="drawCard3Back" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="319.0" layoutX="682.0" layoutY="106.0" stroke="BLACK" strokeType="INSIDE" width="220.0" />
-      <ImageView fitHeight="191.0" fitWidth="160.0" layoutX="152.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="drawCard1Image" fitHeight="191.0" fitWidth="160.0" layoutX="162.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../card/image/character/Creeper.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="drawCard2Image" fitHeight="191.0" fitWidth="160.0" layoutX="432.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../card/image/character/Creeper.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="drawCard3Image" fitHeight="191.0" fitWidth="160.0" layoutX="712.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../card/image/character/Creeper.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="drawCard1Mana" alignment="CENTER" layoutX="123.0" layoutY="342.0" prefHeight="18.0" prefWidth="220.0" text="MANA 5">
-         <font>
-            <Font name="Arial" size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="drawCard2Mana" alignment="CENTER" layoutX="403.0" layoutY="342.0" prefHeight="18.0" prefWidth="220.0" text="MANA 5">
-         <font>
-            <Font name="Arial" size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="drawCard3Mana" alignment="CENTER" layoutX="683.0" layoutY="342.0" prefHeight="18.0" prefWidth="220.0" text="MANA 5">
-         <font>
-            <Font name="Arial" size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="drawCard1Info" alignment="CENTER" layoutX="122.0" layoutY="367.0" prefHeight="18.0" prefWidth="220.0" text="ATK 10/HP 2">
-         <font>
-            <Font name="Arial" size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="drawCard2Info" alignment="CENTER" layoutX="402.0" layoutY="367.0" prefHeight="18.0" prefWidth="220.0" text="ATK 10/HP 2">
-         <font>
-            <Font name="Arial" size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="drawCard3Info" alignment="CENTER" layoutX="682.0" layoutY="367.0" prefHeight="18.0" prefWidth="220.0" text="ATK 10/HP 2">
-         <font>
-            <Font name="Arial" size="16.0" />
-         </font>
-      </Label>
-      <Rectangle fx:id="drawCard1" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="319.0" layoutX="122.0" layoutY="106.0" onMouseClicked="#clickDraw1" onMouseEntered="#hoverDraw1" onMouseExited="#exitDraw" stroke="BLACK" strokeType="INSIDE" width="220.0" />
-      <Rectangle fx:id="drawCard2" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="319.0" layoutX="402.0" layoutY="106.0" onMouseClicked="#clickDraw2" onMouseEntered="#hoverDraw2" onMouseExited="#exitDraw" stroke="BLACK" strokeType="INSIDE" width="220.0" />
-      <Rectangle fx:id="drawCard3" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="319.0" layoutX="682.0" layoutY="106.0" onMouseClicked="#clickDraw3" onMouseEntered="#hoverDraw3" onMouseExited="#exitDraw" stroke="BLACK" strokeType="INSIDE" width="220.0" />
    </children>
 </AnchorPane>
