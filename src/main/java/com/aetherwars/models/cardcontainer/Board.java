@@ -3,6 +3,7 @@ package com.aetherwars.models.cardcontainer;
 import com.aetherwars.exception.BoardFullException;
 import com.aetherwars.models.activecard.ActiveCharacter;
 import com.aetherwars.models.game.Game;
+import java.util.*;
 
 public class Board extends CardContainer<ActiveCharacter> {
 
@@ -11,6 +12,10 @@ public class Board extends CardContainer<ActiveCharacter> {
         for (int i = 0; i < Game.MAX_CARDS_ON_BOARD; i++) {
             this.cards.add(new ActiveCharacter());
         }
+    }
+
+    public ArrayList<ActiveCharacter> getCards() {
+        return this.cards;
     }
 
     public ActiveCharacter remove(int idx) {

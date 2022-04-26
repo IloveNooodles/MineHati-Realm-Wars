@@ -2,7 +2,9 @@ package com.aetherwars;
 
 import com.aetherwars.enums.CharacterType;
 import com.aetherwars.enums.TurnPhase;
+import com.aetherwars.models.activecard.ActiveCharacter;
 import com.aetherwars.models.card.Card;
+import com.aetherwars.models.cardcontainer.Board;
 import com.aetherwars.models.cardcontainer.Deck;
 import com.aetherwars.models.cardcontainer.Hand;
 import com.aetherwars.models.carddata.CardData;
@@ -1005,6 +1007,370 @@ public class Controller {
         boardAlexERect.setStroke(Color.web("#fec20c"));
     }
 
+    public char boardNumberToChar(int i) {
+        switch(i) {
+            case 0:
+                return 'A';
+            case 1:
+                return 'B';
+            case 2:
+                return 'C';
+            case 3:
+                return 'D';
+            case 4:
+                return 'E';
+            default:
+                return 'X';
+        }
+    }
+
+    public void renderSteveBoard(int i, ActiveCharacter ac) {
+        CardData cd = ac.getCard();
+        Image image = new Image("com/aetherwars/" + cd.getImage());
+        if (i == 0) {
+            boardSteveASword.setVisible(true);
+            boardSteveAHeart.setVisible(true);
+            boardSteveAImage.setVisible(true);
+            boardSteveAAttack.setVisible(true);
+            boardSteveAHealth.setVisible(true);
+            boardSteveALevel.setVisible(true);
+            boardSteveALabel.setVisible(false);
+
+            boardSteveAImage.setImage(image);
+            boardSteveAAttack.setText(String.valueOf(ac.getAtk()));
+            boardSteveAHealth.setText(String.valueOf(ac.getHp()));
+            boardSteveALevel.setText(String.format("%d/%d [%d]", ac.getExp(), ac.getLevel() * 2 - 1, ac.getLevel()));
+        } else if (i == 1) {
+            boardSteveBSword.setVisible(true);
+            boardSteveBHeart.setVisible(true);
+            boardSteveBImage.setVisible(true);
+            boardSteveBAttack.setVisible(true);
+            boardSteveBHealth.setVisible(true);
+            boardSteveBLevel.setVisible(true);
+            boardSteveBLabel.setVisible(false);
+
+            boardSteveBImage.setImage(image);
+            boardSteveBAttack.setText(String.valueOf(ac.getAtk()));
+            boardSteveBHealth.setText(String.valueOf(ac.getHp()));
+            boardSteveBLevel.setText(String.format("%d/%d [%d]", ac.getExp(), ac.getLevel() * 2 - 1, ac.getLevel()));
+        } else if (i == 2) {
+            boardSteveCSword.setVisible(true);
+            boardSteveCHeart.setVisible(true);
+            boardSteveCImage.setVisible(true);
+            boardSteveCAttack.setVisible(true);
+            boardSteveCHealth.setVisible(true);
+            boardSteveCLevel.setVisible(true);
+            boardSteveCLabel.setVisible(false);
+
+            boardSteveCImage.setImage(image);
+            boardSteveCAttack.setText(String.valueOf(ac.getAtk()));
+            boardSteveCHealth.setText(String.valueOf(ac.getHp()));
+            boardSteveCLevel.setText(String.format("%d/%d [%d]", ac.getExp(), ac.getLevel() * 2 - 1, ac.getLevel()));
+        } else if (i == 3) {
+            boardSteveDSword.setVisible(true);
+            boardSteveDHeart.setVisible(true);
+            boardSteveDImage.setVisible(true);
+            boardSteveDAttack.setVisible(true);
+            boardSteveDHealth.setVisible(true);
+            boardSteveDLevel.setVisible(true);
+            boardSteveDLabel.setVisible(false);
+
+            boardSteveDImage.setImage(image);
+            boardSteveDAttack.setText(String.valueOf(ac.getAtk()));
+            boardSteveDHealth.setText(String.valueOf(ac.getHp()));
+            boardSteveDLevel.setText(String.format("%d/%d [%d]", ac.getExp(), ac.getLevel() * 2 - 1, ac.getLevel()));
+        } else if (i == 4) {
+            boardSteveESword.setVisible(true);
+            boardSteveEHeart.setVisible(true);
+            boardSteveEImage.setVisible(true);
+            boardSteveEAttack.setVisible(true);
+            boardSteveEHealth.setVisible(true);
+            boardSteveELevel.setVisible(true);
+            boardSteveELabel.setVisible(false);
+
+            boardSteveEImage.setImage(image);
+            boardSteveEAttack.setText(String.valueOf(ac.getAtk()));
+            boardSteveEHealth.setText(String.valueOf(ac.getHp()));
+            boardSteveELevel.setText(String.format("%d/%d [%d]", ac.getExp(), ac.getLevel() * 2 - 1, ac.getLevel()));
+        }
+    }
+
+    public void renderAlexBoard(int i, ActiveCharacter ac) {
+        CardData cd = ac.getCard();
+        Image image = new Image("com/aetherwars/" + cd.getImage());
+        if (i == 0) {
+            boardAlexASword.setVisible(true);
+            boardAlexAHeart.setVisible(true);
+            boardAlexAImage.setVisible(true);
+            boardAlexAAttack.setVisible(true);
+            boardAlexAHealth.setVisible(true);
+            boardAlexALevel.setVisible(true);
+            boardAlexALabel.setVisible(false);
+
+            boardAlexAImage.setImage(image);
+            boardAlexAAttack.setText(String.valueOf(ac.getAtk()));
+            boardAlexAHealth.setText(String.valueOf(ac.getHp()));
+            boardAlexALevel.setText(String.format("%d/%d [%d]", ac.getExp(), ac.getLevel() * 2 - 1, ac.getLevel()));
+        } else if (i == 1) {
+            boardAlexBSword.setVisible(true);
+            boardAlexBHeart.setVisible(true);
+            boardAlexBImage.setVisible(true);
+            boardAlexBAttack.setVisible(true);
+            boardAlexBHealth.setVisible(true);
+            boardAlexBLevel.setVisible(true);
+            boardAlexBLabel.setVisible(false);
+
+            boardAlexBImage.setImage(image);
+            boardAlexBAttack.setText(String.valueOf(ac.getAtk()));
+            boardAlexBHealth.setText(String.valueOf(ac.getHp()));
+            boardAlexBLevel.setText(String.format("%d/%d [%d]", ac.getExp(), ac.getLevel() * 2 - 1, ac.getLevel()));
+        } else if (i == 2) {
+            boardAlexCSword.setVisible(true);
+            boardAlexCHeart.setVisible(true);
+            boardAlexCImage.setVisible(true);
+            boardAlexCAttack.setVisible(true);
+            boardAlexCHealth.setVisible(true);
+            boardAlexCLevel.setVisible(true);
+            boardAlexCLabel.setVisible(false);
+
+            boardAlexCImage.setImage(image);
+            boardAlexCAttack.setText(String.valueOf(ac.getAtk()));
+            boardAlexCHealth.setText(String.valueOf(ac.getHp()));
+            boardAlexCLevel.setText(String.format("%d/%d [%d]", ac.getExp(), ac.getLevel() * 2 - 1, ac.getLevel()));
+        } else if (i == 3) {
+            boardAlexDSword.setVisible(true);
+            boardAlexDHeart.setVisible(true);
+            boardAlexDImage.setVisible(true);
+            boardAlexDAttack.setVisible(true);
+            boardAlexDHealth.setVisible(true);
+            boardAlexDLevel.setVisible(true);
+            boardAlexDLabel.setVisible(false);
+
+            boardAlexDImage.setImage(image);
+            boardAlexDAttack.setText(String.valueOf(ac.getAtk()));
+            boardAlexDHealth.setText(String.valueOf(ac.getHp()));
+            boardAlexDLevel.setText(String.format("%d/%d [%d]", ac.getExp(), ac.getLevel() * 2 - 1, ac.getLevel()));
+        } else if (i == 4) {
+            boardAlexESword.setVisible(true);
+            boardAlexEHeart.setVisible(true);
+            boardAlexEImage.setVisible(true);
+            boardAlexEAttack.setVisible(true);
+            boardAlexEHealth.setVisible(true);
+            boardAlexELevel.setVisible(true);
+            boardAlexELabel.setVisible(false);
+
+            boardAlexEImage.setImage(image);
+            boardAlexEAttack.setText(String.valueOf(ac.getAtk()));
+            boardAlexEHealth.setText(String.valueOf(ac.getHp()));
+            boardAlexELevel.setText(String.format("%d/%d [%d]", ac.getExp(), ac.getLevel() * 2 - 1, ac.getLevel()));
+        }
+    }
+
+    public void renderBoards() {
+        Board boardSteve = game.getBoards()[0];
+        Board boardAlex = game.getBoards()[1];
+        /* Render kartu milik Steve */
+        ArrayList<ActiveCharacter> cardsSteve = boardSteve.getCards();
+        for (int i = 0; i < 5; i ++) {
+            ActiveCharacter ac = cardsSteve.get(i);
+            if (ac.getName().equals("")) {
+                hideSteveBoard(boardNumberToChar(i));
+            } else {
+                renderSteveBoard(i, ac);
+            }
+        }
+        /* Render kartu milik Alex */
+        ArrayList<ActiveCharacter> cardsAlex = boardAlex.getCards();
+        for (int i = 0; i < 5; i ++) {
+            ActiveCharacter ac = cardsAlex.get(i);
+            if (ac.getName().equals("")) {
+                hideAlexBoard(boardNumberToChar(i));
+            } else {
+                renderAlexBoard(i, ac);
+            }
+        }
+    }
+
+    public void clickASteve() {
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 0) {
+            if (selectedHand != -1) {
+                try {
+                    game.getPlayer().play(selectedHand - 1, 0);
+                    renderBoards();
+                    renderHand(game.getPlayer().getHand());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    selectedHand = -1;
+                    resetHandFillColor();
+                    updateDeckManaLabel();
+                }
+            }
+        }
+    }
+
+    public void clickBSteve() {
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 0) {
+            if (selectedHand != -1) {
+                try {
+                    game.getPlayer().play(selectedHand - 1, 1);
+                    renderBoards();
+                    renderHand(game.getPlayer().getHand());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    selectedHand = -1;
+                    resetHandFillColor();
+                    updateDeckManaLabel();
+                }
+            }
+        }
+    }
+
+    public void clickCSteve() {
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 0) {
+            if (selectedHand != -1) {
+                try {
+                    game.getPlayer().play(selectedHand - 1, 2);
+                    renderBoards();
+                    renderHand(game.getPlayer().getHand());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    selectedHand = -1;
+                    resetHandFillColor();
+                    updateDeckManaLabel();
+                }
+            }
+        }
+    }
+
+    public void clickDSteve() {
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 0) {
+            if (selectedHand != -1) {
+                try {
+                    game.getPlayer().play(selectedHand - 1, 3);
+                    renderBoards();
+                    renderHand(game.getPlayer().getHand());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    selectedHand = -1;
+                    resetHandFillColor();
+                    updateDeckManaLabel();
+                }
+            }
+        }
+    }
+
+    public void clickESteve() {
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 0) {
+            if (selectedHand != -1) {
+                try {
+                    game.getPlayer().play(selectedHand - 1, 4);
+                    renderBoards();
+                    renderHand(game.getPlayer().getHand());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    selectedHand = -1;
+                    resetHandFillColor();
+                    updateDeckManaLabel();
+                }
+            }
+        }
+    }
+
+    public void clickAAlex() {
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 1) {
+            if (selectedHand != -1) {
+                try {
+                    game.getPlayer().play(selectedHand - 1, 0);
+                    renderBoards();
+                    renderHand(game.getPlayer().getHand());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    selectedHand = -1;
+                    resetHandFillColor();
+                    updateDeckManaLabel();
+                }
+            }
+        }
+    }
+
+    public void clickBAlex() {
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 1) {
+            if (selectedHand != -1) {
+                try {
+                    game.getPlayer().play(selectedHand - 1, 1);
+                    renderBoards();
+                    renderHand(game.getPlayer().getHand());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    selectedHand = -1;
+                    resetHandFillColor();
+                    updateDeckManaLabel();
+                }
+            }
+        }
+    }
+
+    public void clickCAlex() {
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 1) {
+            if (selectedHand != -1) {
+                try {
+                    game.getPlayer().play(selectedHand - 1, 2);
+                    renderBoards();
+                    renderHand(game.getPlayer().getHand());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    selectedHand = -1;
+                    resetHandFillColor();
+                    updateDeckManaLabel();
+                }
+            }
+        }
+    }
+
+    public void clickDAlex() {
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 1) {
+            if (selectedHand != -1) {
+                try {
+                    game.getPlayer().play(selectedHand - 1, 3);
+                    renderBoards();
+                    renderHand(game.getPlayer().getHand());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    selectedHand = -1;
+                    resetHandFillColor();
+                    updateDeckManaLabel();
+                }
+            }
+        }
+    }
+
+    public void clickEAlex() {
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 1) {
+            if (selectedHand != -1) {
+                try {
+                    game.getPlayer().play(selectedHand - 1, 4);
+                    renderBoards();
+                    renderHand(game.getPlayer().getHand());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    selectedHand = -1;
+                    resetHandFillColor();
+                    updateDeckManaLabel();
+                }
+            }
+        }
+    }
+
     /* Mulai controller */
     public void initialize() {
         /* Mulai game! */
@@ -1032,5 +1398,7 @@ public class Controller {
         updateDeckManaLabel();
         /* Hide draw overlay */
         hideDrawOverlay();
+        /* Belum memilih hand */
+        selectedHand = -1;
     }
 }

@@ -25,17 +25,19 @@ public class Hand extends CardContainer<Card> {
     }
 
     public void activate(int hand_idx, int board_idx) throws EmptySlotException {
-        ActiveCard active = this.remove(hand_idx).activate();
+//        ActiveCard active = this.remove(hand_idx).activate();
+        ActiveCard active = cards.get(hand_idx).activate();
         if (active instanceof ActiveCharacter) {
             Game.getInstance().getPlayerBoard().add(board_idx, (ActiveCharacter) active);
+            cards.remove(hand_idx);
         } else if (active instanceof ActiveSpell) {
             ActiveCharacter character = Game.getInstance().getPlayerBoard().get(board_idx % Game.MAX_CARDS_ON_BOARD);
             if (!character.getName().equals("")) {
                 character.addActiveSpell((ActiveSpell) active);
+                cards.remove(hand_idx);
             } else {
                 throw new EmptySlotException();
             }
-
         }
     }
 
