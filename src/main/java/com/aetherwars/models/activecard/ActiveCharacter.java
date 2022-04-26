@@ -65,15 +65,22 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
             attackingModifier = 0.5;
             attackedModifier = 2;
         }
+        System.out.println("attacked.hp sebelum = " + this.hp);
         this.hp -= attacker.getAtk() * attackedModifier;
+        System.out.println("attacked.hp sesudah = " + this.hp);
 
         if (this.hp <= 0) {
             this.hp = 0;
         }
 
+        System.out.println("attacker.hp sebelum = " + attacker.hp);
         attacker.hp -= this.atk * attackingModifier;
+        System.out.println("attacked.hp sesudah = " + attacker.hp);
         if (this.hp <= 0) {
-            attacker.addExp(this.level);
+            if (attacker.hp > 0) {
+                /* exp ditambahkan bila attacker tidak mati */
+                attacker.addExp(this.level);
+            }
             this.die();
         }
         if (attacker.hp <= 0) {
