@@ -71,6 +71,10 @@ public class Game {
         return res;
     }
 
+    public GameState getState() {
+        return state;
+    }
+
     public Board[] getBoards() {
         return player_boards;
     }

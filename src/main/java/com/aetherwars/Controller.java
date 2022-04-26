@@ -1,6 +1,7 @@
 package com.aetherwars;
 
 import com.aetherwars.models.card.Card;
+import com.aetherwars.models.cardcontainer.Deck;
 import com.aetherwars.models.cardcontainer.Hand;
 import com.aetherwars.models.carddata.CardData;
 import com.aetherwars.models.carddata.Character;
@@ -498,7 +499,7 @@ public class Controller {
                     info = "ATK" + formatBonus(p.getAtkBonus()) + "/HP" + formatBonus(p.getHpBonus());
                 }
             } else if (s instanceof SWAP) {
-                info = "ATK ↔ HP";
+                info = "ATK <-> HP";
             }
         }
         int manaCost = cd.getManaCost();
@@ -562,6 +563,13 @@ public class Controller {
         }
     }
 
+    public void updateDeckManaLabel() {
+        Player p = game.getPlayer();
+        Deck d = p.getDeck();
+        deckLabel.setText(String.valueOf(d.getCards().size()));
+        manaLabel.setText(p.getMana() + "/" + Math.min(game.getState().getTurn(), 10));
+    }
+
     /* Mulai controller */
     public void initialize() {
         /* Mulai game! */
@@ -585,6 +593,8 @@ public class Controller {
         /* Render hand dari player sekarang */
         Player p = game.getPlayer();
         renderHand(p.getHand());
+        /* Update deck dan mana label */
+        updateDeckManaLabel();
     }
 
     public void click() {
