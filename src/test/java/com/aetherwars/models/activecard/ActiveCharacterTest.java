@@ -6,6 +6,7 @@ import com.aetherwars.models.carddata.Character;
 import com.aetherwars.models.carddata.spell.LVL;
 import com.aetherwars.models.carddata.spell.MORPH;
 import com.aetherwars.models.carddata.spell.PTN;
+import com.aetherwars.models.carddata.spell.SWAP;
 import com.aetherwars.models.extras.Type;
 import org.junit.Test;
 
@@ -244,10 +245,26 @@ public class ActiveCharacterTest {
         assertNotSame(Zombie.getMaxHp(), 1007.0);
         assertEquals(Zombie.getMaxHp(), 8.0);
 
+        //SWAP
+        ActiveSpell swap = new ActiveSpell(new SWAP("AMOGUS", "-", "-", 1, 2));
+        Zombie.addActiveSpell(swap);
+        assertEquals(Zombie.getMaxHp(), 7.0);
+        assertEquals(Zombie.getAtk(), 8.0);
+
+        Zombie.updateState();
+
+        assertEquals(Zombie.getMaxHp(), 8.0);
+        assertEquals(Zombie.getAtk(), 7.0);
+
 
         //MORPH
         ActiveSpell morph = new ActiveSpell(new MORPH("Ramuan ajaib", "-", "-", new Character("pigmen", "Bau", new Type(CharacterType.NETHER), "-", 7, 10, 3, 3, 4), 10));
-
+        Zombie.addActiveSpell(morph);
+        assertEquals(Zombie.getAtk(), 7.0);
+        assertEquals(Zombie.getHp(), 10.0);
+        assertEquals(Zombie.getMaxHp(), 10.0);
+        assertEquals((int) Zombie.getExp(), 0);
+        assertEquals((int) Zombie.getLevel(), 1);
     }
 }
 
