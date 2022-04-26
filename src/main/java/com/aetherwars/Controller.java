@@ -348,9 +348,16 @@ public class Controller {
     @FXML
     private Rectangle drawCard3;
 
+    /* Steve and Alex */
+    @FXML
+    private ImageView steveImage;
+    @FXML
+    private ImageView alexImage;
+
     /* Variables */
     private Game game;
     private int selectedHand;
+    private int selectedBoard;
 
     /* Functions, procedures */
     public void hideSteveBoard(char board) {
@@ -787,6 +794,26 @@ public class Controller {
         if (state.getPhase() == TurnPhase.DRAW) {
             /* TODO: Perintahkan pemain untuk memilih card untuk dihapus sebelum draw */
             initializeDrawOverlay();
+        } else if (state.getPhase() == TurnPhase.PLAN) {
+            selectedHand = -1;
+            resetHandFillColor();
+            nextPhase();
+            selectedBoard = -1;
+        } else if (state.getPhase() == TurnPhase.ATTACK) {
+            selectedBoard = -1;
+            resetBoardFills();
+            nextPhase();
+        } else if (state.getPhase() == TurnPhase.END) {
+            if (game.getState().getPlayerTurn() == 1) {
+                /* Tambah mana dan update status board */
+                game.nextTurn();
+            }
+            nextPhase();
+            updateTurn();
+            renderHand(game.getPlayer().getHand());
+            renderBoards();
+            updatePlayerIndicator();
+            updateDeckManaLabel();
         }
     }
 
@@ -1191,6 +1218,76 @@ public class Controller {
         }
     }
 
+    public boolean hasSteveBoardAttacked(int i) {
+        Board b;
+        if (game.getState().getPlayerTurn() == 0) {
+            b = game.getPlayerBoard();
+        } else {
+            b = game.getEnemyBoard();
+        }
+        return b.getCards().get(i).hasAttacked();
+    }
+
+    public boolean hasAlexBoardAttacked(int i) {
+        Board b;
+        if (game.getState().getPlayerTurn() == 0) {
+            b = game.getEnemyBoard();
+        } else {
+            b = game.getPlayerBoard();
+        }
+        return b.getCards().get(i).hasAttacked();
+    }
+
+    public void resetBoardFills() {
+        boardSteveARect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        boardSteveBRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        boardSteveCRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        boardSteveDRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        boardSteveERect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+
+        boardAlexARect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        boardAlexBRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        boardAlexCRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        boardAlexDRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        boardAlexERect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+    }
+
+    public void resetSteveBoardFill() {
+        if (selectedBoard != 1 && !hasSteveBoardAttacked(0)) {
+            boardSteveARect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+        if (selectedBoard != 2 && !hasSteveBoardAttacked(1)) {
+            boardSteveBRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+        if (selectedBoard != 3 && !hasSteveBoardAttacked(2)) {
+            boardSteveCRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+        if (selectedBoard != 4 && !hasSteveBoardAttacked(3)) {
+            boardSteveDRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+        if (selectedBoard != 5 && !hasSteveBoardAttacked(4)) {
+            boardSteveERect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+    }
+
+    public void resetAlexBoardFill() {
+        if (selectedBoard != 1 && !hasAlexBoardAttacked(0)) {
+            boardAlexARect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+        if (selectedBoard != 2 && !hasAlexBoardAttacked(1)) {
+            boardAlexBRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+        if (selectedBoard != 3 && !hasAlexBoardAttacked(2)) {
+            boardAlexCRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+        if (selectedBoard != 4 && !hasAlexBoardAttacked(3)) {
+            boardAlexDRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+        if (selectedBoard != 5 && !hasAlexBoardAttacked(4)) {
+            boardAlexERect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+    }
+
     public void clickASteve() {
         if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 0) {
             if (selectedHand != -1) {
@@ -1204,6 +1301,18 @@ public class Controller {
                     selectedHand = -1;
                     resetHandFillColor();
                     updateDeckManaLabel();
+                }
+            }
+        }
+        if (game.getState().getPhase() == TurnPhase.ATTACK) {
+            if (game.getState().getPlayerTurn() == 0) {
+                /* Memilih kartu untuk menyerang */
+                /* Cek apakah kartu ini ada isinya atau tidak */
+                ActiveCharacter ac = game.getPlayerBoard().getCards().get(0);
+                if (!ac.getCard().getName().equals("") && !ac.hasAttacked()) {
+                    selectedBoard = 1;
+                    resetSteveBoardFill();
+                    boardSteveARect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
                 }
             }
         }
@@ -1225,6 +1334,18 @@ public class Controller {
                 }
             }
         }
+        if (game.getState().getPhase() == TurnPhase.ATTACK) {
+            if (game.getState().getPlayerTurn() == 0) {
+                /* Memilih kartu untuk menyerang */
+                /* Cek apakah kartu ini ada isinya atau tidak */
+                ActiveCharacter ac = game.getPlayerBoard().getCards().get(1);
+                if (!ac.getCard().getName().equals("") && !ac.hasAttacked()) {
+                    selectedBoard = 2;
+                    resetSteveBoardFill();
+                    boardSteveBRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+                }
+            }
+        }
     }
 
     public void clickCSteve() {
@@ -1240,6 +1361,18 @@ public class Controller {
                     selectedHand = -1;
                     resetHandFillColor();
                     updateDeckManaLabel();
+                }
+            }
+        }
+        if (game.getState().getPhase() == TurnPhase.ATTACK) {
+            if (game.getState().getPlayerTurn() == 0) {
+                /* Memilih kartu untuk menyerang */
+                /* Cek apakah kartu ini ada isinya atau tidak */
+                ActiveCharacter ac = game.getPlayerBoard().getCards().get(2);
+                if (!ac.getCard().getName().equals("") && !ac.hasAttacked()) {
+                    selectedBoard = 3;
+                    resetSteveBoardFill();
+                    boardSteveCRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
                 }
             }
         }
@@ -1261,6 +1394,18 @@ public class Controller {
                 }
             }
         }
+        if (game.getState().getPhase() == TurnPhase.ATTACK) {
+            if (game.getState().getPlayerTurn() == 0) {
+                /* Memilih kartu untuk menyerang */
+                /* Cek apakah kartu ini ada isinya atau tidak */
+                ActiveCharacter ac = game.getPlayerBoard().getCards().get(3);
+                if (!ac.getCard().getName().equals("") && !ac.hasAttacked()) {
+                    selectedBoard = 4;
+                    resetSteveBoardFill();
+                    boardSteveDRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+                }
+            }
+        }
     }
 
     public void clickESteve() {
@@ -1276,6 +1421,18 @@ public class Controller {
                     selectedHand = -1;
                     resetHandFillColor();
                     updateDeckManaLabel();
+                }
+            }
+        }
+        if (game.getState().getPhase() == TurnPhase.ATTACK) {
+            if (game.getState().getPlayerTurn() == 0) {
+                /* Memilih kartu untuk menyerang */
+                /* Cek apakah kartu ini ada isinya atau tidak */
+                ActiveCharacter ac = game.getPlayerBoard().getCards().get(4);
+                if (!ac.getCard().getName().equals("") && !ac.hasAttacked()) {
+                    selectedBoard = 5;
+                    resetSteveBoardFill();
+                    boardSteveERect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
                 }
             }
         }
@@ -1297,6 +1454,18 @@ public class Controller {
                 }
             }
         }
+        if (game.getState().getPhase() == TurnPhase.ATTACK) {
+            if (game.getState().getPlayerTurn() == 1) {
+                /* Memilih kartu untuk menyerang */
+                /* Cek apakah kartu ini ada isinya atau tidak */
+                ActiveCharacter ac = game.getPlayerBoard().getCards().get(0);
+                if (!ac.getCard().getName().equals("") && !ac.hasAttacked()) {
+                    selectedBoard = 1;
+                    resetAlexBoardFill();
+                    boardAlexARect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+                }
+            }
+        }
     }
 
     public void clickBAlex() {
@@ -1312,6 +1481,18 @@ public class Controller {
                     selectedHand = -1;
                     resetHandFillColor();
                     updateDeckManaLabel();
+                }
+            }
+        }
+        if (game.getState().getPhase() == TurnPhase.ATTACK) {
+            if (game.getState().getPlayerTurn() == 1) {
+                /* Memilih kartu untuk menyerang */
+                /* Cek apakah kartu ini ada isinya atau tidak */
+                ActiveCharacter ac = game.getPlayerBoard().getCards().get(1);
+                if (!ac.getCard().getName().equals("") && !ac.hasAttacked()) {
+                    selectedBoard = 2;
+                    resetAlexBoardFill();
+                    boardAlexBRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
                 }
             }
         }
@@ -1333,6 +1514,18 @@ public class Controller {
                 }
             }
         }
+        if (game.getState().getPhase() == TurnPhase.ATTACK) {
+            if (game.getState().getPlayerTurn() == 1) {
+                /* Memilih kartu untuk menyerang */
+                /* Cek apakah kartu ini ada isinya atau tidak */
+                ActiveCharacter ac = game.getPlayerBoard().getCards().get(2);
+                if (!ac.getCard().getName().equals("") && !ac.hasAttacked()) {
+                    selectedBoard = 3;
+                    resetAlexBoardFill();
+                    boardAlexCRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+                }
+            }
+        }
     }
 
     public void clickDAlex() {
@@ -1348,6 +1541,18 @@ public class Controller {
                     selectedHand = -1;
                     resetHandFillColor();
                     updateDeckManaLabel();
+                }
+            }
+        }
+        if (game.getState().getPhase() == TurnPhase.ATTACK) {
+            if (game.getState().getPlayerTurn() == 1) {
+                /* Memilih kartu untuk menyerang */
+                /* Cek apakah kartu ini ada isinya atau tidak */
+                ActiveCharacter ac = game.getPlayerBoard().getCards().get(3);
+                if (!ac.getCard().getName().equals("") && !ac.hasAttacked()) {
+                    selectedBoard = 4;
+                    resetAlexBoardFill();
+                    boardAlexDRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
                 }
             }
         }
@@ -1369,14 +1574,126 @@ public class Controller {
                 }
             }
         }
+        if (game.getState().getPhase() == TurnPhase.ATTACK) {
+            if (game.getState().getPlayerTurn() == 1) {
+                /* Memilih kartu untuk menyerang */
+                /* Cek apakah kartu ini ada isinya atau tidak */
+                ActiveCharacter ac = game.getPlayerBoard().getCards().get(4);
+                if (!ac.getCard().getName().equals("") && !ac.hasAttacked()) {
+                    selectedBoard = 5;
+                    resetAlexBoardFill();
+                    boardAlexERect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+                }
+            }
+        }
+    }
+
+    public void enterAlex() {
+        alexImage.setStyle("-fx-opacity: 0.5");
+    }
+
+    public void enterSteve() {
+        steveImage.setStyle("-fx-opacity: 0.5");
+    }
+
+    public void exitAlex() {
+        alexImage.setStyle("");
+    }
+
+    public void exitSteve() {
+        steveImage.setStyle("");
+    }
+
+    public void updateHP() {
+        if (game.getState().getPlayerTurn() == 0) {
+            pbSteve.setProgress((double) game.getPlayer().getHp() / 80);
+            pbAlex.setProgress((double) game.getEnemy().getHp() / 80);
+            lbSteve.setText(String.format("Steve [%d]", game.getPlayer().getHp()));
+            lbAlex.setText(String.format("Alex [%d]", game.getEnemy().getHp()));
+        } else {
+            pbSteve.setProgress((double) game.getEnemy().getHp() / 80);
+            pbAlex.setProgress((double) game.getPlayer().getHp() / 80);
+            lbSteve.setText(String.format("Steve [%d]", game.getEnemy().getHp()));
+            lbAlex.setText(String.format("Alex [%d]", game.getPlayer().getHp()));
+        }
+    }
+
+    public void setSteveAttacked(int i) {
+        if (i == 1) {
+            boardSteveARect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        } else if (i == 2) {
+            boardSteveBRect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        } else if (i == 3) {
+            boardSteveCRect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        } else if (i == 4) {
+            boardSteveDRect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        } else if (i == 5) {
+            boardSteveERect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        }
+    }
+
+    public void setAlexAttacked(int i) {
+        if (i == 1) {
+            boardAlexARect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        } else if (i == 2) {
+            boardAlexBRect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        } else if (i == 3) {
+            boardAlexCRect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        } else if (i == 4) {
+            boardAlexDRect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        } else if (i == 5) {
+            boardAlexERect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        }
+    }
+
+    public void clickAlex() {
+        if (game.getState().getPhase() == TurnPhase.ATTACK) {
+            if (game.getState().getPlayerTurn() == 0) {
+                if (selectedBoard != -1) {
+                    game.getPlayer().attack(selectedBoard - 1, -1);
+                    setSteveAttacked(selectedBoard);
+                    selectedBoard = -1;
+                    resetSteveBoardFill();
+                    updateHP();
+                }
+            }
+        }
+    }
+
+    public void clickSteve() {
+        if (game.getState().getPhase() == TurnPhase.ATTACK) {
+            if (game.getState().getPlayerTurn() == 1) {
+                if (selectedBoard != -1) {
+                    game.getPlayer().attack(selectedBoard - 1, -1);
+                    setAlexAttacked(selectedBoard);
+                    selectedBoard = -1;
+                    resetAlexBoardFill();
+                    updateHP();
+                }
+            }
+        }
+    }
+
+    public void updatePlayerIndicator() {
+        if (game.getState().getPlayerTurn() == 0) {
+            alexIndicator.setVisible(false);
+            steveIndicator.setVisible(true);
+        } else {
+            alexIndicator.setVisible(true);
+            steveIndicator.setVisible(false);
+        }
+    }
+
+    public void updateTurn() {
+        turnNumber.setText(String.valueOf(game.getState().getTurn()));
     }
 
     /* Mulai controller */
     public void initialize() {
         /* Mulai game! */
         game = Game.getInstance();
-        /* Turn pertama adalah turn Steve */
-        alexIndicator.setVisible(false);
+        updateTurn();
+        updatePlayerIndicator();
         /* Clear decks */
         char[] boards = {'A', 'B', 'C', 'D', 'E'};
         for (char c : boards) {
@@ -1400,5 +1717,7 @@ public class Controller {
         hideDrawOverlay();
         /* Belum memilih hand */
         selectedHand = -1;
+        /* Inisialisasi progress bar */
+        updateHP();
     }
 }

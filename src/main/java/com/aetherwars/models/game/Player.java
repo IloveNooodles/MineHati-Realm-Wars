@@ -48,14 +48,17 @@ public class Player implements Attackable {
         hand.add(deck.remove(idx));
     }
 
-    public void play(int hand_idx, int board_idx) throws Exception {
+    public void play(int hand_idx, int board_idx) {
         System.out.println("Hand Size: " + hand.getCards().size());
         if (hand.get(hand_idx).getCardData().getManaCost() <= mana) {
-            mana -= hand.get(hand_idx).getCardData().getManaCost();
-
-            hand.activate(hand_idx, board_idx);
+            try {
+                int cost = hand.get(hand_idx).getCardData().getManaCost();
+                hand.activate(hand_idx, board_idx);
+                mana -= cost;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-
     }
 
     public void attack(int from, int to) {

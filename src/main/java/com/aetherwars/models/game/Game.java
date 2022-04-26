@@ -130,11 +130,7 @@ public class Game {
                 System.out.print("board index: ");
                 inp2 = sc.nextInt();
                 while (inp1 >= 0) {
-                    try {
-                        getPlayer().play(inp1, inp2);
-                    } catch (EmptySlotException e) {
-                        System.out.println("Slot is empty");
-                    }
+                    getPlayer().play(inp1, inp2);
                     System.out.println(this);
                     System.out.print("hand index: ");
                     inp1 = sc.nextInt();
@@ -192,7 +188,7 @@ public class Game {
         state.nextPhase();
     }
 
-    private void nextTurn() {
+    public void nextTurn() {
         System.out.println(Math.min(state.getTurn() + 5, 10)); // TODO : I assume ini harusnya ga + 5, jadi ntar delete
                                                                // + 5 nya
         for (Player player : players) {
