@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aetherwars.Controller">
+   <children>
+      <Circle fill="#ffffff00" layoutX="513.0" layoutY="66.0" radius="38.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label alignment="CENTER" layoutX="501.0" layoutY="47.0" text="Turn" />
+      <Label fx:id="turnNumber" alignment="CENTER" layoutX="475.0" layoutY="67.0" prefHeight="17.0" prefWidth="76.0" text="1" />
+      <ProgressBar fx:id="pbAlex" layoutX="577.0" layoutY="55.0" prefHeight="20.0" prefWidth="416.0" progress="1.0" style="-fx-accent: #00ff00;" />
+      <ProgressBar fx:id="pbSteve" layoutX="30.0" layoutY="55.0" prefHeight="20.0" prefWidth="416.0" progress="1.0" rotate="180.0" style="-fx-accent: #00ff00;" />
+      <Label fx:id="lbSteve" layoutX="30.0" layoutY="90.0" prefHeight="17.0" prefWidth="416.0" text="Steve [80]">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbAlex" alignment="CENTER_RIGHT" layoutX="577.0" layoutY="90.0" prefHeight="17.0" prefWidth="416.0" text="Alex [80]">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="boardSteveARect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="182.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardSteveBRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="274.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardSteveERect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="366.0" layoutY="168.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardSteveDRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="274.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardSteveCRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="182.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardAlexERect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="577.0" layoutY="168.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardAlexBRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="669.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardAlexARect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="761.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardAlexDRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="669.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardAlexCRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="761.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="steveIndicator" arcHeight="5.0" arcWidth="5.0" fill="#fbff00" height="90.0" layoutX="85.0" layoutY="163.0" stroke="WHITE" strokeType="INSIDE" width="90.0" />
+      <Rectangle fx:id="alexIndicator" arcHeight="5.0" arcWidth="5.0" fill="#fbff00" height="90.0" layoutX="848.0" layoutY="163.0" stroke="WHITE" strokeType="INSIDE" width="90.0" />
+      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="853.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/alex.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="90.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/steve.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardSteveASword" fitHeight="15.0" fitWidth="15.0" layoutX="186.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sword.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardSteveBSword" fitHeight="15.0" fitWidth="15.0" layoutX="278.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sword.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardSteveCSword" fitHeight="15.0" fitWidth="15.0" layoutX="186.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sword.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardSteveDSword" fitHeight="15.0" fitWidth="15.0" layoutX="278.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sword.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardSteveESword" fitHeight="15.0" fitWidth="15.0" layoutX="370.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sword.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardAlexESword" fitHeight="15.0" fitWidth="15.0" layoutX="581.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sword.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardAlexBSword" fitHeight="15.0" fitWidth="15.0" layoutX="673.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sword.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardAlexASword" fitHeight="15.0" fitWidth="15.0" layoutX="765.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sword.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardAlexDSword" fitHeight="15.0" fitWidth="15.0" layoutX="672.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sword.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardAlexCSword" fitHeight="15.0" fitWidth="15.0" layoutX="764.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sword.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardSteveAHeart" fitHeight="15.0" fitWidth="15.0" layoutX="243.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/heart.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardSteveBHeart" fitHeight="15.0" fitWidth="15.0" layoutX="335.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/heart.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardSteveCHeart" fitHeight="15.0" fitWidth="15.0" layoutX="243.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/heart.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardSteveDHeart" fitHeight="15.0" fitWidth="15.0" layoutX="335.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/heart.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardSteveEHeart" fitHeight="15.0" fitWidth="15.0" layoutX="427.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/heart.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardAlexEHeart" fitHeight="15.0" fitWidth="15.0" layoutX="638.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/heart.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardAlexBHeart" fitHeight="15.0" fitWidth="15.0" layoutX="730.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/heart.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardAlexAHeart" fitHeight="15.0" fitWidth="15.0" layoutX="822.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/heart.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardAlexDHeart" fitHeight="15.0" fitWidth="15.0" layoutX="729.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/heart.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardAlexCHeart" fitHeight="15.0" fitWidth="15.0" layoutX="821.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/heart.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardSteveAImage" fitHeight="47.0" fitWidth="26.0" layoutX="209.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../card/image/character/Creeper.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardSteveBImage" fitHeight="47.0" fitWidth="26.0" layoutX="301.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../card/image/character/Creeper.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardAlexBImage" fitHeight="47.0" fitWidth="26.0" layoutX="696.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../card/image/character/Creeper.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardAlexAImage" fitHeight="47.0" fitWidth="26.0" layoutX="788.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../card/image/character/Creeper.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardAlexCImage" fitHeight="47.0" fitWidth="26.0" layoutX="787.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../card/image/character/Creeper.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardAlexDImage" fitHeight="47.0" fitWidth="26.0" layoutX="695.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../card/image/character/Creeper.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardSteveDImage" fitHeight="47.0" fitWidth="26.0" layoutX="301.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../card/image/character/Creeper.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardSteveCImage" fitHeight="47.0" fitWidth="26.0" layoutX="209.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../card/image/character/Creeper.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardSteveEImage" fitHeight="47.0" fitWidth="26.0" layoutX="393.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../card/image/character/Creeper.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="boardAlexEImage" fitHeight="47.0" fitWidth="26.0" layoutX="604.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../card/image/character/Creeper.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="boardSteveAAttack" alignment="CENTER" layoutX="186.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveBAttack" alignment="CENTER" layoutX="278.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveCAttack" alignment="CENTER" layoutX="186.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveDAttack" alignment="CENTER" layoutX="278.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveEAttack" alignment="CENTER" layoutX="370.0" layoutY="187.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexEAttack" alignment="CENTER" layoutX="581.0" layoutY="187.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexBAttack" alignment="CENTER" layoutX="673.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexAAttack" alignment="CENTER" layoutX="765.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexCAttack" alignment="CENTER" layoutX="764.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexDAttack" alignment="CENTER" layoutX="672.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveAHealth" alignment="CENTER" layoutX="243.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveBHealth" alignment="CENTER" layoutX="335.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveCHealth" alignment="CENTER" layoutX="243.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveDHealth" alignment="CENTER" layoutX="335.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveEHealth" alignment="CENTER" layoutX="427.0" layoutY="187.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexEHealth" alignment="CENTER" layoutX="638.0" layoutY="187.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexBHealth" alignment="CENTER" layoutX="730.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexAHealth" alignment="CENTER" layoutX="822.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexCHealth" alignment="CENTER" layoutX="821.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexDHealth" alignment="CENTER" layoutX="729.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveALevel" alignment="CENTER" layoutX="182.0" layoutY="185.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveBLevel" alignment="CENTER" layoutX="274.0" layoutY="185.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveCLevel" alignment="CENTER" layoutX="182.0" layoutY="277.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveDLevel" alignment="CENTER" layoutX="274.0" layoutY="277.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveELevel" alignment="CENTER" layoutX="366.0" layoutY="233.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexELevel" alignment="CENTER" layoutX="577.0" layoutY="233.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexBLevel" alignment="CENTER" layoutX="669.0" layoutY="185.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexALevel" alignment="CENTER" layoutX="761.0" layoutY="185.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexDLevel" alignment="CENTER" layoutX="668.0" layoutY="277.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexCLevel" alignment="CENTER" layoutX="760.0" layoutY="277.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="drawIndicator" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="27.0" layoutY="352.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
+      <Rectangle fx:id="planIndicator" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="232.0" layoutY="352.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
+      <Rectangle fx:id="attackIndicator" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="437.0" layoutY="352.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
+      <Rectangle fx:id="endIndicator" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="642.0" layoutY="352.0" stroke="BLACK" strokeType="INSIDE" width="206.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="20.0" layoutX="878.0" layoutY="352.0" stroke="BLACK" strokeType="INSIDE" width="115.0" />
+      <Label alignment="CENTER" layoutX="27.0" layoutY="355.0" prefHeight="15.0" prefWidth="206.0" text="DRAW">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="233.0" layoutY="355.0" prefHeight="15.0" prefWidth="206.0" text="PLAN">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="437.0" layoutY="355.0" prefHeight="15.0" prefWidth="206.0" text="ATTACK">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="643.0" layoutY="355.0" prefHeight="15.0" prefWidth="206.0" text="END">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="nextPhase" alignment="CENTER" layoutX="878.0" layoutY="355.0" onMouseClicked="#click" prefHeight="15.0" prefWidth="115.0" text="&gt;&gt;" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="174.0" layoutX="459.0" layoutY="387.0" stroke="BLACK" strokeType="INSIDE" width="106.0" />
+      <ImageView fx:id="hoverImage" fitHeight="144.0" fitWidth="76.0" layoutX="474.0" layoutY="402.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../card/image/character/Sheep.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="hand1Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="27.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
+      <Rectangle fx:id="hand2Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="108.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
+      <Rectangle fx:id="hand3Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="189.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
+      <Rectangle fx:id="hand4Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="270.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
+      <Rectangle fx:id="hand5Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="351.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="592.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="128.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="720.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="128.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="41.0" layoutX="878.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="115.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="41.0" layoutX="878.0" layoutY="458.0" stroke="BLACK" strokeType="INSIDE" width="115.0" />
+      <ImageView fx:id="hand1Image" fitHeight="66.0" fitWidth="51.0" layoutX="42.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../card/image/spell/swap/Detergent.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hand2Image" fitHeight="66.0" fitWidth="51.0" layoutX="123.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../card/image/spell/swap/Detergent.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hand3Image" fitHeight="66.0" fitWidth="51.0" layoutX="204.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../card/image/spell/swap/Detergent.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hand4Image" fitHeight="66.0" fitWidth="51.0" layoutX="285.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../card/image/spell/swap/Detergent.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hand5Image" fitHeight="66.0" fitWidth="51.0" layoutX="366.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../card/image/spell/swap/Detergent.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="hand1Mana" alignment="CENTER" layoutX="28.0" layoutY="498.0" prefHeight="15.0" prefWidth="80.0" text="MANA 5">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="hand2Mana" alignment="CENTER" layoutX="109.0" layoutY="498.0" prefHeight="15.0" prefWidth="80.0" text="MANA 5">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="hand3Mana" alignment="CENTER" layoutX="190.0" layoutY="498.0" prefHeight="15.0" prefWidth="80.0" text="MANA 5">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="hand4Mana" alignment="CENTER" layoutX="271.0" layoutY="498.0" prefHeight="15.0" prefWidth="80.0" text="MANA 5">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="hand5Mana" alignment="CENTER" layoutX="352.0" layoutY="498.0" prefHeight="15.0" prefWidth="80.0" text="MANA 5">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="hand1Info" alignment="CENTER" layoutX="27.0" layoutY="519.0" prefHeight="15.0" prefWidth="80.0" text="ATK &lt;-&gt; HP">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="hand2Info" alignment="CENTER" layoutX="109.0" layoutY="519.0" prefHeight="15.0" prefWidth="80.0" text="ATK &lt;-&gt; HP">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="hand3Info" alignment="CENTER" layoutX="190.0" layoutY="519.0" prefHeight="15.0" prefWidth="80.0" text="ATK &lt;-&gt; HP">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="hand4Info" alignment="CENTER" layoutX="271.0" layoutY="519.0" prefHeight="15.0" prefWidth="80.0" text="ATK &lt;-&gt; HP">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="hand5Info" alignment="CENTER" layoutX="352.0" layoutY="519.0" prefHeight="15.0" prefWidth="80.0" text="ATK &lt;-&gt; HP">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="hoverTitle" layoutX="607.0" layoutY="432.0" prefWidth="98.0" text="Sheep">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="hoverAttack" layoutX="607.0" layoutY="455.0" prefWidth="98.0" text="ATK: 1">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="hoverHealth" layoutX="607.0" layoutY="466.0" prefWidth="98.0" text="HP: 1">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="hoverLevel" layoutX="607.0" layoutY="477.0" prefWidth="98.0" text="Level: 1">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="hoverExp" layoutX="607.0" layoutY="488.0" prefWidth="98.0" text="EXP: 0/1">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="hoverType" layoutX="607.0" layoutY="499.0" prefWidth="98.0" text="Type: Overworld">
+         <font>
+            <Font name="Arial" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="hoverDescription" layoutX="735.0" layoutY="417.0" prefHeight="114.0" prefWidth="98.0" text="“Sheep are common passive mobs that supply wool and mutton and are found in many of the grassy biomes.”" wrapText="true">
+         <font>
+            <Font name="Arial Italic" size="10.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="878.0" layoutY="409.0" prefHeight="15.0" prefWidth="115.0" text="Deck">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="878.0" layoutY="464.0" prefHeight="15.0" prefWidth="115.0" text="Mana">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="deckLabel" alignment="CENTER" layoutX="878.0" layoutY="422.0" prefHeight="15.0" prefWidth="115.0" text="35/40">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="manaLabel" alignment="CENTER" layoutX="878.0" layoutY="476.0" prefHeight="15.0" prefWidth="115.0" text="0/1">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveALabel" layoutX="212.0" layoutY="150.0" text="A">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveBLabel" layoutX="304.0" layoutY="150.0" text="B">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveCLabel" layoutX="212.0" layoutY="240.0" text="C">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveDLabel" layoutX="304.0" layoutY="240.0" text="D">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardSteveELabel" layoutX="396.0" layoutY="192.0" text="E">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexALabel" layoutX="790.0" layoutY="144.0" text="A">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexBLabel" layoutX="698.0" layoutY="144.0" text="B">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexCLabel" layoutX="790.0" layoutY="236.0" text="C">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexDLabel" layoutX="698.0" layoutY="236.0" text="D">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="boardAlexELabel" layoutX="607.0" layoutY="192.0" text="E">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
