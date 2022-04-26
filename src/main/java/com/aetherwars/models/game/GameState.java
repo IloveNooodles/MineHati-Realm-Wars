@@ -30,7 +30,9 @@ public class GameState {
                 break;
             default:
                 phase = TurnPhase.DRAW;
-                turn += 1;
+                if (player_turn == 1) {
+                    turn += 1;
+                }
                 player_turn = (player_turn + 1) % 2;
         }
     }
