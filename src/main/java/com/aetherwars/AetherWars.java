@@ -58,7 +58,7 @@ public class AetherWars extends Application {
             do {
                 game.nextPhase();
                 System.out.println("-------------------next phase-------------------");
-            } while (true);
+            } while (game.endGame() == -1);
         } catch (Exception e) {
             e.printStackTrace();
         }

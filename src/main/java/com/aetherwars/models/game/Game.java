@@ -1,5 +1,6 @@
 package com.aetherwars.models.game;
 
+import com.aetherwars.enums.TurnPhase;
 import com.aetherwars.exception.EmptyDeckException;
 import com.aetherwars.exception.EmptySlotException;
 import com.aetherwars.models.card.Card;
@@ -88,6 +89,16 @@ public class Game {
 
     public Board getEnemyBoard() {
         return player_boards[(state.getPlayerTurn() + 1) % 2];
+    }
+
+    public int endGame() {
+        if (getEnemy().getHp() <= 0) {
+            return state.getPlayerTurn();
+        }
+        else if (state.getPhase() == TurnPhase.DRAW && getPlayer().getDeck().getCards().size() == 0) {
+            return state.getPlayerTurn() + 1;
+        }
+        return -1;
     }
 
     public void nextPhase() throws Exception {
