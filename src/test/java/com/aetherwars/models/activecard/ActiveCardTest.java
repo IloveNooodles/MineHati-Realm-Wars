@@ -2,6 +2,7 @@ package com.aetherwars.models.activecard;
 
 import com.aetherwars.enums.CharacterType;
 import com.aetherwars.enums.LVLSpell;
+import com.aetherwars.models.card.Card;
 import com.aetherwars.models.carddata.Character;
 import com.aetherwars.models.carddata.spell.LVL;
 import com.aetherwars.models.carddata.spell.MORPH;
@@ -12,7 +13,7 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.*;
 
-public class ActiveCharacterTest {
+public class ActiveCardTest {
 
     @Test
     public void loadCharacterTest() {
@@ -35,6 +36,10 @@ public class ActiveCharacterTest {
         assertEquals(pigmen.getManaCost(), 1);
         assertEquals(pigmen.getAtkUp(), 1);
         assertEquals(pigmen.getHpUp(), 1);
+
+        ActiveCharacter Pigmen = new ActiveCharacter(pigmen);
+        assertTrue(Pigmen.getName().equals(pigmen.getName()));
+        assertTrue(Pigmen.getDescription().equals(pigmen.getDescription()));
     }
 
     @Test
@@ -126,6 +131,7 @@ public class ActiveCharacterTest {
         assertEquals((int) Zombie.getAtk(), 7);
 
         Zombie.attack(Skeleton);
+        assertTrue(Zombie.hasAttacked());
         assertNotSame(Skeleton.getHp(), 6);
         assertTrue(Skeleton.getHp() == 0.0);
 
@@ -140,6 +146,7 @@ public class ActiveCharacterTest {
 
         // udah mati jdi harusnya gabisa
         Skeleton.attack(Zombie);
+        assertFalse(Skeleton.hasAttacked());
         assertNotSame(Zombie.getHp(), 5);
         assertTrue(Zombie.getHp() == 11.0);
     }
@@ -151,12 +158,15 @@ public class ActiveCharacterTest {
         ActiveCharacter Zombie = new ActiveCharacter(zombie);
         ActiveCharacter Pigmen = new ActiveCharacter(pigmen);
 
+        assertFalse(Zombie.toString().equals(Pigmen.toString()));
+
         Zombie.levelUp();
         Zombie.levelUp();
         Zombie.levelUp();
         assertEquals(Zombie.getHp(), 14.0);
 
         Zombie.attack(Pigmen);
+        assertTrue(Zombie.hasAttacked());
         assertNotSame(Pigmen.getHp(), 0.0);
         assertEquals(Pigmen.getHp(), 4.5);
 
@@ -164,6 +174,7 @@ public class ActiveCharacterTest {
 
         //Zombie udah mati tpi diattack
         Pigmen.attack(Zombie);
+        assertTrue(Pigmen.hasAttacked());
         assertNotSame(Zombie.getHp(), 4);
         assertTrue(Zombie.getHp() == 0.0);
     }
@@ -179,10 +190,12 @@ public class ActiveCharacterTest {
         assertEquals(Zombie.getAtk(), 9.0);
 
         Zombie.attack(Endermen);
+        assertTrue(Zombie.hasAttacked());
         assertNotSame(Endermen.getHp(), 11.0);
         assertEquals(Endermen.getHp(), 2.0);
 
         Endermen.attack(Zombie);
+        assertTrue(Endermen.hasAttacked());
         assertNotSame(Zombie.getHp(), 3.0);
         assertEquals(Zombie.getHp(), 3.0);
     }
@@ -265,6 +278,18 @@ public class ActiveCharacterTest {
         assertEquals(Zombie.getMaxHp(), 10.0);
         assertEquals((int) Zombie.getExp(), 0);
         assertEquals((int) Zombie.getLevel(), 1);
+    }
+
+    @Test
+    public void createCardTest() {
+        Character zombie = new Character("zombie", "Pedang", new Type(CharacterType.OVERWORLD), "-", 5, 5, 1, 2, 3);
+        Card c = zombie.createCard();
+
+        assertTrue(c.getCardData().toString().equals(zombie.toString()));
+        assertTrue(c.getName().equals(zombie.getName()));
+        assertTrue(c.getDescription().equals(zombie.getDescription()));
+        assertTrue(c.getCost() == zombie.getManaCost());
+        assertTrue(c.getCardData().getImage().equals(zombie.getImage()));
     }
 }
 
