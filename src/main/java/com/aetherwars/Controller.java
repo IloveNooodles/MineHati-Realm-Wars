@@ -40,268 +40,292 @@ public class Controller {
     @FXML
     private Rectangle endIndicator;
 
-    /* Deck milik Steve */
-    /* Deck A - Steve */
+    /* Board milik Steve */
+    /* Board A - Steve */
     @FXML
-    private Rectangle deckSteveARect;
+    private Rectangle boardSteveARect;
     @FXML
-    private ImageView deckSteveASword;
+    private ImageView boardSteveASword;
     @FXML
-    private ImageView deckSteveAHeart;
+    private ImageView boardSteveAHeart;
     @FXML
-    private ImageView deckSteveAImage;
+    private ImageView boardSteveAImage;
     @FXML
-    private Label deckSteveAAttack;
+    private Label boardSteveAAttack;
     @FXML
-    private Label deckSteveAHealth;
+    private Label boardSteveAHealth;
     @FXML
-    private Label deckSteveALevel;
+    private Label boardSteveALevel;
     @FXML
-    private Label deckSteveALabel;
-    /* Deck B - Steve */
+    private Label boardSteveALabel;
+    /* Board B - Steve */
     @FXML
-    private Rectangle deckSteveBRect;
+    private Rectangle boardSteveBRect;
     @FXML
-    private ImageView deckSteveBSword;
+    private ImageView boardSteveBSword;
     @FXML
-    private ImageView deckSteveBHeart;
+    private ImageView boardSteveBHeart;
     @FXML
-    private ImageView deckSteveBImage;
+    private ImageView boardSteveBImage;
     @FXML
-    private Label deckSteveBAttack;
+    private Label boardSteveBAttack;
     @FXML
-    private Label deckSteveBHealth;
+    private Label boardSteveBHealth;
     @FXML
-    private Label deckSteveBLevel;
+    private Label boardSteveBLevel;
     @FXML
-    private Label deckSteveBLabel;
-    /* Deck C - Steve */
+    private Label boardSteveBLabel;
+    /* Board C - Steve */
     @FXML
-    private Rectangle deckSteveCRect;
+    private Rectangle boardSteveCRect;
     @FXML
-    private ImageView deckSteveCSword;
+    private ImageView boardSteveCSword;
     @FXML
-    private ImageView deckSteveCHeart;
+    private ImageView boardSteveCHeart;
     @FXML
-    private ImageView deckSteveCImage;
+    private ImageView boardSteveCImage;
     @FXML
-    private Label deckSteveCAttack;
+    private Label boardSteveCAttack;
     @FXML
-    private Label deckSteveCHealth;
+    private Label boardSteveCHealth;
     @FXML
-    private Label deckSteveCLevel;
+    private Label boardSteveCLevel;
     @FXML
-    private Label deckSteveCLabel;
-    /* Deck D - Steve */
+    private Label boardSteveCLabel;
+    /* Board D - Steve */
     @FXML
-    private Rectangle deckSteveDRect;
+    private Rectangle boardSteveDRect;
     @FXML
-    private ImageView deckSteveDSword;
+    private ImageView boardSteveDSword;
     @FXML
-    private ImageView deckSteveDHeart;
+    private ImageView boardSteveDHeart;
     @FXML
-    private ImageView deckSteveDImage;
+    private ImageView boardSteveDImage;
     @FXML
-    private Label deckSteveDAttack;
+    private Label boardSteveDAttack;
     @FXML
-    private Label deckSteveDHealth;
+    private Label boardSteveDHealth;
     @FXML
-    private Label deckSteveDLevel;
+    private Label boardSteveDLevel;
     @FXML
-    private Label deckSteveDLabel;
-    /* Deck E - Steve */
+    private Label boardSteveDLabel;
+    /* Board E - Steve */
     @FXML
-    private Rectangle deckSteveERect;
+    private Rectangle boardSteveERect;
     @FXML
-    private ImageView deckSteveESword;
+    private ImageView boardSteveESword;
     @FXML
-    private ImageView deckSteveEHeart;
+    private ImageView boardSteveEHeart;
     @FXML
-    private ImageView deckSteveEImage;
+    private ImageView boardSteveEImage;
     @FXML
-    private Label deckSteveEAttack;
+    private Label boardSteveEAttack;
     @FXML
-    private Label deckSteveEHealth;
+    private Label boardSteveEHealth;
     @FXML
-    private Label deckSteveELevel;
+    private Label boardSteveELevel;
     @FXML
-    private Label deckSteveELabel;
+    private Label boardSteveELabel;
 
-    /* Deck milik Alex */
-    /* Deck A - Alex */
+    /* Board milik Alex */
+    /* Board A - Alex */
     @FXML
-    private Rectangle deckAlexARect;
+    private Rectangle boardAlexARect;
     @FXML
-    private ImageView deckAlexASword;
+    private ImageView boardAlexASword;
     @FXML
-    private ImageView deckAlexAHeart;
+    private ImageView boardAlexAHeart;
     @FXML
-    private ImageView deckAlexAImage;
+    private ImageView boardAlexAImage;
     @FXML
-    private Label deckAlexAAttack;
+    private Label boardAlexAAttack;
     @FXML
-    private Label deckAlexAHealth;
+    private Label boardAlexAHealth;
     @FXML
-    private Label deckAlexALevel;
+    private Label boardAlexALevel;
     @FXML
-    private Label deckAlexALabel;
-    /* Deck B - Alex */
+    private Label boardAlexALabel;
+    /* Board B - Alex */
     @FXML
-    private Rectangle deckAlexBRect;
+    private Rectangle boardAlexBRect;
     @FXML
-    private ImageView deckAlexBSword;
+    private ImageView boardAlexBSword;
     @FXML
-    private ImageView deckAlexBHeart;
+    private ImageView boardAlexBHeart;
     @FXML
-    private ImageView deckAlexBImage;
+    private ImageView boardAlexBImage;
     @FXML
-    private Label deckAlexBAttack;
+    private Label boardAlexBAttack;
     @FXML
-    private Label deckAlexBHealth;
+    private Label boardAlexBHealth;
     @FXML
-    private Label deckAlexBLevel;
+    private Label boardAlexBLevel;
     @FXML
-    private Label deckAlexBLabel;
-    /* Deck C - Alex */
+    private Label boardAlexBLabel;
+    /* Board C - Alex */
     @FXML
-    private Rectangle deckAlexCRect;
+    private Rectangle boardAlexCRect;
     @FXML
-    private ImageView deckAlexCSword;
+    private ImageView boardAlexCSword;
     @FXML
-    private ImageView deckAlexCHeart;
+    private ImageView boardAlexCHeart;
     @FXML
-    private ImageView deckAlexCImage;
+    private ImageView boardAlexCImage;
     @FXML
-    private Label deckAlexCAttack;
+    private Label boardAlexCAttack;
     @FXML
-    private Label deckAlexCHealth;
+    private Label boardAlexCHealth;
     @FXML
-    private Label deckAlexCLevel;
+    private Label boardAlexCLevel;
     @FXML
-    private Label deckAlexCLabel;
-    /* Deck D - Alex */
+    private Label boardAlexCLabel;
+    /* Board D - Alex */
     @FXML
-    private Rectangle deckAlexDRect;
+    private Rectangle boardAlexDRect;
     @FXML
-    private ImageView deckAlexDSword;
+    private ImageView boardAlexDSword;
     @FXML
-    private ImageView deckAlexDHeart;
+    private ImageView boardAlexDHeart;
     @FXML
-    private ImageView deckAlexDImage;
+    private ImageView boardAlexDImage;
     @FXML
-    private Label deckAlexDAttack;
+    private Label boardAlexDAttack;
     @FXML
-    private Label deckAlexDHealth;
+    private Label boardAlexDHealth;
     @FXML
-    private Label deckAlexDLevel;
+    private Label boardAlexDLevel;
     @FXML
-    private Label deckAlexDLabel;
-    /* Deck E - Alex */
+    private Label boardAlexDLabel;
+    /* Board E - Alex */
     @FXML
-    private Rectangle deckAlexERect;
+    private Rectangle boardAlexERect;
     @FXML
-    private ImageView deckAlexESword;
+    private ImageView boardAlexESword;
     @FXML
-    private ImageView deckAlexEHeart;
+    private ImageView boardAlexEHeart;
     @FXML
-    private ImageView deckAlexEImage;
+    private ImageView boardAlexEImage;
     @FXML
-    private Label deckAlexEAttack;
+    private Label boardAlexEAttack;
     @FXML
-    private Label deckAlexEHealth;
+    private Label boardAlexEHealth;
     @FXML
-    private Label deckAlexELevel;
+    private Label boardAlexELevel;
     @FXML
-    private Label deckAlexELabel;
+    private Label boardAlexELabel;
 
     @FXML
     private Label myLabel;
 
-    public void hideSteveDeck(char deck) {
-        if (deck == 'A') {
-            deckSteveASword.setVisible(false);
-            deckSteveAHeart.setVisible(false);
-            deckSteveAImage.setVisible(false);
-            deckSteveAAttack.setVisible(false);
-            deckSteveAHealth.setVisible(false);
-            deckSteveALevel.setVisible(false);
-            deckSteveALabel.setVisible(true);
-        } else if (deck == 'B') {
-            deckSteveBSword.setVisible(false);
-            deckSteveBHeart.setVisible(false);
-            deckSteveBImage.setVisible(false);
-            deckSteveBAttack.setVisible(false);
-            deckSteveBHealth.setVisible(false);
-            deckSteveBLevel.setVisible(false);
-            deckSteveBLabel.setVisible(true);
-        } else if (deck == 'C') {
-            deckSteveCSword.setVisible(false);
-            deckSteveCHeart.setVisible(false);
-            deckSteveCImage.setVisible(false);
-            deckSteveCAttack.setVisible(false);
-            deckSteveCHealth.setVisible(false);
-            deckSteveCLevel.setVisible(false);
-            deckSteveCLabel.setVisible(true);
-        } else if (deck == 'D') {
-            deckSteveDSword.setVisible(false);
-            deckSteveDHeart.setVisible(false);
-            deckSteveDImage.setVisible(false);
-            deckSteveDAttack.setVisible(false);
-            deckSteveDHealth.setVisible(false);
-            deckSteveDLevel.setVisible(false);
-            deckSteveDLabel.setVisible(true);
-        } else if (deck == 'E') {
-            deckSteveESword.setVisible(false);
-            deckSteveEHeart.setVisible(false);
-            deckSteveEImage.setVisible(false);
-            deckSteveEAttack.setVisible(false);
-            deckSteveEHealth.setVisible(false);
-            deckSteveELevel.setVisible(false);
-            deckSteveELabel.setVisible(true);
+    public void hideSteveBoard(char board) {
+        if (board == 'A') {
+            boardSteveASword.setVisible(false);
+            boardSteveAHeart.setVisible(false);
+            boardSteveAImage.setVisible(false);
+            boardSteveAAttack.setVisible(false);
+            boardSteveAHealth.setVisible(false);
+            boardSteveALevel.setVisible(false);
+            boardSteveALabel.setVisible(true);
+        } else if (board == 'B') {
+            boardSteveBSword.setVisible(false);
+            boardSteveBHeart.setVisible(false);
+            boardSteveBImage.setVisible(false);
+            boardSteveBAttack.setVisible(false);
+            boardSteveBHealth.setVisible(false);
+            boardSteveBLevel.setVisible(false);
+            boardSteveBLabel.setVisible(true);
+        } else if (board == 'C') {
+            boardSteveCSword.setVisible(false);
+            boardSteveCHeart.setVisible(false);
+            boardSteveCImage.setVisible(false);
+            boardSteveCAttack.setVisible(false);
+            boardSteveCHealth.setVisible(false);
+            boardSteveCLevel.setVisible(false);
+            boardSteveCLabel.setVisible(true);
+        } else if (board == 'D') {
+            boardSteveDSword.setVisible(false);
+            boardSteveDHeart.setVisible(false);
+            boardSteveDImage.setVisible(false);
+            boardSteveDAttack.setVisible(false);
+            boardSteveDHealth.setVisible(false);
+            boardSteveDLevel.setVisible(false);
+            boardSteveDLabel.setVisible(true);
+        } else if (board == 'E') {
+            boardSteveESword.setVisible(false);
+            boardSteveEHeart.setVisible(false);
+            boardSteveEImage.setVisible(false);
+            boardSteveEAttack.setVisible(false);
+            boardSteveEHealth.setVisible(false);
+            boardSteveELevel.setVisible(false);
+            boardSteveELabel.setVisible(true);
         }
     }
 
-    public void hideAlexDeck(char deck) {
-        if (deck == 'A') {
-            deckAlexASword.setVisible(false);
-            deckAlexAHeart.setVisible(false);
-            deckAlexAImage.setVisible(false);
-            deckAlexAAttack.setVisible(false);
-            deckAlexAHealth.setVisible(false);
-            deckAlexALevel.setVisible(false);
-            deckAlexALabel.setVisible(true);
-        } else if (deck == 'B') {
-            deckAlexBSword.setVisible(false);
-            deckAlexBHeart.setVisible(false);
-            deckAlexBImage.setVisible(false);
-            deckAlexBAttack.setVisible(false);
-            deckAlexBHealth.setVisible(false);
-            deckAlexBLevel.setVisible(false);
-            deckAlexBLabel.setVisible(true);
-        } else if (deck == 'C') {
-            deckAlexCSword.setVisible(false);
-            deckAlexCHeart.setVisible(false);
-            deckAlexCImage.setVisible(false);
-            deckAlexCAttack.setVisible(false);
-            deckAlexCHealth.setVisible(false);
-            deckAlexCLevel.setVisible(false);
-            deckAlexCLabel.setVisible(true);
-        } else if (deck == 'D') {
-            deckAlexDSword.setVisible(false);
-            deckAlexDHeart.setVisible(false);
-            deckAlexDImage.setVisible(false);
-            deckAlexDAttack.setVisible(false);
-            deckAlexDHealth.setVisible(false);
-            deckAlexDLevel.setVisible(false);
-            deckAlexDLabel.setVisible(true);
-        } else if (deck == 'E') {
-            deckAlexESword.setVisible(false);
-            deckAlexEHeart.setVisible(false);
-            deckAlexEImage.setVisible(false);
-            deckAlexEAttack.setVisible(false);
-            deckAlexEHealth.setVisible(false);
-            deckAlexELevel.setVisible(false);
-            deckAlexELabel.setVisible(true);
+    public void hideAlexBoard(char board) {
+        if (board == 'A') {
+            boardAlexASword.setVisible(false);
+            boardAlexAHeart.setVisible(false);
+            boardAlexAImage.setVisible(false);
+            boardAlexAAttack.setVisible(false);
+            boardAlexAHealth.setVisible(false);
+            boardAlexALevel.setVisible(false);
+            boardAlexALabel.setVisible(true);
+        } else if (board == 'B') {
+            boardAlexBSword.setVisible(false);
+            boardAlexBHeart.setVisible(false);
+            boardAlexBImage.setVisible(false);
+            boardAlexBAttack.setVisible(false);
+            boardAlexBHealth.setVisible(false);
+            boardAlexBLevel.setVisible(false);
+            boardAlexBLabel.setVisible(true);
+        } else if (board == 'C') {
+            boardAlexCSword.setVisible(false);
+            boardAlexCHeart.setVisible(false);
+            boardAlexCImage.setVisible(false);
+            boardAlexCAttack.setVisible(false);
+            boardAlexCHealth.setVisible(false);
+            boardAlexCLevel.setVisible(false);
+            boardAlexCLabel.setVisible(true);
+        } else if (board == 'D') {
+            boardAlexDSword.setVisible(false);
+            boardAlexDHeart.setVisible(false);
+            boardAlexDImage.setVisible(false);
+            boardAlexDAttack.setVisible(false);
+            boardAlexDHealth.setVisible(false);
+            boardAlexDLevel.setVisible(false);
+            boardAlexDLabel.setVisible(true);
+        } else if (board == 'E') {
+            boardAlexESword.setVisible(false);
+            boardAlexEHeart.setVisible(false);
+            boardAlexEImage.setVisible(false);
+            boardAlexEAttack.setVisible(false);
+            boardAlexEHealth.setVisible(false);
+            boardAlexELevel.setVisible(false);
+            boardAlexELabel.setVisible(true);
+        }
+    }
+
+    public void setPhase(String phase) {
+        if (phase.equals("DRAW")) {
+            drawIndicator.setStyle("-fx-fill: #FFAB40");
+            planIndicator.setStyle("-fx-fill: rgba(0, 0, 0, 0)");
+            attackIndicator.setStyle("-fx-fill: rgba(0, 0, 0, 0)");
+            endIndicator.setStyle("-fx-fill: rgba(0, 0, 0, 0)");
+        } else if (phase.equals("PLAN")) {
+            drawIndicator.setStyle("-fx-fill: rgba(0, 0, 0, 0)");
+            planIndicator.setStyle("-fx-fill: #FFAB40");
+            attackIndicator.setStyle("-fx-fill: rgba(0, 0, 0, 0)");
+            endIndicator.setStyle("-fx-fill: rgba(0, 0, 0, 0)");
+        } else if (phase.equals("ATTACK")) {
+            drawIndicator.setStyle("-fx-fill: rgba(0, 0, 0, 0)");
+            planIndicator.setStyle("-fx-fill: rgba(0, 0, 0, 0)");
+            attackIndicator.setStyle("-fx-fill: #FFAB40");
+            endIndicator.setStyle("-fx-fill: rgba(0, 0, 0, 0)");
+        } else if (phase.equals("END")) {
+            drawIndicator.setStyle("-fx-fill: rgba(0, 0, 0, 0)");
+            planIndicator.setStyle("-fx-fill: rgba(0, 0, 0, 0)");
+            attackIndicator.setStyle("-fx-fill: rgba(0, 0, 0, 0)");
+            endIndicator.setStyle("-fx-fill: #FFAB40");
         }
     }
 
@@ -309,15 +333,16 @@ public class Controller {
         /* Turn pertama adalah turn Steve */
         alexIndicator.setVisible(false);
         /* Clear decks */
-        char[] decks = {'A', 'B', 'C', 'D', 'E'};
-        for (char c : decks) {
-            hideSteveDeck(c);
-            hideAlexDeck(c);
+        char[] boards = {'A', 'B', 'C', 'D', 'E'};
+        for (char c : boards) {
+            hideSteveBoard(c);
+            hideAlexBoard(c);
         }
+        /* By default, mulai di phase draw */
+        setPhase("DRAW");
     }
 
     public void click() {
-        myLabel.setVisible(false);
         System.out.println("Hello World!");
     }
 

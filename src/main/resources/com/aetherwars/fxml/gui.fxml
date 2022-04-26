@@ -26,16 +26,16 @@
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Label>
-      <Rectangle fx:id="deckSteveARect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="182.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="deckSteveBRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="274.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="deckSteveERect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="366.0" layoutY="168.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="deckSteveDRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="274.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="deckSteveCRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="182.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="deckAlexERect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="577.0" layoutY="168.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="deckAlexBRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="669.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="deckAlexARect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="761.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="deckAlexDRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="669.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="deckAlexCRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="761.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardSteveARect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="182.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardSteveBRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="274.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardSteveERect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="366.0" layoutY="168.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardSteveDRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="274.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardSteveCRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="182.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardAlexERect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="577.0" layoutY="168.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardAlexBRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="669.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardAlexARect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="761.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardAlexDRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="669.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardAlexCRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="761.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
       <Rectangle fx:id="steveIndicator" arcHeight="5.0" arcWidth="5.0" fill="#fbff00" height="90.0" layoutX="85.0" layoutY="163.0" stroke="WHITE" strokeType="INSIDE" width="90.0" />
       <Rectangle fx:id="alexIndicator" arcHeight="5.0" arcWidth="5.0" fill="#fbff00" height="90.0" layoutX="848.0" layoutY="163.0" stroke="WHITE" strokeType="INSIDE" width="90.0" />
       <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="853.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
@@ -48,302 +48,302 @@
             <Image url="@../assets/steve.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckSteveASword" fitHeight="15.0" fitWidth="15.0" layoutX="186.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardSteveASword" fitHeight="15.0" fitWidth="15.0" layoutX="186.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sword.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckSteveBSword" fitHeight="15.0" fitWidth="15.0" layoutX="278.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardSteveBSword" fitHeight="15.0" fitWidth="15.0" layoutX="278.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sword.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckSteveCSword" fitHeight="15.0" fitWidth="15.0" layoutX="186.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardSteveCSword" fitHeight="15.0" fitWidth="15.0" layoutX="186.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sword.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckSteveDSword" fitHeight="15.0" fitWidth="15.0" layoutX="278.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardSteveDSword" fitHeight="15.0" fitWidth="15.0" layoutX="278.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sword.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckSteveESword" fitHeight="15.0" fitWidth="15.0" layoutX="370.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardSteveESword" fitHeight="15.0" fitWidth="15.0" layoutX="370.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sword.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckAlexESword" fitHeight="15.0" fitWidth="15.0" layoutX="581.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardAlexESword" fitHeight="15.0" fitWidth="15.0" layoutX="581.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sword.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckAlexBSword" fitHeight="15.0" fitWidth="15.0" layoutX="673.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardAlexBSword" fitHeight="15.0" fitWidth="15.0" layoutX="673.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sword.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckAlexASword" fitHeight="15.0" fitWidth="15.0" layoutX="765.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardAlexASword" fitHeight="15.0" fitWidth="15.0" layoutX="765.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sword.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckAlexDSword" fitHeight="15.0" fitWidth="15.0" layoutX="672.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardAlexDSword" fitHeight="15.0" fitWidth="15.0" layoutX="672.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sword.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckAlexCSword" fitHeight="15.0" fitWidth="15.0" layoutX="764.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardAlexCSword" fitHeight="15.0" fitWidth="15.0" layoutX="764.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/sword.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckSteveAHeart" fitHeight="15.0" fitWidth="15.0" layoutX="243.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardSteveAHeart" fitHeight="15.0" fitWidth="15.0" layoutX="243.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/heart.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckSteveBHeart" fitHeight="15.0" fitWidth="15.0" layoutX="335.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardSteveBHeart" fitHeight="15.0" fitWidth="15.0" layoutX="335.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/heart.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckSteveCHeart" fitHeight="15.0" fitWidth="15.0" layoutX="243.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardSteveCHeart" fitHeight="15.0" fitWidth="15.0" layoutX="243.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/heart.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckSteveDHeart" fitHeight="15.0" fitWidth="15.0" layoutX="335.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardSteveDHeart" fitHeight="15.0" fitWidth="15.0" layoutX="335.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/heart.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckSteveEHeart" fitHeight="15.0" fitWidth="15.0" layoutX="427.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardSteveEHeart" fitHeight="15.0" fitWidth="15.0" layoutX="427.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/heart.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckAlexEHeart" fitHeight="15.0" fitWidth="15.0" layoutX="638.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardAlexEHeart" fitHeight="15.0" fitWidth="15.0" layoutX="638.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/heart.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckAlexBHeart" fitHeight="15.0" fitWidth="15.0" layoutX="730.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardAlexBHeart" fitHeight="15.0" fitWidth="15.0" layoutX="730.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/heart.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckAlexAHeart" fitHeight="15.0" fitWidth="15.0" layoutX="822.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardAlexAHeart" fitHeight="15.0" fitWidth="15.0" layoutX="822.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/heart.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckAlexDHeart" fitHeight="15.0" fitWidth="15.0" layoutX="729.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardAlexDHeart" fitHeight="15.0" fitWidth="15.0" layoutX="729.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/heart.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckAlexCHeart" fitHeight="15.0" fitWidth="15.0" layoutX="821.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardAlexCHeart" fitHeight="15.0" fitWidth="15.0" layoutX="821.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/heart.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckSteveAImage" fitHeight="47.0" fitWidth="26.0" layoutX="209.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardSteveAImage" fitHeight="47.0" fitWidth="26.0" layoutX="209.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../card/image/character/Creeper.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckSteveBImage" fitHeight="47.0" fitWidth="26.0" layoutX="301.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardSteveBImage" fitHeight="47.0" fitWidth="26.0" layoutX="301.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../card/image/character/Creeper.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckAlexBImage" fitHeight="47.0" fitWidth="26.0" layoutX="696.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardAlexBImage" fitHeight="47.0" fitWidth="26.0" layoutX="696.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../card/image/character/Creeper.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckAlexAImage" fitHeight="47.0" fitWidth="26.0" layoutX="788.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardAlexAImage" fitHeight="47.0" fitWidth="26.0" layoutX="788.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../card/image/character/Creeper.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckAlexCImage" fitHeight="47.0" fitWidth="26.0" layoutX="787.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardAlexCImage" fitHeight="47.0" fitWidth="26.0" layoutX="787.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../card/image/character/Creeper.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckAlexDImage" fitHeight="47.0" fitWidth="26.0" layoutX="695.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardAlexDImage" fitHeight="47.0" fitWidth="26.0" layoutX="695.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../card/image/character/Creeper.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckSteveDImage" fitHeight="47.0" fitWidth="26.0" layoutX="301.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardSteveDImage" fitHeight="47.0" fitWidth="26.0" layoutX="301.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../card/image/character/Creeper.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckSteveCImage" fitHeight="47.0" fitWidth="26.0" layoutX="209.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardSteveCImage" fitHeight="47.0" fitWidth="26.0" layoutX="209.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../card/image/character/Creeper.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckSteveEImage" fitHeight="47.0" fitWidth="26.0" layoutX="393.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardSteveEImage" fitHeight="47.0" fitWidth="26.0" layoutX="393.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../card/image/character/Creeper.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="deckAlexEImage" fitHeight="47.0" fitWidth="26.0" layoutX="604.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="boardAlexEImage" fitHeight="47.0" fitWidth="26.0" layoutX="604.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../card/image/character/Creeper.png" />
          </image>
       </ImageView>
-      <Label fx:id="deckSteveAAttack" alignment="CENTER" layoutX="186.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardSteveAAttack" alignment="CENTER" layoutX="186.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveBAttack" alignment="CENTER" layoutX="278.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardSteveBAttack" alignment="CENTER" layoutX="278.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveCAttack" alignment="CENTER" layoutX="186.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardSteveCAttack" alignment="CENTER" layoutX="186.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveDAttack" alignment="CENTER" layoutX="278.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardSteveDAttack" alignment="CENTER" layoutX="278.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveEAttack" alignment="CENTER" layoutX="370.0" layoutY="187.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardSteveEAttack" alignment="CENTER" layoutX="370.0" layoutY="187.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexEAttack" alignment="CENTER" layoutX="581.0" layoutY="187.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardAlexEAttack" alignment="CENTER" layoutX="581.0" layoutY="187.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexBAttack" alignment="CENTER" layoutX="673.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardAlexBAttack" alignment="CENTER" layoutX="673.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexAAttack" alignment="CENTER" layoutX="765.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardAlexAAttack" alignment="CENTER" layoutX="765.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexCAttack" alignment="CENTER" layoutX="764.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardAlexCAttack" alignment="CENTER" layoutX="764.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexDAttack" alignment="CENTER" layoutX="672.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardAlexDAttack" alignment="CENTER" layoutX="672.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveAHealth" alignment="CENTER" layoutX="243.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardSteveAHealth" alignment="CENTER" layoutX="243.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveBHealth" alignment="CENTER" layoutX="335.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardSteveBHealth" alignment="CENTER" layoutX="335.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveCHealth" alignment="CENTER" layoutX="243.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardSteveCHealth" alignment="CENTER" layoutX="243.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveDHealth" alignment="CENTER" layoutX="335.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardSteveDHealth" alignment="CENTER" layoutX="335.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveEHealth" alignment="CENTER" layoutX="427.0" layoutY="187.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardSteveEHealth" alignment="CENTER" layoutX="427.0" layoutY="187.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexEHealth" alignment="CENTER" layoutX="638.0" layoutY="187.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardAlexEHealth" alignment="CENTER" layoutX="638.0" layoutY="187.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexBHealth" alignment="CENTER" layoutX="730.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardAlexBHealth" alignment="CENTER" layoutX="730.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexAHealth" alignment="CENTER" layoutX="822.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardAlexAHealth" alignment="CENTER" layoutX="822.0" layoutY="139.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexCHealth" alignment="CENTER" layoutX="821.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardAlexCHealth" alignment="CENTER" layoutX="821.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexDHealth" alignment="CENTER" layoutX="729.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
+      <Label fx:id="boardAlexDHealth" alignment="CENTER" layoutX="729.0" layoutY="231.0" prefHeight="11.0" prefWidth="15.0" text="10">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveALevel" alignment="CENTER" layoutX="182.0" layoutY="185.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+      <Label fx:id="boardSteveALevel" alignment="CENTER" layoutX="182.0" layoutY="185.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveBLevel" alignment="CENTER" layoutX="274.0" layoutY="185.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+      <Label fx:id="boardSteveBLevel" alignment="CENTER" layoutX="274.0" layoutY="185.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveCLevel" alignment="CENTER" layoutX="182.0" layoutY="277.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+      <Label fx:id="boardSteveCLevel" alignment="CENTER" layoutX="182.0" layoutY="277.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveDLevel" alignment="CENTER" layoutX="274.0" layoutY="277.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+      <Label fx:id="boardSteveDLevel" alignment="CENTER" layoutX="274.0" layoutY="277.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveELevel" alignment="CENTER" layoutX="366.0" layoutY="233.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+      <Label fx:id="boardSteveELevel" alignment="CENTER" layoutX="366.0" layoutY="233.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexELevel" alignment="CENTER" layoutX="577.0" layoutY="233.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+      <Label fx:id="boardAlexELevel" alignment="CENTER" layoutX="577.0" layoutY="233.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexBLevel" alignment="CENTER" layoutX="669.0" layoutY="185.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+      <Label fx:id="boardAlexBLevel" alignment="CENTER" layoutX="669.0" layoutY="185.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexALevel" alignment="CENTER" layoutX="761.0" layoutY="185.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+      <Label fx:id="boardAlexALevel" alignment="CENTER" layoutX="761.0" layoutY="185.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexDLevel" alignment="CENTER" layoutX="668.0" layoutY="277.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+      <Label fx:id="boardAlexDLevel" alignment="CENTER" layoutX="668.0" layoutY="277.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexCLevel" alignment="CENTER" layoutX="760.0" layoutY="277.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
+      <Label fx:id="boardAlexCLevel" alignment="CENTER" layoutX="760.0" layoutY="277.0" prefHeight="11.0" prefWidth="78.0" text="0/1 [1]">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
@@ -523,52 +523,52 @@
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveALabel" layoutX="212.0" layoutY="150.0" text="A">
+      <Label fx:id="boardSteveALabel" layoutX="212.0" layoutY="150.0" text="A">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveBLabel" layoutX="304.0" layoutY="150.0" text="B">
+      <Label fx:id="boardSteveBLabel" layoutX="304.0" layoutY="150.0" text="B">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveCLabel" layoutX="212.0" layoutY="240.0" text="C">
+      <Label fx:id="boardSteveCLabel" layoutX="212.0" layoutY="240.0" text="C">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveDLabel" layoutX="304.0" layoutY="240.0" text="D">
+      <Label fx:id="boardSteveDLabel" layoutX="304.0" layoutY="240.0" text="D">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="deckSteveELabel" layoutX="396.0" layoutY="192.0" text="E">
+      <Label fx:id="boardSteveELabel" layoutX="396.0" layoutY="192.0" text="E">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexALabel" layoutX="790.0" layoutY="144.0" text="A">
+      <Label fx:id="boardAlexALabel" layoutX="790.0" layoutY="144.0" text="A">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexBLabel" layoutX="698.0" layoutY="144.0" text="B">
+      <Label fx:id="boardAlexBLabel" layoutX="698.0" layoutY="144.0" text="B">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexCLabel" layoutX="790.0" layoutY="236.0" text="C">
+      <Label fx:id="boardAlexCLabel" layoutX="790.0" layoutY="236.0" text="C">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexDLabel" layoutX="698.0" layoutY="236.0" text="D">
+      <Label fx:id="boardAlexDLabel" layoutX="698.0" layoutY="236.0" text="D">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="deckAlexELabel" layoutX="607.0" layoutY="192.0" text="E">
+      <Label fx:id="boardAlexELabel" layoutX="607.0" layoutY="192.0" text="E">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
