@@ -1874,16 +1874,34 @@ public class Controller {
         }
     }
 
+    public boolean isSteveBoardOccupied() {
+        for (int i = 0; i < 5; i ++) {
+            if (isSteveBoardOccupied(i)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isAlexBoardOccupied() {
+        for (int i = 0; i < 5; i ++) {
+            if (isAlexBoardOccupied(i)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void clickAlex() {
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
             if (game.getState().getPlayerTurn() == 0) {
-                if (selectedBoard != -1) {
+                if (selectedBoard != -1 && !isAlexBoardOccupied()) {
                     game.getPlayer().attack(selectedBoard - 1, -1);
                     setSteveAttacked(selectedBoard);
-                    selectedBoard = -1;
-                    resetSteveBoardFill();
                     updateHP();
                 }
+                selectedBoard = -1;
+                resetSteveBoardFill();
             }
         }
     }
@@ -1891,13 +1909,13 @@ public class Controller {
     public void clickSteve() {
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
             if (game.getState().getPlayerTurn() == 1) {
-                if (selectedBoard != -1) {
+                if (selectedBoard != -1 && !isSteveBoardOccupied()) {
                     game.getPlayer().attack(selectedBoard - 1, -1);
                     setAlexAttacked(selectedBoard);
-                    selectedBoard = -1;
-                    resetAlexBoardFill();
                     updateHP();
                 }
+                selectedBoard = -1;
+                resetAlexBoardFill();
             }
         }
     }
