@@ -1203,38 +1203,58 @@ public class Controller {
         }
     }
 
+    public boolean hasSteveBoardAttacked(int i) {
+        Board b;
+        if (game.getState().getPlayerTurn() == 0) {
+            b = game.getPlayerBoard();
+        } else {
+            b = game.getEnemyBoard();
+        }
+        return b.getCards().get(i).hasAttacked();
+    }
+
+    public boolean hasAlexBoardAttacked(int i) {
+        Board b;
+        if (game.getState().getPlayerTurn() == 0) {
+            b = game.getEnemyBoard();
+        } else {
+            b = game.getPlayerBoard();
+        }
+        return b.getCards().get(i).hasAttacked();
+    }
+
     public void resetSteveBoardFill() {
-        if (selectedBoard != 1) {
+        if (selectedBoard != 1 && !hasSteveBoardAttacked(0)) {
             boardSteveARect.setFill(Color.web("rgba(0, 0, 0, 0)"));
         }
-        if (selectedBoard != 2) {
+        if (selectedBoard != 2 && !hasSteveBoardAttacked(1)) {
             boardSteveBRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
         }
-        if (selectedBoard != 3) {
+        if (selectedBoard != 3 && !hasSteveBoardAttacked(2)) {
             boardSteveCRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
         }
-        if (selectedBoard != 4) {
+        if (selectedBoard != 4 && !hasSteveBoardAttacked(3)) {
             boardSteveDRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
         }
-        if (selectedBoard != 5) {
+        if (selectedBoard != 5 && !hasSteveBoardAttacked(4)) {
             boardSteveERect.setFill(Color.web("rgba(0, 0, 0, 0)"));
         }
     }
 
     public void resetAlexBoardFill() {
-        if (selectedBoard != 1) {
+        if (selectedBoard != 1 && !hasAlexBoardAttacked(0)) {
             boardAlexARect.setFill(Color.web("rgba(0, 0, 0, 0)"));
         }
-        if (selectedBoard != 2) {
+        if (selectedBoard != 2 && !hasAlexBoardAttacked(1)) {
             boardAlexBRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
         }
-        if (selectedBoard != 3) {
+        if (selectedBoard != 3 && !hasAlexBoardAttacked(2)) {
             boardAlexCRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
         }
-        if (selectedBoard != 4) {
+        if (selectedBoard != 4 && !hasAlexBoardAttacked(3)) {
             boardAlexDRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
         }
-        if (selectedBoard != 5) {
+        if (selectedBoard != 5 && !hasAlexBoardAttacked(4)) {
             boardAlexERect.setFill(Color.web("rgba(0, 0, 0, 0)"));
         }
     }
@@ -1380,7 +1400,6 @@ public class Controller {
                 /* Memilih kartu untuk menyerang */
                 /* Cek apakah kartu ini ada isinya atau tidak */
                 ActiveCharacter ac = game.getPlayerBoard().getCards().get(4);
-                System.out.println("TERPANGGIL E");
                 if (!ac.getCard().getName().equals("") && !ac.hasAttacked()) {
                     selectedBoard = 5;
                     resetSteveBoardFill();
@@ -1570,15 +1589,43 @@ public class Controller {
         }
     }
 
+    public void setSteveAttacked(int i) {
+        if (i == 1) {
+            boardSteveARect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        } else if (i == 2) {
+            boardSteveBRect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        } else if (i == 3) {
+            boardSteveCRect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        } else if (i == 4) {
+            boardSteveDRect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        } else if (i == 5) {
+            boardSteveERect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        }
+    }
+
+    public void setAlexAttacked(int i) {
+        if (i == 1) {
+            boardAlexARect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        } else if (i == 2) {
+            boardAlexBRect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        } else if (i == 3) {
+            boardAlexCRect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        } else if (i == 4) {
+            boardAlexDRect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        } else if (i == 5) {
+            boardAlexERect.setFill(Color.web("rgba(222, 0, 0, 0.3)"));
+        }
+    }
+
     public void clickAlex() {
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
             if (game.getState().getPlayerTurn() == 0) {
                 if (selectedBoard != -1) {
                     game.getPlayer().attack(selectedBoard - 1, -1);
+                    setSteveAttacked(selectedBoard);
                     selectedBoard = -1;
                     resetSteveBoardFill();
                     updateHP();
-                    /* Todo: set menjadi warna merah */
                 }
             }
         }
@@ -1589,10 +1636,10 @@ public class Controller {
             if (game.getState().getPlayerTurn() == 1) {
                 if (selectedBoard != -1) {
                     game.getPlayer().attack(selectedBoard - 1, -1);
+                    setAlexAttacked(selectedBoard);
                     selectedBoard = -1;
                     resetAlexBoardFill();
                     updateHP();
-                    /* Todo: set menjadi warna merah */
                 }
             }
         }
