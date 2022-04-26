@@ -17,6 +17,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import java.util.*;
 
@@ -346,6 +348,7 @@ public class Controller {
 
     /* Variables */
     private Game game;
+    private int selectedHand;
 
     /* Functions, procedures */
     public void hideSteveBoard(char board) {
@@ -790,7 +793,7 @@ public class Controller {
         Hand h = p.getHand();
         List<Card> cards = h.getCards();
         renderInformation(cards.get(0));
-        hand1Rect.setStyle("-fx-stroke: #fec20c");
+        hand1Rect.setStroke(Color.web("#fec20c"));
     }
 
     public void enterHand2() {
@@ -798,7 +801,7 @@ public class Controller {
         Hand h = p.getHand();
         List<Card> cards = h.getCards();
         renderInformation(cards.get(1));
-        hand2Rect.setStyle("-fx-stroke: #fec20c");
+        hand2Rect.setStroke(Color.web("#fec20c"));
     }
 
     public void enterHand3() {
@@ -806,7 +809,7 @@ public class Controller {
         Hand h = p.getHand();
         List<Card> cards = h.getCards();
         renderInformation(cards.get(2));
-        hand3Rect.setStyle("-fx-stroke: #fec20c");
+        hand3Rect.setStroke(Color.web("#fec20c"));
     }
 
     public void enterHand4() {
@@ -814,7 +817,7 @@ public class Controller {
         Hand h = p.getHand();
         List<Card> cards = h.getCards();
         renderInformation(cards.get(3));
-        hand4Rect.setStyle("-fx-stroke: #fec20c");
+        hand4Rect.setStroke(Color.web("#fec20c"));
     }
 
     public void enterHand5() {
@@ -822,16 +825,16 @@ public class Controller {
         Hand h = p.getHand();
         List<Card> cards = h.getCards();
         renderInformation(cards.get(4));
-        hand5Rect.setStyle("-fx-stroke: #fec20c");
+        hand5Rect.setStroke(Color.web("#fec20c"));
     }
 
     public void exitHand() {
         hideHoverInformation();
-        hand1Rect.setStyle("");
-        hand2Rect.setStyle("");
-        hand3Rect.setStyle("");
-        hand4Rect.setStyle("");
-        hand5Rect.setStyle("");
+        hand1Rect.setStroke(Color.web("#000000"));
+        hand2Rect.setStroke(Color.web("#000000"));
+        hand3Rect.setStroke(Color.web("#000000"));
+        hand4Rect.setStroke(Color.web("#000000"));
+        hand5Rect.setStroke(Color.web("#000000"));
     }
 
     public void hoverDraw1() {
@@ -887,6 +890,65 @@ public class Controller {
             setPhase("ATTACK");
         } else if (phase == TurnPhase.END) {
             setPhase("END");
+        }
+    }
+
+    /* Pengaturan plan phase */
+    public void resetHandFillColor() {
+        if (selectedHand != 1) {
+            hand1Rect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+        if (selectedHand != 2) {
+            hand2Rect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+        if (selectedHand != 3) {
+            hand3Rect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+        if (selectedHand != 4) {
+            hand4Rect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+        if (selectedHand != 5) {
+            hand5Rect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+    }
+
+    public void clickHand1() {
+        if (game.getState().getPhase() == TurnPhase.PLAN) {
+            selectedHand = 1;
+            hand1Rect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+            resetHandFillColor();
+        }
+    }
+
+    public void clickHand2() {
+        if (game.getState().getPhase() == TurnPhase.PLAN) {
+            selectedHand = 2;
+            hand2Rect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+            resetHandFillColor();
+        }
+    }
+
+    public void clickHand3() {
+        if (game.getState().getPhase() == TurnPhase.PLAN) {
+            selectedHand = 3;
+            hand3Rect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+            resetHandFillColor();
+        }
+    }
+
+    public void clickHand4() {
+        if (game.getState().getPhase() == TurnPhase.PLAN) {
+            selectedHand = 4;
+            hand4Rect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+            resetHandFillColor();
+        }
+    }
+
+    public void clickHand5() {
+        if (game.getState().getPhase() == TurnPhase.PLAN) {
+            selectedHand = 5;
+            hand5Rect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+            resetHandFillColor();
         }
     }
 
