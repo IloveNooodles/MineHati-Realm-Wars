@@ -111,16 +111,10 @@ public class ActiveCharacterTest {
     public void attackOverworldTest() {
         Character zombie = new Character("zombie", "Pedang", new Type(CharacterType.OVERWORLD), "-", 5, 5, 1, 2, 3);
         Character skeleteon = new Character("skeleton", "Panah", new Type(CharacterType.OVERWORLD), "-", 6, 6, 1, 1, 1);
-        Character pigmen = new Character("pigmen", "Bau", new Type(CharacterType.NETHER), "-", 7, 10, 3, 3, 4);
-        Character endermen = new Character("endermen", "Bau", new Type(CharacterType.END), "-", 8, 15, 5, 5, 5);
         ActiveCharacter Zombie = new ActiveCharacter(zombie);
         ActiveCharacter Skeleton = new ActiveCharacter(skeleteon);
-        ActiveCharacter Pigmen = new ActiveCharacter(pigmen);
-        ActiveCharacter Endermen = new ActiveCharacter(endermen);
 
         assertEquals((int) Zombie.getAtk(), 5);
-        assertEquals((int) Pigmen.getAtk(), 7);
-        assertEquals((int) Endermen.getAtk(), 8);
 
         Zombie.addExp(1);
         assertNotSame((int) Zombie.getAtk(), 5);
@@ -138,10 +132,32 @@ public class ActiveCharacterTest {
 
         Zombie.increaseStats(-5, 0);
         assertEquals((int) Zombie.getAtk(), 4);
+
+        // udah mati jdi harusnya gabisa
+        Skeleton.attack(Zombie);
+        assertNotSame(Zombie.getHp(), 5);
+        assertTrue(Zombie.getHp() == 11.0);
     }
 
     @Test
     public void attackNetherTest() {
+        Character zombie = new Character("zombie", "Pedang", new Type(CharacterType.OVERWORLD), "-", 5, 5, 1, 2, 3);
+        Character pigmen = new Character("pigmen", "Bau", new Type(CharacterType.NETHER), "-", 7, 10, 3, 3, 4);
+        ActiveCharacter Zombie = new ActiveCharacter(zombie);
+        ActiveCharacter Pigmen = new ActiveCharacter(pigmen);
+
+        Zombie.levelUp();
+        Zombie.levelUp();
+        Zombie.levelUp();
+        assertEquals(Zombie.getAtk(), 11.0);
+
+        Zombie.attack(Pigmen);
+        assertNotSame(Pigmen.getHp(), 0.0);
+        assertEquals(Pigmen.getHp(), 4.5);
+    }
+
+    @Test
+    public void attackEndTest() {
 
     }
 }

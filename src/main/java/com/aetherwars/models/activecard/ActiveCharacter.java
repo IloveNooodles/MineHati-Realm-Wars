@@ -1,19 +1,18 @@
 package com.aetherwars.models.activecard;
 
 import com.aetherwars.interfaces.Attackable;
-import com.aetherwars.models.carddata.*;
+import com.aetherwars.models.carddata.CardData;
 import com.aetherwars.models.carddata.Character;
-import com.aetherwars.models.carddata.spell.PTN;
 
 import java.util.ArrayList;
 
 public class ActiveCharacter extends ActiveCard implements Attackable {
+    private final ArrayList<ActiveSpell> activeSpells;
     private int exp;
     private int level;
     private double atk;
     private double hp;
     private double maxHp;
-    private ArrayList<ActiveSpell> activeSpells;
     private boolean hasAttacked;
 
     public ActiveCharacter() {
@@ -196,7 +195,12 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
         this.maxHp += hp;
     }
 
+    // ini bisa null pointer exception gara2 type nya ntar kosong
     public void attack(Attackable target) {
+        if (this.getCard().getType() == null) {
+            System.out.println("Karakter sudah mati");
+            return;
+        }
         if (!hasAttacked) { // TODO : kalau udah ada ui, bisa diganti dengan disable button
             target.attacked(this);
             this.hasAttacked = true;
