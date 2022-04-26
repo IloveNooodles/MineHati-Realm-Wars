@@ -23,7 +23,7 @@ public class Game {
     // TODO: Hapus klo gamake cli
     private Scanner sc;
 
-    public Game(String player1, String player2) throws IOException, URISyntaxException, EmptyDeckException {
+    public Game(String player1, String player2) throws IOException, URISyntaxException, Exception {
         player_boards = new Board[2];
         players = new Player[2];
         players[0] = new Player(player1);
@@ -34,9 +34,9 @@ public class Game {
         io = new IO(players[0], players[1]);
 
         for (Player player : players) {
-            player.draw();
-            player.draw();
-            player.draw();
+            player.draw(0);
+            player.draw(0);
+            player.draw(0);
         }
 
         // TODO: Hapus klo gamake cli
@@ -96,7 +96,7 @@ public class Game {
             return state.getPlayerTurn();
         }
         else if (state.getPhase() == TurnPhase.DRAW && getPlayer().getDeck().getCards().size() == 0) {
-            return state.getPlayerTurn() + 1;
+            return (state.getPlayerTurn() + 1) % 2;
         }
         return -1;
     }
@@ -106,9 +106,17 @@ public class Game {
         int inp2;
         switch (state.getPhase()) {
             case DRAW:
-                getPlayer().draw();
                 System.out.println(this);
-                System.out.print("ok? ");
+                System.out.println(getPlayer().getDeck().getCards().get(0).getName());
+                System.out.println(getPlayer().getDeck().getCards().get(1).getName());
+                System.out.println(getPlayer().getDeck().getCards().get(2).getName());
+                System.out.print("choose card: ");
+                inp1 = sc.nextInt();
+                while (inp1 < 0 || inp1 > 2) {
+                    System.out.print("choose card: ");
+                    inp1 = sc.nextInt();
+                }
+                getPlayer().draw(inp1);
                 System.out.println(sc.nextLine());
                 break;
             case PLAN:

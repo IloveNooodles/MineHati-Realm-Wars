@@ -29,8 +29,7 @@ public class Hand extends CardContainer<Card> {
         if (active instanceof ActiveCharacter) {
             Game.getInstance().getPlayerBoard().add(board_idx, (ActiveCharacter) active);
         } else if (active instanceof ActiveSpell) {
-            ActiveCharacter character = Game.getInstance().getBoards()[Math.floorDiv(board_idx,
-                    Game.MAX_CARDS_ON_BOARD)].get(board_idx % Game.MAX_CARDS_ON_BOARD);
+            ActiveCharacter character = Game.getInstance().getPlayerBoard().get(board_idx % Game.MAX_CARDS_ON_BOARD);
             if (!character.getName().equals("")) {
                 character.addActiveSpell((ActiveSpell) active);
             } else {

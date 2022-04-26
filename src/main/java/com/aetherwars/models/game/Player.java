@@ -1,6 +1,5 @@
 package com.aetherwars.models.game;
 
-import com.aetherwars.exception.EmptyDeckException;
 import com.aetherwars.interfaces.Attackable;
 import com.aetherwars.models.activecard.ActiveCharacter;
 import com.aetherwars.models.cardcontainer.Deck;
@@ -45,8 +44,8 @@ public class Player implements Attackable {
         return hand;
     }
 
-    public void draw() throws EmptyDeckException {
-        hand.add(deck.remove(0));
+    public void draw(int idx) throws Exception {
+        hand.add(deck.remove(idx));
     }
 
     public void play(int hand_idx, int board_idx) throws Exception {
