@@ -2,6 +2,7 @@ package com.aetherwars.models.game;
 
 import com.aetherwars.enums.CharacterType;
 import com.aetherwars.enums.LVLSpell;
+import com.aetherwars.exception.InvalidNumberException;
 import com.aetherwars.models.carddata.Character;
 import com.aetherwars.models.carddata.spell.*;
 import com.aetherwars.models.extras.Type;
@@ -20,10 +21,10 @@ import java.util.Map;
 
 public class IO {
     public static final String DATA_FILE_PATH = "/com/aetherwars/card/data";
-    private Map<Integer, Character> Characters;
-    private Map<Integer, Spell> Spells;
+    private final Map<Integer, Character> Characters;
+    private final Map<Integer, Spell> Spells;
 
-    public IO(Player player1, Player player2) throws IOException, URISyntaxException {
+    public IO(Player player1, Player player2) throws IOException, URISyntaxException, InvalidNumberException {
         this.Characters = new HashMap<>();
         this.Spells = new HashMap<>();
         this.loadCharacter();
@@ -63,7 +64,7 @@ public class IO {
         }
     }
 
-    private void loadSpells() throws IOException, URISyntaxException {
+    private void loadSpells() throws IOException, URISyntaxException, InvalidNumberException {
         final String[] kinds = {"morph", "ptn", "swap", "lvl"};
         for (String kind : kinds) {
             if (kind.equals("lvl")) {

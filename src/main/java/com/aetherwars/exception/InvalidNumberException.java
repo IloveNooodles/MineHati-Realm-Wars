@@ -1,13 +1,7 @@
 package com.aetherwars.exception;
 
-public class InvalidNumberException {
-    private final String message;
-
+public class InvalidNumberException extends Exception {
     public InvalidNumberException() {
-        this.message = "Number must be positive integer!";
-    }
-
-    public String toString() {
-        return this.message;
+        super("Must be a positive number");
     }
 }
