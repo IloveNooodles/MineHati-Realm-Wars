@@ -799,6 +799,21 @@ public class Controller {
             resetHandFillColor();
             nextPhase();
             selectedBoard = -1;
+        } else if (state.getPhase() == TurnPhase.ATTACK) {
+            selectedBoard = -1;
+            resetBoardFills();
+            nextPhase();
+        } else if (state.getPhase() == TurnPhase.END) {
+            if (game.getState().getPlayerTurn() == 1) {
+                /* Tambah mana dan update status board */
+                game.nextTurn();
+            }
+            nextPhase();
+            updateTurn();
+            renderHand(game.getPlayer().getHand());
+            renderBoards();
+            updatePlayerIndicator();
+            updateDeckManaLabel();
         }
     }
 
@@ -1223,6 +1238,20 @@ public class Controller {
         return b.getCards().get(i).hasAttacked();
     }
 
+    public void resetBoardFills() {
+        boardSteveARect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        boardSteveBRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        boardSteveCRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        boardSteveDRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        boardSteveERect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+
+        boardAlexARect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        boardAlexBRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        boardAlexCRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        boardAlexDRect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        boardAlexERect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+    }
+
     public void resetSteveBoardFill() {
         if (selectedBoard != 1 && !hasSteveBoardAttacked(0)) {
             boardSteveARect.setFill(Color.web("rgba(0, 0, 0, 0)"));
@@ -1645,12 +1674,26 @@ public class Controller {
         }
     }
 
+    public void updatePlayerIndicator() {
+        if (game.getState().getPlayerTurn() == 0) {
+            alexIndicator.setVisible(false);
+            steveIndicator.setVisible(true);
+        } else {
+            alexIndicator.setVisible(true);
+            steveIndicator.setVisible(false);
+        }
+    }
+
+    public void updateTurn() {
+        turnNumber.setText(String.valueOf(game.getState().getTurn()));
+    }
+
     /* Mulai controller */
     public void initialize() {
         /* Mulai game! */
         game = Game.getInstance();
-        /* Turn pertama adalah turn Steve */
-        alexIndicator.setVisible(false);
+        updateTurn();
+        updatePlayerIndicator();
         /* Clear decks */
         char[] boards = {'A', 'B', 'C', 'D', 'E'};
         for (char c : boards) {
