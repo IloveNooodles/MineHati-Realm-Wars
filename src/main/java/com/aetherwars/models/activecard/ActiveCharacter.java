@@ -41,9 +41,10 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
         if (addedExp > 0) {
             if (this.level < 10) {
                 this.exp += addedExp;
+                int temp = this.exp;
                 if (this.exp >= level * 2 - 1) {
                     this.levelUp();
-                    int carry = addedExp - ((level - 1) * 2 - 1);
+                    int carry = temp - ((level - 1) * 2 - 1);
                     addExp(carry);
                 }
             }
