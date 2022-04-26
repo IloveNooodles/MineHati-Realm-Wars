@@ -11,6 +11,8 @@
 
 <AnchorPane prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aetherwars.Controller">
    <children>
+      <Rectangle fx:id="steveIndicator" arcHeight="5.0" arcWidth="5.0" fill="#fbff00" height="90.0" layoutX="85.0" layoutY="163.0" stroke="WHITE" strokeType="INSIDE" width="90.0" />
+      <Rectangle fx:id="alexIndicator" arcHeight="5.0" arcWidth="5.0" fill="#fbff00" height="90.0" layoutX="848.0" layoutY="163.0" stroke="WHITE" strokeType="INSIDE" width="90.0" />
       <Circle fill="#ffffff00" layoutX="513.0" layoutY="66.0" radius="38.0" stroke="BLACK" strokeType="INSIDE" />
       <Label alignment="CENTER" layoutX="501.0" layoutY="47.0" text="Turn" />
       <Label fx:id="turnNumber" alignment="CENTER" layoutX="475.0" layoutY="67.0" prefHeight="17.0" prefWidth="76.0" text="1" />
@@ -26,18 +28,6 @@
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Label>
-      <Rectangle fx:id="boardSteveARect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="182.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="boardSteveBRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="274.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="boardSteveERect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="366.0" layoutY="168.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="boardSteveDRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="274.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="boardSteveCRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="182.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="boardAlexERect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="577.0" layoutY="168.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="boardAlexBRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="669.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="boardAlexARect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="761.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="boardAlexDRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="669.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="boardAlexCRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="761.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
-      <Rectangle fx:id="steveIndicator" arcHeight="5.0" arcWidth="5.0" fill="#fbff00" height="90.0" layoutX="85.0" layoutY="163.0" stroke="WHITE" strokeType="INSIDE" width="90.0" />
-      <Rectangle fx:id="alexIndicator" arcHeight="5.0" arcWidth="5.0" fill="#fbff00" height="90.0" layoutX="848.0" layoutY="163.0" stroke="WHITE" strokeType="INSIDE" width="90.0" />
       <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="853.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/alex.jpg" />
@@ -573,11 +563,20 @@
       <Rectangle fx:id="hand3Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="189.0" layoutY="402.0" onMouseClicked="#clickHand3" onMouseEntered="#enterHand3" onMouseExited="#exitHand" stroke="BLACK" strokeType="INSIDE" width="81.0" />
       <Rectangle fx:id="hand4Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="270.0" layoutY="402.0" onMouseClicked="#clickHand4" onMouseEntered="#enterHand4" onMouseExited="#exitHand" stroke="BLACK" strokeType="INSIDE" width="81.0" />
       <Rectangle fx:id="hand5Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="351.0" layoutY="402.0" onMouseClicked="#clickHand5" onMouseEntered="#enterHand5" onMouseExited="#exitHand" stroke="BLACK" strokeType="INSIDE" width="81.0" />
+      <Rectangle fx:id="boardSteveARect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="182.0" layoutY="120.0" onMouseEntered="#enterASteve" onMouseExited="#exitBoard" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardSteveBRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="274.0" layoutY="120.0" onMouseEntered="#enterBSteve" onMouseExited="#exitBoard" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardSteveERect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="366.0" layoutY="168.0" onMouseEntered="#enterESteve" onMouseExited="#exitBoard" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardSteveDRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="274.0" layoutY="212.0" onMouseEntered="#enterDSteve" onMouseExited="#exitBoard" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardSteveCRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="182.0" layoutY="212.0" onMouseEntered="#enterCSteve" onMouseExited="#exitBoard" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardAlexERect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="577.0" layoutY="168.0" onMouseEntered="#enterEAlex" onMouseExited="#exitBoard" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardAlexBRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="669.0" layoutY="120.0" onMouseEntered="#enterBAlex" onMouseExited="#exitBoard" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardAlexARect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="761.0" layoutY="120.0" onMouseEntered="#enterAAlex" onMouseExited="#exitBoard" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardAlexDRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="669.0" layoutY="212.0" onMouseEntered="#enterDAlex" onMouseExited="#exitBoard" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+      <Rectangle fx:id="boardAlexCRect" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="80.0" layoutX="761.0" layoutY="212.0" onMouseEntered="#enterCAlex" onMouseExited="#exitBoard" stroke="BLACK" strokeType="INSIDE" width="80.0" />
       <Rectangle fx:id="drawOverlay" arcHeight="5.0" arcWidth="5.0" fill="#00000080" height="576.0" stroke="BLACK" strokeType="INSIDE" width="1024.0" />
       <Rectangle fx:id="drawCard1Back" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="319.0" layoutX="122.0" layoutY="106.0" stroke="BLACK" strokeType="INSIDE" width="220.0" />
       <Rectangle fx:id="drawCard2Back" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="319.0" layoutX="402.0" layoutY="106.0" stroke="BLACK" strokeType="INSIDE" width="220.0" />
       <Rectangle fx:id="drawCard3Back" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="319.0" layoutX="682.0" layoutY="106.0" stroke="BLACK" strokeType="INSIDE" width="220.0" />
-      <ImageView fitHeight="191.0" fitWidth="160.0" layoutX="152.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="drawCard1Image" fitHeight="191.0" fitWidth="160.0" layoutX="162.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../card/image/character/Creeper.png" />

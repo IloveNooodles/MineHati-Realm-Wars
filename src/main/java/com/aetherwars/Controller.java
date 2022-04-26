@@ -952,6 +952,59 @@ public class Controller {
         }
     }
 
+    public void exitBoard() {
+        boardSteveARect.setStroke(Color.web("#000000"));
+        boardSteveBRect.setStroke(Color.web("#000000"));
+        boardSteveCRect.setStroke(Color.web("#000000"));
+        boardSteveDRect.setStroke(Color.web("#000000"));
+        boardSteveERect.setStroke(Color.web("#000000"));
+        boardAlexARect.setStroke(Color.web("#000000"));
+        boardAlexBRect.setStroke(Color.web("#000000"));
+        boardAlexCRect.setStroke(Color.web("#000000"));
+        boardAlexDRect.setStroke(Color.web("#000000"));
+        boardAlexERect.setStroke(Color.web("#000000"));
+    }
+
+    public void enterASteve() {
+        boardSteveARect.setStroke(Color.web("#fec20c"));
+    }
+
+    public void enterBSteve() {
+        boardSteveBRect.setStroke(Color.web("#fec20c"));
+    }
+
+    public void enterCSteve() {
+        boardSteveCRect.setStroke(Color.web("#fec20c"));
+    }
+
+    public void enterDSteve() {
+        boardSteveDRect.setStroke(Color.web("#fec20c"));
+    }
+
+    public void enterESteve() {
+        boardSteveERect.setStroke(Color.web("#fec20c"));
+    }
+
+    public void enterAAlex() {
+        boardAlexARect.setStroke(Color.web("#fec20c"));
+    }
+
+    public void enterBAlex() {
+        boardAlexBRect.setStroke(Color.web("#fec20c"));
+    }
+
+    public void enterCAlex() {
+        boardAlexCRect.setStroke(Color.web("#fec20c"));
+    }
+
+    public void enterDAlex() {
+        boardAlexDRect.setStroke(Color.web("#fec20c"));
+    }
+
+    public void enterEAlex() {
+        boardAlexERect.setStroke(Color.web("#fec20c"));
+    }
+
     /* Mulai controller */
     public void initialize() {
         /* Mulai game! */
