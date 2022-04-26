@@ -1,11 +1,21 @@
 package com.aetherwars;
 
-import javafx.event.ActionEvent;
+import com.aetherwars.models.card.Card;
+import com.aetherwars.models.cardcontainer.Hand;
+import com.aetherwars.models.carddata.CardData;
+import com.aetherwars.models.carddata.Character;
+import com.aetherwars.models.carddata.spell.*;
+import com.aetherwars.models.game.Game;
+import com.aetherwars.models.game.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
+import java.util.*;
+
+import static com.aetherwars.enums.LVLSpell.LVLUP;
 
 public class Controller {
     /* HP bar untuk Steve dan Alex */
@@ -291,6 +301,10 @@ public class Controller {
     @FXML
     private Label nextPhase;
 
+    /* Variables */
+    private Game game;
+
+    /* Functions, procedures */
     public void hideSteveBoard(char board) {
         if (board == 'A') {
             boardSteveASword.setVisible(false);
@@ -445,7 +459,113 @@ public class Controller {
         hoverType.setVisible(false);
     }
 
+    public String formatBonus(int bonus) {
+        if (bonus > 0) {
+            return "+" + bonus;
+        } else if (bonus < 0) {
+            return "-" + bonus;
+        } else {
+            return "";
+        }
+    }
+
+    public void showHand(int i, CardData cd) {
+        Image image = new Image("com/aetherwars/" + cd.getImage());
+        String info = "";
+        if (cd instanceof Character) {
+            Character c = (Character) cd;
+            info = "ATK " + c.getBaseAtk() + "/HP " + c.getBaseHp();
+        } else if (cd instanceof Spell) {
+            Spell s = (Spell) cd;
+            if (s instanceof LVL) {
+                LVL l = (LVL) s;
+                if (l.getType() == LVLUP) {
+                    info = "LVLUP";
+                } else {
+                    info = "LVLDOWN";
+                }
+            } else if (s instanceof MORPH) {
+                info = "MORPH";
+
+            } else if (s instanceof PTN) {
+                PTN p = (PTN) s;
+                if (p.getAtkBonus() == 0) {
+                    info = "HP" + formatBonus(p.getHpBonus());
+                } else if (p.getHpBonus() == 0) {
+                    info = "ATK" + formatBonus(p.getAtkBonus());
+                } else {
+                    /* Keduanya tidak nol */
+                    info = "ATK" + formatBonus(p.getAtkBonus()) + "/HP" + formatBonus(p.getHpBonus());
+                }
+            } else if (s instanceof SWAP) {
+                info = "ATK ↔ HP";
+            }
+        }
+        int manaCost = cd.getManaCost();
+        if (i == 1) {
+            hand1Rect.setVisible(true);
+            hand1Mana.setVisible(true);
+            hand1Info.setVisible(true);
+            hand1Image.setVisible(true);
+            hand1Mana.setText("MANA " + String.valueOf(manaCost));
+            hand1Info.setText(info);
+            hand1Image.setImage(image);
+        } else if (i == 2) {
+            hand2Rect.setVisible(true);
+            hand2Mana.setVisible(true);
+            hand2Info.setVisible(true);
+            hand2Image.setVisible(true);
+            hand2Mana.setText("MANA " + String.valueOf(manaCost));
+            hand2Info.setText(info);
+            hand2Image.setImage(image);
+        } else if (i == 3) {
+            hand3Rect.setVisible(true);
+            hand3Mana.setVisible(true);
+            hand3Info.setVisible(true);
+            hand3Image.setVisible(true);
+            hand3Mana.setText("MANA " + String.valueOf(manaCost));
+            hand3Info.setText(info);
+            hand3Image.setImage(image);
+        } else if (i == 4) {
+            hand4Rect.setVisible(true);
+            hand4Mana.setVisible(true);
+            hand4Info.setVisible(true);
+            hand4Image.setVisible(true);
+            hand4Mana.setText("MANA " + String.valueOf(manaCost));
+            hand4Info.setText(info);
+            hand4Image.setImage(image);
+        } else if (i == 5) {
+            hand5Rect.setVisible(true);
+            hand5Mana.setVisible(true);
+            hand5Info.setVisible(true);
+            hand5Image.setVisible(true);
+            hand5Mana.setText("MANA " + String.valueOf(manaCost));
+            hand5Info.setText(info);
+            hand5Image.setImage(image);
+        }
+    }
+
+    public void renderHand(Hand h) {
+        /* Ambil kartu-kartu dari hand */
+        List<Card> cards = h.getCards();
+        int currentHand = 1;
+        for (Card c: cards) {
+            /* Ambil CardData dari card */
+            CardData cd = c.getCardData();
+            showHand(currentHand, cd);
+            currentHand ++;
+        }
+        /* Hide hand yang tidak diperlukan */
+        while (currentHand <= 5) {
+            hideHand(currentHand);
+            currentHand ++;
+        }
+    }
+
+    /* Mulai controller */
     public void initialize() {
+        /* Mulai game! */
+        game = Game.getInstance();
         /* Turn pertama adalah turn Steve */
         alexIndicator.setVisible(false);
         /* Clear decks */
@@ -462,6 +582,9 @@ public class Controller {
         hideHoverInformation();
         /* By default, mulai di phase draw */
         setPhase("DRAW");
+        /* Render hand dari player sekarang */
+        Player p = game.getPlayer();
+        renderHand(p.getHand());
     }
 
     public void click() {
