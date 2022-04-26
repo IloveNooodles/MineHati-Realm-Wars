@@ -804,11 +804,11 @@ public class Controller {
             resetBoardFills();
             nextPhase();
         } else if (state.getPhase() == TurnPhase.END) {
-            if (game.getState().getPlayerTurn() == 1) {
+            nextPhase();
+            if (game.getState().getPlayerTurn() == 0) {
                 /* Tambah mana dan update status board */
                 game.nextTurn();
             }
-            nextPhase();
             updateTurn();
             renderHand(game.getPlayer().getHand());
             renderBoards();

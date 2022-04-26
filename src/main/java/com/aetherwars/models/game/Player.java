@@ -45,6 +45,10 @@ public class Player implements Attackable {
     }
 
     public void draw(int idx) throws Exception {
+        if (hand.getCards().size() == 5) {
+            /* Hapus hand paling kiri */
+            hand.remove(0);
+        }
         hand.add(deck.remove(idx));
     }
 

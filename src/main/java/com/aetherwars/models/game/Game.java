@@ -189,10 +189,10 @@ public class Game {
     }
 
     public void nextTurn() {
-        System.out.println(Math.min(state.getTurn() + 5, 10)); // TODO : I assume ini harusnya ga + 5, jadi ntar delete
+        System.out.println(Math.min(state.getTurn(), 10)); // TODO : I assume ini harusnya ga + 5, jadi ntar delete
                                                                // + 5 nya
         for (Player player : players) {
-            player.setMana(Math.min(state.getTurn() + 5, 10));
+            player.setMana(Math.min(state.getTurn(), 10));
         }
 
         for (Board board : player_boards) {
