@@ -1,11 +1,13 @@
 package com.aetherwars;
 
+import com.aetherwars.enums.CharacterType;
 import com.aetherwars.models.card.Card;
 import com.aetherwars.models.cardcontainer.Deck;
 import com.aetherwars.models.cardcontainer.Hand;
 import com.aetherwars.models.carddata.CardData;
 import com.aetherwars.models.carddata.Character;
 import com.aetherwars.models.carddata.spell.*;
+import com.aetherwars.models.extras.Type;
 import com.aetherwars.models.game.Game;
 import com.aetherwars.models.game.Player;
 import javafx.fxml.FXML;
@@ -16,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import java.util.*;
 
+import static com.aetherwars.enums.CharacterType.*;
 import static com.aetherwars.enums.LVLSpell.LVLUP;
 
 public class Controller {
@@ -448,16 +451,14 @@ public class Controller {
     }
 
     public void hideHoverInformation() {
-        hoverAttack.setVisible(false);
-        hoverDescription.setVisible(false);
-        hoverExp.setVisible(false);
-        hoverHealth.setVisible(false);
         hoverImage.setVisible(false);
-        hoverAttack.setVisible(false);
-        hoverDescription.setVisible(false);
-        hoverLevel.setVisible(false);
         hoverTitle.setVisible(false);
+        hoverAttack.setVisible(false);
+        hoverHealth.setVisible(false);
+        hoverLevel.setVisible(false);
+        hoverExp.setVisible(false);
         hoverType.setVisible(false);
+        hoverDescription.setVisible(false);
     }
 
     public String formatBonus(int bonus) {
@@ -563,6 +564,79 @@ public class Controller {
         }
     }
 
+    public String getType(Type t) {
+        if (t.getCharacterType() == OVERWORLD) {
+            return "Overworld";
+        } else if (t.getCharacterType() == NETHER) {
+            return "Nether";
+        } else if (t.getCharacterType() == END) {
+            return "End";
+        }
+        return "";
+    }
+
+    public void renderInformation(Card c) {
+        CardData cd = c.getCardData();
+        hoverImage.setVisible(true);
+        hoverTitle.setVisible(true);
+        hoverAttack.setVisible(true);
+        hoverHealth.setVisible(true);
+        hoverLevel.setVisible(true);
+        hoverExp.setVisible(true);
+        hoverType.setVisible(true);
+        hoverDescription.setVisible(true);
+        Image image = new Image("com/aetherwars/" + cd.getImage());
+        hoverImage.setImage(image);
+        hoverDescription.setText(cd.getDescription());
+        hoverTitle.setText(cd.getName());
+        /* Kondisi yang ditampilkan sesuai dengan kartu */
+        if (cd instanceof Character) {
+            Character ch = (Character) cd;
+            hoverAttack.setText("ATK: " + ch.getBaseAtk());
+            hoverHealth.setText("HP: " + ch.getBaseHp());
+            hoverLevel.setText("Type: " + getType(ch.getType()));
+            hoverExp.setVisible(false);
+            hoverType.setVisible(false);
+        } else if (cd instanceof Spell) {
+            Spell s = (Spell) cd;
+            if (s instanceof LVL) {
+                LVL l = (LVL) s;
+                String type = "";
+                if (l.getType() == LVLUP) {
+                    type = "Level up";
+                } else {
+                    type = "Level down";
+                }
+                hoverAttack.setText("Type: " + type);
+                hoverHealth.setVisible(false);
+                hoverLevel.setVisible(false);
+                hoverExp.setVisible(false);
+                hoverType.setVisible(false);
+            } else if (s instanceof MORPH) {
+                MORPH m = (MORPH) s;
+                hoverAttack.setText("Type: Morph");
+                hoverHealth.setVisible(false);
+                hoverLevel.setVisible(false);
+                hoverExp.setVisible(false);
+                hoverType.setVisible(false);
+            } else if (s instanceof PTN) {
+                PTN p = (PTN) s;
+                hoverAttack.setText("Type: Potion");
+                hoverHealth.setText("ATKBonus: " + formatBonus(p.getAtkBonus()));
+                hoverLevel.setText("HPBonus: " + formatBonus(p.getHpBonus()));
+                hoverExp.setText("Duration: " + p.getDuration());
+                hoverType.setVisible(false);
+            } else if (s instanceof SWAP) {
+                SWAP sw = (SWAP) s;
+                hoverAttack.setText("Type: Swap");
+                hoverHealth.setVisible(false);
+                hoverLevel.setVisible(false);
+                hoverExp.setVisible(false);
+                hoverType.setVisible(false);
+            }
+        }
+    }
+
     public void updateDeckManaLabel() {
         Player p = game.getPlayer();
         Deck d = p.getDeck();
@@ -599,6 +673,55 @@ public class Controller {
 
     public void click() {
         System.out.println("Hello World!");
+    }
+
+    public void enterHand1() {
+        Player p = game.getPlayer();
+        Hand h = p.getHand();
+        List<Card> cards = h.getCards();
+        renderInformation(cards.get(0));
+        hand1Rect.setStyle("-fx-stroke: #fec20c");
+    }
+
+    public void enterHand2() {
+        Player p = game.getPlayer();
+        Hand h = p.getHand();
+        List<Card> cards = h.getCards();
+        renderInformation(cards.get(1));
+        hand2Rect.setStyle("-fx-stroke: #fec20c");
+    }
+
+    public void enterHand3() {
+        Player p = game.getPlayer();
+        Hand h = p.getHand();
+        List<Card> cards = h.getCards();
+        renderInformation(cards.get(2));
+        hand3Rect.setStyle("-fx-stroke: #fec20c");
+    }
+
+    public void enterHand4() {
+        Player p = game.getPlayer();
+        Hand h = p.getHand();
+        List<Card> cards = h.getCards();
+        renderInformation(cards.get(3));
+        hand4Rect.setStyle("-fx-stroke: #fec20c");
+    }
+
+    public void enterHand5() {
+        Player p = game.getPlayer();
+        Hand h = p.getHand();
+        List<Card> cards = h.getCards();
+        renderInformation(cards.get(4));
+        hand5Rect.setStyle("-fx-stroke: #fec20c");
+    }
+
+    public void exitHand() {
+        hideHoverInformation();
+        hand1Rect.setStyle("");
+        hand2Rect.setStyle("");
+        hand3Rect.setStyle("");
+        hand4Rect.setStyle("");
+        hand5Rect.setStyle("");
     }
 
 }

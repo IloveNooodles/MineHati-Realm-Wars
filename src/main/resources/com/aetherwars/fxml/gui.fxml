@@ -384,11 +384,6 @@
             <Image url="@../card/image/character/Sheep.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="hand1Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="27.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
-      <Rectangle fx:id="hand2Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="108.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
-      <Rectangle fx:id="hand3Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="189.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
-      <Rectangle fx:id="hand4Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="270.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
-      <Rectangle fx:id="hand5Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="351.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="592.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="128.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="720.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="128.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="41.0" layoutX="878.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="115.0" />
@@ -573,5 +568,10 @@
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Label>
+      <Rectangle fx:id="hand1Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="27.0" layoutY="402.0" onMouseEntered="#enterHand1" onMouseExited="#exitHand" stroke="BLACK" strokeType="INSIDE" width="81.0" />
+      <Rectangle fx:id="hand2Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="108.0" layoutY="402.0" onMouseEntered="#enterHand2" onMouseExited="#exitHand" stroke="BLACK" strokeType="INSIDE" width="81.0" />
+      <Rectangle fx:id="hand3Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="189.0" layoutY="402.0" onMouseEntered="#enterHand3" onMouseExited="#exitHand" stroke="BLACK" strokeType="INSIDE" width="81.0" />
+      <Rectangle fx:id="hand4Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="270.0" layoutY="402.0" onMouseEntered="#enterHand4" onMouseExited="#exitHand" stroke="BLACK" strokeType="INSIDE" width="81.0" />
+      <Rectangle fx:id="hand5Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="351.0" layoutY="402.0" onMouseEntered="#enterHand5" onMouseExited="#exitHand" stroke="BLACK" strokeType="INSIDE" width="81.0" />
    </children>
 </AnchorPane>
