@@ -6,8 +6,8 @@ import com.aetherwars.models.carddata.CardData;
 import com.aetherwars.models.carddata.spell.Spell;
 
 public class ActiveSpell extends ActiveCard {
-    private int activeDuration;
     private final SpellEffect spellEffect;
+    private int activeDuration;
 
     public ActiveSpell(CardData card) {
         super(card);
@@ -21,7 +21,7 @@ public class ActiveSpell extends ActiveCard {
 
     public void activateEffect(ActiveCharacter activeCharacter) {
         this.getCard().activateEffect(activeCharacter);
-        activeDuration--;
+        decrementActiveDuration();
     }
 
     public SpellEffect getSpellEffect() {
@@ -30,5 +30,9 @@ public class ActiveSpell extends ActiveCard {
 
     public int getActiveDuration() {
         return activeDuration;
+    }
+
+    public void decrementActiveDuration() {
+        this.activeDuration--;
     }
 }

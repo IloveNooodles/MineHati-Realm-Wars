@@ -1,9 +1,7 @@
 package com.aetherwars.models.carddata.spell;
 
 import com.aetherwars.enums.SpellEffect;
-import com.aetherwars.models.activecard.ActiveCard;
 import com.aetherwars.models.activecard.ActiveCharacter;
-import com.aetherwars.models.activecard.ActiveSpell;
 
 public class SWAP extends Spell {
     public SWAP(String name, String description, String image, int duration, int mana) {

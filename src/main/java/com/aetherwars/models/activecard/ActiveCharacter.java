@@ -127,11 +127,10 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
                 break;
             case TEMPORARY:
                 activeSpell.getCard().activateEffect(this);
+                activeSpell.decrementActiveDuration();
                 activeSpells.add(activeSpell);
                 break;
         }
-
-        this.activeSpells.add(activeSpell);
     }
 
     public void updateState() {
@@ -140,9 +139,14 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
         this.hasAttacked = false;
 
         for (int i = this.activeSpells.size() - 1; i > -1; i--) {
-            this.activeSpells.get(i).activateEffect(this);
             if (this.activeSpells.get(i).getActiveDuration() <= 0) {
                 this.activeSpells.remove(i);
+            } else {
+                this.activeSpells.get(i).activateEffect(this);
+
+                if (this.activeSpells.get(i).getActiveDuration() <= 0) {
+                    this.activeSpells.remove(i);
+                }
             }
         }
 

@@ -224,9 +224,25 @@ public class ActiveCharacterTest {
         assertEquals((int) Zombie.getLevel(), 2);
 
         //PTN
-        ActiveSpell ptn = new ActiveSpell(new PTN("idiotic", "-", "-", -999, -999, -999, -999));
-        Zombie.addActiveSpell(ptn);
-        System.out.println(Zombie);
+
+        //HARUSNYA ERROR??
+//        ActiveSpell ptn = new ActiveSpell(new PTN("idiotic", "-", "-", -999, -999, -999, -999));
+        ActiveSpell ptnATK = new ActiveSpell(new PTN("atkUP", "-", "-", 999, 0, 0, 1));
+        ActiveSpell ptnHEALTH = new ActiveSpell(new PTN("healthUP", "-", "-", 0, 999, 0, 3));
+        Zombie.addActiveSpell(ptnATK);
+        Zombie.addActiveSpell(ptnHEALTH);
+        assertEquals(Zombie.getAtk(), 1006.0);
+        assertEquals(Zombie.getMaxHp(), 1007.0);
+
+        Zombie.updateState();
+
+        assertNotSame(Zombie.getAtk(), 1006.0);
+        assertEquals(Zombie.getAtk(), 7.0);
+
+        Zombie.updateState();
+        Zombie.updateState();
+        assertNotSame(Zombie.getMaxHp(), 1007.0);
+        assertEquals(Zombie.getMaxHp(), 8.0);
 
 
         //MORPH
