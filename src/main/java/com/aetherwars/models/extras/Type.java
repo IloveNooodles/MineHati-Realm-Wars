@@ -33,10 +33,6 @@ public class Type implements Comparable<Type> {
         return type;
     }
 
-    public HashMap<CharacterType, Type> getTypes() {
-        return types;
-    }
-
     public static Type getInstance(CharacterType type) {
         if (types == null) {
             types = new HashMap<CharacterType, Type>();

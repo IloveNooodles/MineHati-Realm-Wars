@@ -3,8 +3,7 @@ package com.aetherwars.models.extras;
 import com.aetherwars.enums.CharacterType;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertEquals;
-import static org.junit.Assert.assertNotSame;
+import static junit.framework.TestCase.*;
 
 public class TypeTest {
     @Test
