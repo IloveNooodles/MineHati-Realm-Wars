@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class AetherWars extends Application {
     public Game game;
-    public static boolean testGUI = false;
+    public static boolean testGUI = true;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -17,29 +17,6 @@ public class AetherWars extends Application {
         stage.setTitle("Minecraft: Aether Wars");
         stage.setScene(new Scene(root));
         stage.show();
-//        Text text = new Text();
-//        text.setText("Loading...");
-//        text.setX(50);
-//        text.setY(50);
-//
-//        Group root = new Group();
-//        root.getChildren().add(text);
-//
-//        Scene scene = new Scene(root, 1280, 720);
-//
-//        stage.setTitle("Minecraft: Aether Wars");
-//        stage.setScene(scene);
-//        stage.show();
-//
-//        try {
-//            game = Game.getInstance();
-//            // TODO: Nanti apus soalnya ini buat debug doang
-//            System.out.print(game.getCards());
-//            text.setText(game.getCards());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            text.setText("Failed to load cards: " + e);
-//        }
     }
 
     public static void main(String[] args) {
