@@ -373,132 +373,132 @@
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="myLabel" alignment="CENTER" layoutX="878.0" layoutY="355.0" onMouseClicked="#click" prefHeight="15.0" prefWidth="115.0" text="&gt;&gt;" textFill="WHITE">
+      <Label fx:id="nextPhase" alignment="CENTER" layoutX="878.0" layoutY="355.0" onMouseClicked="#click" prefHeight="15.0" prefWidth="115.0" text="&gt;&gt;" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="174.0" layoutX="459.0" layoutY="387.0" stroke="BLACK" strokeType="INSIDE" width="106.0" />
-      <ImageView fitHeight="144.0" fitWidth="76.0" layoutX="474.0" layoutY="402.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="hoverImage" fitHeight="144.0" fitWidth="76.0" layoutX="474.0" layoutY="402.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../card/image/character/Sheep.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="144.0" layoutX="27.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="144.0" layoutX="108.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="144.0" layoutX="189.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="144.0" layoutX="270.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="144.0" layoutX="351.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="144.0" layoutX="592.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="128.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="144.0" layoutX="720.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="128.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="41.0" layoutX="878.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="115.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="41.0" layoutX="878.0" layoutY="458.0" stroke="BLACK" strokeType="INSIDE" width="115.0" />
-      <ImageView fitHeight="66.0" fitWidth="51.0" layoutX="42.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle fx:id="hand1Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="27.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
+      <Rectangle fx:id="hand2Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="108.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
+      <Rectangle fx:id="hand3Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="189.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
+      <Rectangle fx:id="hand4Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="270.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
+      <Rectangle fx:id="hand5Rect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="351.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="81.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="592.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="128.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="144.0" layoutX="720.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="128.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="41.0" layoutX="878.0" layoutY="402.0" stroke="BLACK" strokeType="INSIDE" width="115.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="41.0" layoutX="878.0" layoutY="458.0" stroke="BLACK" strokeType="INSIDE" width="115.0" />
+      <ImageView fx:id="hand1Image" fitHeight="66.0" fitWidth="51.0" layoutX="42.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../card/image/spell/swap/Detergent.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="66.0" fitWidth="51.0" layoutX="123.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="hand2Image" fitHeight="66.0" fitWidth="51.0" layoutX="123.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../card/image/spell/swap/Detergent.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="66.0" fitWidth="51.0" layoutX="204.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="hand3Image" fitHeight="66.0" fitWidth="51.0" layoutX="204.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../card/image/spell/swap/Detergent.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="66.0" fitWidth="51.0" layoutX="285.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="hand4Image" fitHeight="66.0" fitWidth="51.0" layoutX="285.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../card/image/spell/swap/Detergent.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="66.0" fitWidth="51.0" layoutX="366.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="hand5Image" fitHeight="66.0" fitWidth="51.0" layoutX="366.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../card/image/spell/swap/Detergent.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="28.0" layoutY="498.0" prefHeight="15.0" prefWidth="80.0" text="MANA 5">
+      <Label fx:id="hand1Mana" alignment="CENTER" layoutX="28.0" layoutY="498.0" prefHeight="15.0" prefWidth="80.0" text="MANA 5">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="109.0" layoutY="498.0" prefHeight="15.0" prefWidth="80.0" text="MANA 5">
+      <Label fx:id="hand2Mana" alignment="CENTER" layoutX="109.0" layoutY="498.0" prefHeight="15.0" prefWidth="80.0" text="MANA 5">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="190.0" layoutY="498.0" prefHeight="15.0" prefWidth="80.0" text="MANA 5">
+      <Label fx:id="hand3Mana" alignment="CENTER" layoutX="190.0" layoutY="498.0" prefHeight="15.0" prefWidth="80.0" text="MANA 5">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="271.0" layoutY="498.0" prefHeight="15.0" prefWidth="80.0" text="MANA 5">
+      <Label fx:id="hand4Mana" alignment="CENTER" layoutX="271.0" layoutY="498.0" prefHeight="15.0" prefWidth="80.0" text="MANA 5">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="352.0" layoutY="498.0" prefHeight="15.0" prefWidth="80.0" text="MANA 5">
+      <Label fx:id="hand5Mana" alignment="CENTER" layoutX="352.0" layoutY="498.0" prefHeight="15.0" prefWidth="80.0" text="MANA 5">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="27.0" layoutY="519.0" prefHeight="15.0" prefWidth="80.0" text="ATK &lt;-&gt; HP">
+      <Label fx:id="hand1Info" alignment="CENTER" layoutX="27.0" layoutY="519.0" prefHeight="15.0" prefWidth="80.0" text="ATK &lt;-&gt; HP">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="109.0" layoutY="519.0" prefHeight="15.0" prefWidth="80.0" text="ATK &lt;-&gt; HP">
+      <Label fx:id="hand2Info" alignment="CENTER" layoutX="109.0" layoutY="519.0" prefHeight="15.0" prefWidth="80.0" text="ATK &lt;-&gt; HP">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="190.0" layoutY="519.0" prefHeight="15.0" prefWidth="80.0" text="ATK &lt;-&gt; HP">
+      <Label fx:id="hand3Info" alignment="CENTER" layoutX="190.0" layoutY="519.0" prefHeight="15.0" prefWidth="80.0" text="ATK &lt;-&gt; HP">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="271.0" layoutY="519.0" prefHeight="15.0" prefWidth="80.0" text="ATK &lt;-&gt; HP">
+      <Label fx:id="hand4Info" alignment="CENTER" layoutX="271.0" layoutY="519.0" prefHeight="15.0" prefWidth="80.0" text="ATK &lt;-&gt; HP">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="352.0" layoutY="519.0" prefHeight="15.0" prefWidth="80.0" text="ATK &lt;-&gt; HP">
+      <Label fx:id="hand5Info" alignment="CENTER" layoutX="352.0" layoutY="519.0" prefHeight="15.0" prefWidth="80.0" text="ATK &lt;-&gt; HP">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label layoutX="607.0" layoutY="432.0" prefWidth="98.0" text="Sheep">
+      <Label fx:id="hoverTitle" layoutX="607.0" layoutY="432.0" prefWidth="98.0" text="Sheep">
          <font>
             <Font name="Arial Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="607.0" layoutY="455.0" prefWidth="98.0" text="ATK: 1">
+      <Label fx:id="hoverAttack" layoutX="607.0" layoutY="455.0" prefWidth="98.0" text="ATK: 1">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label layoutX="607.0" layoutY="466.0" prefWidth="98.0" text="HP: 1">
+      <Label fx:id="hoverHealth" layoutX="607.0" layoutY="466.0" prefWidth="98.0" text="HP: 1">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label layoutX="607.0" layoutY="477.0" prefWidth="98.0" text="Level: 1">
+      <Label fx:id="hoverLevel" layoutX="607.0" layoutY="477.0" prefWidth="98.0" text="Level: 1">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label layoutX="607.0" layoutY="488.0" prefWidth="98.0" text="EXP: 0/1">
+      <Label fx:id="hoverExp" layoutX="607.0" layoutY="488.0" prefWidth="98.0" text="EXP: 0/1">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label layoutX="607.0" layoutY="499.0" prefWidth="98.0" text="Type: Overworld">
+      <Label fx:id="hoverType" layoutX="607.0" layoutY="499.0" prefWidth="98.0" text="Type: Overworld">
          <font>
             <Font name="Arial" size="10.0" />
          </font>
       </Label>
-      <Label layoutX="735.0" layoutY="417.0" prefHeight="114.0" prefWidth="98.0" text="“Sheep are common passive mobs that supply wool and mutton and are found in many of the grassy biomes.”" wrapText="true">
+      <Label fx:id="hoverDescription" layoutX="735.0" layoutY="417.0" prefHeight="114.0" prefWidth="98.0" text="“Sheep are common passive mobs that supply wool and mutton and are found in many of the grassy biomes.”" wrapText="true">
          <font>
             <Font name="Arial Italic" size="10.0" />
          </font>
@@ -513,12 +513,12 @@
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="878.0" layoutY="422.0" prefHeight="15.0" prefWidth="115.0" text="35/40">
+      <Label fx:id="deckLabel" alignment="CENTER" layoutX="878.0" layoutY="422.0" prefHeight="15.0" prefWidth="115.0" text="35/40">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="878.0" layoutY="476.0" prefHeight="15.0" prefWidth="115.0" text="0/1">
+      <Label fx:id="manaLabel" alignment="CENTER" layoutX="878.0" layoutY="476.0" prefHeight="15.0" prefWidth="115.0" text="0/1">
          <font>
             <Font name="Arial" size="12.0" />
          </font>

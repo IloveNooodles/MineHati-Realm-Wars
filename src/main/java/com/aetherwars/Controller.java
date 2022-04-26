@@ -214,8 +214,82 @@ public class Controller {
     @FXML
     private Label boardAlexELabel;
 
+    /* Hand */
+    /* Hand 1 */
     @FXML
-    private Label myLabel;
+    private Rectangle hand1Rect;
+    @FXML
+    private ImageView hand1Image;
+    @FXML
+    private Label hand1Mana;
+    @FXML
+    private Label hand1Info;
+    /* Hand 2 */
+    @FXML
+    private Rectangle hand2Rect;
+    @FXML
+    private ImageView hand2Image;
+    @FXML
+    private Label hand2Mana;
+    @FXML
+    private Label hand2Info;
+    /* Hand 3 */
+    @FXML
+    private Rectangle hand3Rect;
+    @FXML
+    private ImageView hand3Image;
+    @FXML
+    private Label hand3Mana;
+    @FXML
+    private Label hand3Info;
+    /* Hand 4 */
+    @FXML
+    private Rectangle hand4Rect;
+    @FXML
+    private ImageView hand4Image;
+    @FXML
+    private Label hand4Mana;
+    @FXML
+    private Label hand4Info;
+    /* Hand 5 */
+    @FXML
+    private Rectangle hand5Rect;
+    @FXML
+    private ImageView hand5Image;
+    @FXML
+    private Label hand5Mana;
+    @FXML
+    private Label hand5Info;
+
+    /* Hover information */
+    @FXML
+    private ImageView hoverImage;
+    @FXML
+    private Label hoverTitle;
+    @FXML
+    private Label hoverAttack;
+    @FXML
+    private Label hoverHealth;
+    @FXML
+    private Label hoverLevel;
+    @FXML
+    private Label hoverExp;
+    @FXML
+    private Label hoverType;
+    @FXML
+    private Label hoverDescription;
+
+    /* Deck information */
+    @FXML
+    private Label deckLabel;
+
+    /* Mana information */
+    @FXML
+    private Label manaLabel;
+
+    /* Next phase button */
+    @FXML
+    private Label nextPhase;
 
     public void hideSteveBoard(char board) {
         if (board == 'A') {
@@ -329,6 +403,48 @@ public class Controller {
         }
     }
 
+    public void hideHand(int handNumber) {
+        if (handNumber == 1) {
+            hand1Image.setVisible(false);
+            hand1Info.setVisible(false);
+            hand1Mana.setVisible(false);
+            hand1Rect.setVisible(false);
+        } else if (handNumber == 2) {
+            hand2Image.setVisible(false);
+            hand2Info.setVisible(false);
+            hand2Mana.setVisible(false);
+            hand2Rect.setVisible(false);
+        } else if (handNumber == 3) {
+            hand3Image.setVisible(false);
+            hand3Info.setVisible(false);
+            hand3Mana.setVisible(false);
+            hand3Rect.setVisible(false);
+        } else if (handNumber == 4) {
+            hand4Image.setVisible(false);
+            hand4Info.setVisible(false);
+            hand4Mana.setVisible(false);
+            hand4Rect.setVisible(false);
+        } else if (handNumber == 5) {
+            hand5Image.setVisible(false);
+            hand5Info.setVisible(false);
+            hand5Mana.setVisible(false);
+            hand5Rect.setVisible(false);
+        }
+    }
+
+    public void hideHoverInformation() {
+        hoverAttack.setVisible(false);
+        hoverDescription.setVisible(false);
+        hoverExp.setVisible(false);
+        hoverHealth.setVisible(false);
+        hoverImage.setVisible(false);
+        hoverAttack.setVisible(false);
+        hoverDescription.setVisible(false);
+        hoverLevel.setVisible(false);
+        hoverTitle.setVisible(false);
+        hoverType.setVisible(false);
+    }
+
     public void initialize() {
         /* Turn pertama adalah turn Steve */
         alexIndicator.setVisible(false);
@@ -338,6 +454,12 @@ public class Controller {
             hideSteveBoard(c);
             hideAlexBoard(c);
         }
+        int[] hands = {1, 2, 3, 4, 5};
+        for (int i : hands) {
+            hideHand(i);
+        }
+        /* Hide hover informations */
+        hideHoverInformation();
         /* By default, mulai di phase draw */
         setPhase("DRAW");
     }
