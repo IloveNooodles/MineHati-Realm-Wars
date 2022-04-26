@@ -1,6 +1,7 @@
 package com.aetherwars;
 
 import com.aetherwars.enums.CharacterType;
+import com.aetherwars.enums.TurnPhase;
 import com.aetherwars.models.card.Card;
 import com.aetherwars.models.cardcontainer.Deck;
 import com.aetherwars.models.cardcontainer.Hand;
@@ -9,12 +10,15 @@ import com.aetherwars.models.carddata.Character;
 import com.aetherwars.models.carddata.spell.*;
 import com.aetherwars.models.extras.Type;
 import com.aetherwars.models.game.Game;
+import com.aetherwars.models.game.GameState;
 import com.aetherwars.models.game.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import java.util.*;
 
@@ -305,8 +309,46 @@ public class Controller {
     @FXML
     private Label nextPhase;
 
+    /* Drawing phase */
+    @FXML
+    private Rectangle drawOverlay;
+    /* Draw card #1 */
+    @FXML
+    private Rectangle drawCard1Back;
+    @FXML
+    private ImageView drawCard1Image;
+    @FXML
+    private Label drawCard1Mana;
+    @FXML
+    private Label drawCard1Info;
+    @FXML
+    private Rectangle drawCard1;
+    /* Draw card #2 */
+    @FXML
+    private Rectangle drawCard2Back;
+    @FXML
+    private ImageView drawCard2Image;
+    @FXML
+    private Label drawCard2Mana;
+    @FXML
+    private Label drawCard2Info;
+    @FXML
+    private Rectangle drawCard2;
+    /* Draw card #2 */
+    @FXML
+    private Rectangle drawCard3Back;
+    @FXML
+    private ImageView drawCard3Image;
+    @FXML
+    private Label drawCard3Mana;
+    @FXML
+    private Label drawCard3Info;
+    @FXML
+    private Rectangle drawCard3;
+
     /* Variables */
     private Game game;
+    private int selectedHand;
 
     /* Functions, procedures */
     public void hideSteveBoard(char board) {
@@ -637,11 +679,277 @@ public class Controller {
         }
     }
 
+    public void hideDrawOverlay() {
+        drawOverlay.setVisible(false);
+        drawCard1.setVisible(false);
+        drawCard1Back.setVisible(false);
+        drawCard1Image.setVisible(false);
+        drawCard1Info.setVisible(false);
+        drawCard1Mana.setVisible(false);
+        drawCard2.setVisible(false);
+        drawCard2Back.setVisible(false);
+        drawCard2Image.setVisible(false);
+        drawCard2Info.setVisible(false);
+        drawCard2Mana.setVisible(false);
+        drawCard3.setVisible(false);
+        drawCard3Back.setVisible(false);
+        drawCard3Image.setVisible(false);
+        drawCard3Info.setVisible(false);
+        drawCard3Mana.setVisible(false);
+    }
+
     public void updateDeckManaLabel() {
         Player p = game.getPlayer();
         Deck d = p.getDeck();
         deckLabel.setText(String.valueOf(d.getCards().size()));
         manaLabel.setText(p.getMana() + "/" + Math.min(game.getState().getTurn(), 10));
+    }
+
+    public void showDrawCard(int cardID, CardData cd) {
+        Image image = new Image("com/aetherwars/" + cd.getImage());
+        String info = "";
+        if (cd instanceof Character) {
+            Character c = (Character) cd;
+            info = "ATK " + c.getBaseAtk() + "/HP " + c.getBaseHp();
+        } else if (cd instanceof Spell) {
+            Spell s = (Spell) cd;
+            if (s instanceof LVL) {
+                LVL l = (LVL) s;
+                if (l.getType() == LVLUP) {
+                    info = "LVLUP";
+                } else {
+                    info = "LVLDOWN";
+                }
+            } else if (s instanceof MORPH) {
+                info = "MORPH";
+
+            } else if (s instanceof PTN) {
+                PTN p = (PTN) s;
+                if (p.getAtkBonus() == 0) {
+                    info = "HP" + formatBonus(p.getHpBonus());
+                } else if (p.getHpBonus() == 0) {
+                    info = "ATK" + formatBonus(p.getAtkBonus());
+                } else {
+                    /* Keduanya tidak nol */
+                    info = "ATK" + formatBonus(p.getAtkBonus()) + "/HP" + formatBonus(p.getHpBonus());
+                }
+            } else if (s instanceof SWAP) {
+                info = "ATK <-> HP";
+            }
+        }
+        int manaCost = cd.getManaCost();
+        if (cardID == 1) {
+            drawCard1.setVisible(true);
+            drawCard1Back.setVisible(true);
+            drawCard1Image.setVisible(true);
+            drawCard1Info.setVisible(true);
+            drawCard1Mana.setVisible(true);
+            drawCard1Image.setImage(image);
+            drawCard1Info.setText(info);
+            drawCard1Mana.setText("MANA " + manaCost);
+        } else if (cardID == 2) {
+            drawCard2.setVisible(true);
+            drawCard2Back.setVisible(true);
+            drawCard2Image.setVisible(true);
+            drawCard2Info.setVisible(true);
+            drawCard2Mana.setVisible(true);
+            drawCard2Image.setImage(image);
+            drawCard2Info.setText(info);
+            drawCard2Mana.setText("MANA " + manaCost);
+        } else if (cardID == 3) {
+            drawCard3.setVisible(true);
+            drawCard3Back.setVisible(true);
+            drawCard3Image.setVisible(true);
+            drawCard3Info.setVisible(true);
+            drawCard3Mana.setVisible(true);
+            drawCard3Image.setImage(image);
+            drawCard3Info.setText(info);
+            drawCard3Mana.setText("MANA " + manaCost);
+        }
+    }
+
+    public void initializeDrawOverlay() {
+        drawOverlay.setVisible(true);
+        /* Initialize ketiga card */
+        int cardID = 1;
+        while (cardID <= 3) {
+            /* Ambil kartunya */
+            CardData cd = game.getPlayer().getDeck().getCards().get(cardID - 1).getCardData();
+            showDrawCard(cardID, cd);
+            cardID ++;
+        }
+    }
+
+    public void nextPhaseClicked() {
+        GameState state = game.getState();
+        if (state.getPhase() == TurnPhase.DRAW) {
+            /* TODO: Perintahkan pemain untuk memilih card untuk dihapus sebelum draw */
+            initializeDrawOverlay();
+        }
+    }
+
+    public void enterHand1() {
+        Player p = game.getPlayer();
+        Hand h = p.getHand();
+        List<Card> cards = h.getCards();
+        renderInformation(cards.get(0));
+        hand1Rect.setStroke(Color.web("#fec20c"));
+    }
+
+    public void enterHand2() {
+        Player p = game.getPlayer();
+        Hand h = p.getHand();
+        List<Card> cards = h.getCards();
+        renderInformation(cards.get(1));
+        hand2Rect.setStroke(Color.web("#fec20c"));
+    }
+
+    public void enterHand3() {
+        Player p = game.getPlayer();
+        Hand h = p.getHand();
+        List<Card> cards = h.getCards();
+        renderInformation(cards.get(2));
+        hand3Rect.setStroke(Color.web("#fec20c"));
+    }
+
+    public void enterHand4() {
+        Player p = game.getPlayer();
+        Hand h = p.getHand();
+        List<Card> cards = h.getCards();
+        renderInformation(cards.get(3));
+        hand4Rect.setStroke(Color.web("#fec20c"));
+    }
+
+    public void enterHand5() {
+        Player p = game.getPlayer();
+        Hand h = p.getHand();
+        List<Card> cards = h.getCards();
+        renderInformation(cards.get(4));
+        hand5Rect.setStroke(Color.web("#fec20c"));
+    }
+
+    public void exitHand() {
+        hideHoverInformation();
+        hand1Rect.setStroke(Color.web("#000000"));
+        hand2Rect.setStroke(Color.web("#000000"));
+        hand3Rect.setStroke(Color.web("#000000"));
+        hand4Rect.setStroke(Color.web("#000000"));
+        hand5Rect.setStroke(Color.web("#000000"));
+    }
+
+    public void hoverDraw1() {
+        drawCard1.setStyle("-fx-stroke: #fec20c");
+    }
+
+    public void hoverDraw2() {
+        drawCard2.setStyle("-fx-stroke: #fec20c");
+    }
+
+    public void hoverDraw3() {
+        drawCard3.setStyle("-fx-stroke: #fec20c");
+    }
+
+    public void exitDraw() {
+        drawCard1.setStyle("");
+        drawCard2.setStyle("");
+        drawCard3.setStyle("");
+    }
+
+    public void clickDraw1() throws Exception {
+        game.getPlayer().draw(0);
+        renderHand(game.getPlayer().getHand());
+        updateDeckManaLabel();
+        nextPhase();
+        hideDrawOverlay();
+    }
+
+    public void clickDraw2() throws Exception {
+        game.getPlayer().draw(1);
+        renderHand(game.getPlayer().getHand());
+        updateDeckManaLabel();
+        nextPhase();
+        hideDrawOverlay();
+    }
+
+    public void clickDraw3() throws Exception {
+        game.getPlayer().draw(2);
+        renderHand(game.getPlayer().getHand());
+        updateDeckManaLabel();
+        nextPhase();
+        hideDrawOverlay();
+    }
+
+    public void nextPhase() {
+        game.getState().nextPhase();
+        TurnPhase phase = game.getState().getPhase();
+        if (phase == TurnPhase.DRAW) {
+            setPhase("DRAW");
+        } else if (phase == TurnPhase.PLAN) {
+            setPhase("PLAN");
+        } else if (phase == TurnPhase.ATTACK) {
+            setPhase("ATTACK");
+        } else if (phase == TurnPhase.END) {
+            setPhase("END");
+        }
+    }
+
+    /* Pengaturan plan phase */
+    public void resetHandFillColor() {
+        if (selectedHand != 1) {
+            hand1Rect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+        if (selectedHand != 2) {
+            hand2Rect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+        if (selectedHand != 3) {
+            hand3Rect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+        if (selectedHand != 4) {
+            hand4Rect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+        if (selectedHand != 5) {
+            hand5Rect.setFill(Color.web("rgba(0, 0, 0, 0)"));
+        }
+    }
+
+    public void clickHand1() {
+        if (game.getState().getPhase() == TurnPhase.PLAN) {
+            selectedHand = 1;
+            hand1Rect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+            resetHandFillColor();
+        }
+    }
+
+    public void clickHand2() {
+        if (game.getState().getPhase() == TurnPhase.PLAN) {
+            selectedHand = 2;
+            hand2Rect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+            resetHandFillColor();
+        }
+    }
+
+    public void clickHand3() {
+        if (game.getState().getPhase() == TurnPhase.PLAN) {
+            selectedHand = 3;
+            hand3Rect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+            resetHandFillColor();
+        }
+    }
+
+    public void clickHand4() {
+        if (game.getState().getPhase() == TurnPhase.PLAN) {
+            selectedHand = 4;
+            hand4Rect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+            resetHandFillColor();
+        }
+    }
+
+    public void clickHand5() {
+        if (game.getState().getPhase() == TurnPhase.PLAN) {
+            selectedHand = 5;
+            hand5Rect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+            resetHandFillColor();
+        }
     }
 
     /* Mulai controller */
@@ -669,59 +977,7 @@ public class Controller {
         renderHand(p.getHand());
         /* Update deck dan mana label */
         updateDeckManaLabel();
+        /* Hide draw overlay */
+        hideDrawOverlay();
     }
-
-    public void click() {
-        System.out.println("Hello World!");
-    }
-
-    public void enterHand1() {
-        Player p = game.getPlayer();
-        Hand h = p.getHand();
-        List<Card> cards = h.getCards();
-        renderInformation(cards.get(0));
-        hand1Rect.setStyle("-fx-stroke: #fec20c");
-    }
-
-    public void enterHand2() {
-        Player p = game.getPlayer();
-        Hand h = p.getHand();
-        List<Card> cards = h.getCards();
-        renderInformation(cards.get(1));
-        hand2Rect.setStyle("-fx-stroke: #fec20c");
-    }
-
-    public void enterHand3() {
-        Player p = game.getPlayer();
-        Hand h = p.getHand();
-        List<Card> cards = h.getCards();
-        renderInformation(cards.get(2));
-        hand3Rect.setStyle("-fx-stroke: #fec20c");
-    }
-
-    public void enterHand4() {
-        Player p = game.getPlayer();
-        Hand h = p.getHand();
-        List<Card> cards = h.getCards();
-        renderInformation(cards.get(3));
-        hand4Rect.setStyle("-fx-stroke: #fec20c");
-    }
-
-    public void enterHand5() {
-        Player p = game.getPlayer();
-        Hand h = p.getHand();
-        List<Card> cards = h.getCards();
-        renderInformation(cards.get(4));
-        hand5Rect.setStyle("-fx-stroke: #fec20c");
-    }
-
-    public void exitHand() {
-        hideHoverInformation();
-        hand1Rect.setStyle("");
-        hand2Rect.setStyle("");
-        hand3Rect.setStyle("");
-        hand4Rect.setStyle("");
-        hand5Rect.setStyle("");
-    }
-
 }
