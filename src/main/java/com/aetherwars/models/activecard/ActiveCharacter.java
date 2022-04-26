@@ -52,6 +52,10 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     }
 
     public void attacked(ActiveCharacter attacker) {
+        if (this.getCard().getType() == null) {
+            System.out.println("Karakter sudah mati");
+            return;
+        }
         double attackingModifier = 1; // dari this ke musuh damagenya dikali berapa
         double attackedModifier = 1; // dari musuh ke this damagenya dikali berapa
         if (this.getCard().getType().compareTo(attacker.getCard().getType()) > 0) {

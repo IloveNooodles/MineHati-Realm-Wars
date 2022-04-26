@@ -149,16 +149,37 @@ public class ActiveCharacterTest {
         Zombie.levelUp();
         Zombie.levelUp();
         Zombie.levelUp();
-        assertEquals(Zombie.getAtk(), 11.0);
+        assertEquals(Zombie.getHp(), 14.0);
 
         Zombie.attack(Pigmen);
         assertNotSame(Pigmen.getHp(), 0.0);
         assertEquals(Pigmen.getHp(), 4.5);
+
+        Zombie.levelDown();
+
+        //Zombie udah mati tpi diattack
+        Pigmen.attack(Zombie);
+        assertNotSame(Zombie.getHp(), 4);
+        assertTrue(Zombie.getHp() == 0.0);
     }
 
     @Test
     public void attackEndTest() {
+        Character zombie = new Character("zombie", "Pedang", new Type(CharacterType.OVERWORLD), "-", 5, 5, 1, 2, 3);
+        Character endermen = new Character("endermen", "Bau", new Type(CharacterType.END), "-", 8, 20, 5, 5, 5);
+        ActiveCharacter Zombie = new ActiveCharacter(zombie);
+        ActiveCharacter Endermen = new ActiveCharacter(endermen);
 
+        Zombie.addExp(6);
+        assertEquals(Zombie.getAtk(), 9.0);
+
+        Zombie.attack(Endermen);
+        assertNotSame(Endermen.getHp(), 11.0);
+        assertEquals(Endermen.getHp(), 2.0);
+
+        Endermen.attack(Zombie);
+        assertNotSame(Zombie.getHp(), 3.0);
+        assertEquals(Zombie.getHp(), 3.0);
     }
 }
 
