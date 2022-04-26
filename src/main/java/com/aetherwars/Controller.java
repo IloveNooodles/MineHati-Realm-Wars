@@ -1303,7 +1303,7 @@ public class Controller {
         } else {
             b = game.getEnemyBoard();
         }
-        return b.getCards().get(i).hasAttacked();
+        return b.getCards().get(i).hasAttacked() && !b.getCards().get(i).getName().equals("");
     }
 
     public boolean hasAlexBoardAttacked(int i) {
@@ -1313,7 +1313,7 @@ public class Controller {
         } else {
             b = game.getPlayerBoard();
         }
-        return b.getCards().get(i).hasAttacked();
+        return b.getCards().get(i).hasAttacked() && !b.getCards().get(i).getName().equals("");
     }
 
     public void resetBoardFills() {
@@ -1392,6 +1392,21 @@ public class Controller {
                     resetSteveBoardFill();
                     boardSteveARect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
                 }
+            } else {
+                /* Kartu ini adalah target penyerangan */
+                if (selectedBoard != -1) {
+                    if (isSteveBoardOccupied(0)) {
+                        game.getPlayer().attack(selectedBoard - 1, 0);
+                        renderBoards();
+                        Board alexBoard = getAlexBoard();
+                        if (!alexBoard.getCards().get(selectedBoard - 1).getName().equals("")) {
+                            /* Set backgroundnya warna merah */
+                            setAlexAttacked(selectedBoard);
+                        }
+                    }
+                    selectedBoard = -1;
+                    resetAlexBoardFill();
+                }
             }
         }
     }
@@ -1421,6 +1436,21 @@ public class Controller {
                     selectedBoard = 2;
                     resetSteveBoardFill();
                     boardSteveBRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+                }
+            } else {
+                /* Kartu ini adalah target penyerangan */
+                if (selectedBoard != -1) {
+                    if (isSteveBoardOccupied(1)) {
+                        game.getPlayer().attack(selectedBoard - 1, 1);
+                        renderBoards();
+                        Board alexBoard = getAlexBoard();
+                        if (!alexBoard.getCards().get(selectedBoard - 1).getName().equals("")) {
+                            /* Set backgroundnya warna merah */
+                            setAlexAttacked(selectedBoard);
+                        }
+                    }
+                    selectedBoard = -1;
+                    resetAlexBoardFill();
                 }
             }
         }
@@ -1452,6 +1482,21 @@ public class Controller {
                     resetSteveBoardFill();
                     boardSteveCRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
                 }
+            } else {
+                /* Kartu ini adalah target penyerangan */
+                if (selectedBoard != -1) {
+                    if (isSteveBoardOccupied(2)) {
+                        game.getPlayer().attack(selectedBoard - 1, 2);
+                        renderBoards();
+                        Board alexBoard = getAlexBoard();
+                        if (!alexBoard.getCards().get(selectedBoard - 1).getName().equals("")) {
+                            /* Set backgroundnya warna merah */
+                            setAlexAttacked(selectedBoard);
+                        }
+                    }
+                    selectedBoard = -1;
+                    resetAlexBoardFill();
+                }
             }
         }
     }
@@ -1481,6 +1526,21 @@ public class Controller {
                     selectedBoard = 4;
                     resetSteveBoardFill();
                     boardSteveDRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+                }
+            } else {
+                /* Kartu ini adalah target penyerangan */
+                if (selectedBoard != -1) {
+                    if (isSteveBoardOccupied(3)) {
+                        game.getPlayer().attack(selectedBoard - 1, 3);
+                        renderBoards();
+                        Board alexBoard = getAlexBoard();
+                        if (!alexBoard.getCards().get(selectedBoard - 1).getName().equals("")) {
+                            /* Set backgroundnya warna merah */
+                            setAlexAttacked(selectedBoard);
+                        }
+                    }
+                    selectedBoard = -1;
+                    resetAlexBoardFill();
                 }
             }
         }
@@ -1512,6 +1572,21 @@ public class Controller {
                     resetSteveBoardFill();
                     boardSteveERect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
                 }
+            } else {
+                /* Kartu ini adalah target penyerangan */
+                if (selectedBoard != -1) {
+                    if (isSteveBoardOccupied(4)) {
+                        game.getPlayer().attack(selectedBoard - 1, 4);
+                        renderBoards();
+                        Board alexBoard = getAlexBoard();
+                        if (!alexBoard.getCards().get(selectedBoard - 1).getName().equals("")) {
+                            /* Set backgroundnya warna merah */
+                            setAlexAttacked(selectedBoard);
+                        }
+                    }
+                    selectedBoard = -1;
+                    resetAlexBoardFill();
+                }
             }
         }
     }
@@ -1541,6 +1616,21 @@ public class Controller {
                     selectedBoard = 1;
                     resetAlexBoardFill();
                     boardAlexARect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+                }
+            } else {
+                /* Kartu ini adalah target penyerangan */
+                if (selectedBoard != -1) {
+                    if (isAlexBoardOccupied(0)) {
+                        game.getPlayer().attack(selectedBoard - 1, 0);
+                        renderBoards();
+                        Board steveBoard = getSteveBoard();
+                        if (!steveBoard.getCards().get(selectedBoard - 1).getName().equals("")) {
+                            /* Set backgroundnya warna merah */
+                            setSteveAttacked(selectedBoard);
+                        }
+                    }
+                    selectedBoard = -1;
+                    resetSteveBoardFill();
                 }
             }
         }
@@ -1572,6 +1662,21 @@ public class Controller {
                     resetAlexBoardFill();
                     boardAlexBRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
                 }
+            } else {
+                /* Kartu ini adalah target penyerangan */
+                if (selectedBoard != -1) {
+                    if (isAlexBoardOccupied(1)) {
+                        game.getPlayer().attack(selectedBoard - 1, 1);
+                        renderBoards();
+                        Board steveBoard = getSteveBoard();
+                        if (!steveBoard.getCards().get(selectedBoard - 1).getName().equals("")) {
+                            /* Set backgroundnya warna merah */
+                            setSteveAttacked(selectedBoard);
+                        }
+                    }
+                    selectedBoard = -1;
+                    resetSteveBoardFill();
+                }
             }
         }
     }
@@ -1601,6 +1706,21 @@ public class Controller {
                     selectedBoard = 3;
                     resetAlexBoardFill();
                     boardAlexCRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+                }
+            } else {
+                /* Kartu ini adalah target penyerangan */
+                if (selectedBoard != -1) {
+                    if (isAlexBoardOccupied(2)) {
+                        game.getPlayer().attack(selectedBoard - 1, 2);
+                        renderBoards();
+                        Board steveBoard = getSteveBoard();
+                        if (!steveBoard.getCards().get(selectedBoard - 1).getName().equals("")) {
+                            /* Set backgroundnya warna merah */
+                            setSteveAttacked(selectedBoard);
+                        }
+                    }
+                    selectedBoard = -1;
+                    resetSteveBoardFill();
                 }
             }
         }
@@ -1632,6 +1752,21 @@ public class Controller {
                     resetAlexBoardFill();
                     boardAlexDRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
                 }
+            } else {
+                /* Kartu ini adalah target penyerangan */
+                if (selectedBoard != -1) {
+                    if (isAlexBoardOccupied(3)) {
+                        game.getPlayer().attack(selectedBoard - 1, 3);
+                        renderBoards();
+                        Board steveBoard = getSteveBoard();
+                        if (!steveBoard.getCards().get(selectedBoard - 1).getName().equals("")) {
+                            /* Set backgroundnya warna merah */
+                            setSteveAttacked(selectedBoard);
+                        }
+                    }
+                    selectedBoard = -1;
+                    resetSteveBoardFill();
+                }
             }
         }
     }
@@ -1661,6 +1796,21 @@ public class Controller {
                     selectedBoard = 5;
                     resetAlexBoardFill();
                     boardAlexERect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+                }
+            } else {
+                /* Kartu ini adalah target penyerangan */
+                if (selectedBoard != -1) {
+                    if (isAlexBoardOccupied(4)) {
+                        game.getPlayer().attack(selectedBoard - 1, 4);
+                        renderBoards();
+                        Board steveBoard = getSteveBoard();
+                        if (!steveBoard.getCards().get(selectedBoard - 1).getName().equals("")) {
+                            /* Set backgroundnya warna merah */
+                            setSteveAttacked(selectedBoard);
+                        }
+                    }
+                    selectedBoard = -1;
+                    resetSteveBoardFill();
                 }
             }
         }
