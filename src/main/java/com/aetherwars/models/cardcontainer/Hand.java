@@ -14,7 +14,13 @@ public class Hand extends CardContainer<Card> {
         super();
     }
 
-    public Card remove(int idx) {
+    public Card remove(int idx) throws Exception {
+        if (cards.size() == 0) {
+            throw new EmptyHandException();
+        }
+        else if (cards.size() <= idx) {
+            throw new EmptySlotException();
+        }
         Card temp = cards.get(idx);
         cards.remove(idx);
         return temp;

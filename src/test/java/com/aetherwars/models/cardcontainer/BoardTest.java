@@ -45,7 +45,8 @@ public class BoardTest {
             ActiveCharacter Skeleton = new ActiveCharacter(skeleton);
             board.add(Zombie);
             board.add(2, Skeleton);
-            board.remove(2);
+            ActiveCharacter removed = board.remove(2);
+            assertEquals(removed, Skeleton);
             assertEquals(board.getCards().get(2).getDescription(), "An Empty Card");
             assertEquals(board.get(0).getName(), "zombie");
         }
