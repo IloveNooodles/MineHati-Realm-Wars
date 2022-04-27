@@ -3,7 +3,7 @@ package com.aetherwars.models.extras;
 import com.aetherwars.enums.CharacterType;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.*;
 
 public class TypeTest {
     @Test
@@ -15,6 +15,9 @@ public class TypeTest {
         assertEquals(overworld.compareTo(anotherOverworld), 0);
         assertEquals(overworld.compareTo(nether), -1);
         assertEquals(overworld.compareTo(end), 1);
+        assertEquals(overworld.getCharacterType(), CharacterType.OVERWORLD);
+        assertNotSame(overworld.getCharacterType(), CharacterType.NETHER);
+        assertNotSame(overworld.getCharacterType(), CharacterType.END);
     }
 
     @Test
@@ -26,6 +29,9 @@ public class TypeTest {
         assertEquals(nether.compareTo(anotherNether), 0);
         assertEquals(nether.compareTo(overworld), 1);
         assertEquals(nether.compareTo(end), -1);
+        assertEquals(nether.getCharacterType(), CharacterType.NETHER);
+        assertNotSame(nether.getCharacterType(), CharacterType.END);
+        assertNotSame(nether.getCharacterType(), CharacterType.OVERWORLD);
     }
 
     @Test
@@ -37,6 +43,9 @@ public class TypeTest {
         assertEquals(end.compareTo(anotherEnd), 0);
         assertEquals(end.compareTo(overworld), -1);
         assertEquals(end.compareTo(nether), 1);
+        assertEquals(end.getCharacterType(), CharacterType.END);
+        assertNotSame(end.getCharacterType(), CharacterType.NETHER);
+        assertNotSame(end.getCharacterType(), CharacterType.OVERWORLD);
     }
 
 }
