@@ -203,6 +203,8 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
         double maxHp = this.maxHp;
         this.maxHp = this.atk;
         this.atk = maxHp;
+
+        if (this.hp >= this.maxHp) this.hp = this.maxHp;
     }
 
     public void increaseStats(double atk, double hp) {

@@ -126,4 +126,16 @@ public class SpellTest {
         assertEquals(enderman.getHp(), 0.0);
         assertEquals(enderman.getAtk(), 0.0);
     }
+
+    @Test
+    public void swapTest() {
+        SWAP p = new SWAP("bom bunuh diri", "test", "-", 1, 1);
+        ActiveCharacter enderman = new ActiveCharacter(new Character("endermen", "tinggi", new Type(CharacterType.END), "-", 8, 20, 5, 5, 5));
+
+        assertEquals(p.getDuration(), 1);
+        p.activateEffect(enderman);
+        assertEquals(enderman.getHp(), 8.0);
+        assertEquals(enderman.getAtk(), 20.0);
+        enderman.toString();
+    }
 }
