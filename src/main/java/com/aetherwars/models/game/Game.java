@@ -99,6 +99,9 @@ public class Game {
         if (getEnemy().getHp() <= 0) {
             return state.getPlayerTurn();
         }
+        else if (getPlayer().getHp() <= 0) {
+            return (state.getPlayerTurn() + 1) % 2;
+        }
         else if (state.getPhase() == TurnPhase.DRAW && getPlayer().getDeck().getCards().size() == 0) {
             return (state.getPlayerTurn() + 1) % 2;
         }

@@ -73,6 +73,7 @@ public class PlayerTest {
     @Test
     public void TestPlayandAttack() {
         try {
+            Game.current_game = new Game("Player 1", "Player 2");
             Game g = Game.getInstance();
             g.getPlayer().setMana(10);
             System.out.println(g.toString());
