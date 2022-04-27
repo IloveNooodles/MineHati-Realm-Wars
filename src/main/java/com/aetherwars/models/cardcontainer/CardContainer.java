@@ -13,10 +13,6 @@ public abstract class CardContainer<T> {
         return cards.get(idx);
     }
 
-    public boolean isPosValid(int idx){
-        return this.cards.get(idx) != null;
-    }
-
     public abstract T remove(int idx) throws Exception;
 
     public abstract void add(T card) throws Exception;
