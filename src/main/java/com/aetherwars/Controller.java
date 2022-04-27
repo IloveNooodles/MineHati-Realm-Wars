@@ -14,7 +14,9 @@ import com.aetherwars.models.extras.Type;
 import com.aetherwars.models.game.Game;
 import com.aetherwars.models.game.GameState;
 import com.aetherwars.models.game.Player;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
@@ -353,6 +355,14 @@ public class Controller {
     private ImageView steveImage;
     @FXML
     private ImageView alexImage;
+
+    /* Discard button */
+    @FXML
+    private Button discardCardBtn;
+
+    /* Add EXP button */
+    @FXML
+    private Button addExpBtn;
 
     /* Variables */
     private Game game;
@@ -794,11 +804,16 @@ public class Controller {
         if (state.getPhase() == TurnPhase.DRAW) {
             /* TODO: Perintahkan pemain untuk memilih card untuk dihapus sebelum draw */
             initializeDrawOverlay();
+            selectedHand = -1;
+            selectedBoard = -1;
+            resetHandFillColor();
+            resetBoardFills();
         } else if (state.getPhase() == TurnPhase.PLAN) {
             selectedHand = -1;
             resetHandFillColor();
             nextPhase();
             selectedBoard = -1;
+            disableButtons();
         } else if (state.getPhase() == TurnPhase.ATTACK) {
             selectedBoard = -1;
             resetBoardFills();
@@ -890,6 +905,7 @@ public class Controller {
         updateDeckManaLabel();
         nextPhase();
         hideDrawOverlay();
+        enableButtons();
     }
 
     public void clickDraw2() throws Exception {
@@ -898,6 +914,7 @@ public class Controller {
         updateDeckManaLabel();
         nextPhase();
         hideDrawOverlay();
+        enableButtons();
     }
 
     public void clickDraw3() throws Exception {
@@ -906,6 +923,7 @@ public class Controller {
         updateDeckManaLabel();
         nextPhase();
         hideDrawOverlay();
+        enableButtons();
     }
 
     public void nextPhase() {
@@ -946,6 +964,8 @@ public class Controller {
             selectedHand = 1;
             hand1Rect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             resetHandFillColor();
+            selectedBoard = -1;
+            resetBoardFills();
         }
     }
 
@@ -954,6 +974,8 @@ public class Controller {
             selectedHand = 2;
             hand2Rect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             resetHandFillColor();
+            selectedBoard = -1;
+            resetBoardFills();
         }
     }
 
@@ -962,6 +984,8 @@ public class Controller {
             selectedHand = 3;
             hand3Rect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             resetHandFillColor();
+            selectedBoard = -1;
+            resetBoardFills();
         }
     }
 
@@ -970,6 +994,8 @@ public class Controller {
             selectedHand = 4;
             hand4Rect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             resetHandFillColor();
+            selectedBoard = -1;
+            resetBoardFills();
         }
     }
 
@@ -978,6 +1004,8 @@ public class Controller {
             selectedHand = 5;
             hand5Rect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             resetHandFillColor();
+            selectedBoard = -1;
+            resetBoardFills();
         }
     }
 
@@ -1380,6 +1408,10 @@ public class Controller {
                     resetHandFillColor();
                     updateDeckManaLabel();
                 }
+            } else if (isSteveBoardOccupied(0)) {
+                selectedBoard = 1;
+                resetSteveBoardFill();
+                boardSteveARect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             }
         }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
@@ -1425,6 +1457,10 @@ public class Controller {
                     resetHandFillColor();
                     updateDeckManaLabel();
                 }
+            } else if (isSteveBoardOccupied(1)) {
+                selectedBoard = 2;
+                resetSteveBoardFill();
+                boardSteveBRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             }
         }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
@@ -1470,6 +1506,10 @@ public class Controller {
                     resetHandFillColor();
                     updateDeckManaLabel();
                 }
+            } else if (isSteveBoardOccupied(2)) {
+                selectedBoard = 3;
+                resetSteveBoardFill();
+                boardSteveCRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             }
         }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
@@ -1515,6 +1555,10 @@ public class Controller {
                     resetHandFillColor();
                     updateDeckManaLabel();
                 }
+            } else if (isSteveBoardOccupied(3)) {
+                selectedBoard = 4;
+                resetSteveBoardFill();
+                boardSteveDRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             }
         }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
@@ -1560,6 +1604,10 @@ public class Controller {
                     resetHandFillColor();
                     updateDeckManaLabel();
                 }
+            } else if (isSteveBoardOccupied(4)) {
+                selectedBoard = 5;
+                resetSteveBoardFill();
+                boardSteveERect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             }
         }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
@@ -1605,6 +1653,10 @@ public class Controller {
                     resetHandFillColor();
                     updateDeckManaLabel();
                 }
+            } else if (isAlexBoardOccupied(0)) {
+                selectedBoard = 1;
+                resetAlexBoardFill();
+                boardAlexARect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             }
         }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
@@ -1650,6 +1702,10 @@ public class Controller {
                     resetHandFillColor();
                     updateDeckManaLabel();
                 }
+            } else if (isAlexBoardOccupied(1)) {
+                selectedBoard = 2;
+                resetAlexBoardFill();
+                boardAlexBRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             }
         }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
@@ -1695,6 +1751,10 @@ public class Controller {
                     resetHandFillColor();
                     updateDeckManaLabel();
                 }
+            } else if (isAlexBoardOccupied(2)) {
+                selectedBoard = 3;
+                resetAlexBoardFill();
+                boardAlexCRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             }
         }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
@@ -1740,6 +1800,10 @@ public class Controller {
                     resetHandFillColor();
                     updateDeckManaLabel();
                 }
+            } else if (isAlexBoardOccupied(3)) {
+                selectedBoard = 4;
+                resetAlexBoardFill();
+                boardAlexDRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             }
         }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
@@ -1785,6 +1849,10 @@ public class Controller {
                     resetHandFillColor();
                     updateDeckManaLabel();
                 }
+            } else if (isAlexBoardOccupied(4)) {
+                selectedBoard = 5;
+                resetAlexBoardFill();
+                boardAlexERect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             }
         }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
@@ -1934,6 +2002,45 @@ public class Controller {
         turnNumber.setText(String.valueOf(game.getState().getTurn()));
     }
 
+    public void disableButtons() {
+        addExpBtn.setDisable(true);
+        discardCardBtn.setDisable(true);
+    }
+
+    public void enableButtons() {
+        addExpBtn.setDisable(false);
+        addExpBtn.setFocusTraversable(false);
+        discardCardBtn.setDisable(false);
+        discardCardBtn.setFocusTraversable(false);
+    }
+
+    public void onDiscard(ActionEvent e) {
+        if (selectedHand != -1) {
+            /* Yang dihapus hand */
+            game.getPlayer().getHand().getCards().remove(selectedHand - 1);
+            selectedHand = -1;
+            resetHandFillColor();
+            renderHand(game.getPlayer().getHand());
+        } else if (selectedBoard != -1) {
+            /* Yang dihapus board */
+            game.getPlayerBoard().getCards().get(selectedBoard - 1).morph(new Character());
+            selectedBoard = -1;
+            resetBoardFills();
+            renderBoards();
+        }
+    }
+
+    public void onAddExp(ActionEvent e) {
+        if (selectedBoard != -1) {
+            if (game.getPlayer().getMana() > 0) {
+                game.getPlayerBoard().getCards().get(selectedBoard - 1).addExp(1);
+                game.getPlayer().setMana(game.getPlayer().getMana() - 1);
+                renderBoards();
+                updateDeckManaLabel();
+            }
+        }
+    }
+
     /* Mulai controller */
     public void initialize() {
         /* Mulai game! */
@@ -1954,6 +2061,7 @@ public class Controller {
         hideHoverInformation();
         /* By default, mulai di phase draw */
         setPhase("DRAW");
+        disableButtons();
         /* Render hand dari player sekarang */
         Player p = game.getPlayer();
         renderHand(p.getHand());
