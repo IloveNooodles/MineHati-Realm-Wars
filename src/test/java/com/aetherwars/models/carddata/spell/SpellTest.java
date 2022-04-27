@@ -27,7 +27,7 @@ public class SpellTest {
         newlvl.activateEffect(empty);
         newlvl.activateEffect(empty);
 
-        assertTrue(empty.getLevel() == 4);
+        assertTrue(empty.getLevel() == 1);
         assertTrue(empty.getExp() == 0);
 
         downlvl.activateEffect(empty);

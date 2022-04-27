@@ -44,6 +44,7 @@ public class ActiveCardTest {
 
     @Test
     public void addExpTest() {
+        //udah mati karakternya
         ActiveCharacter zombie = new ActiveCharacter();
         zombie.addExp(-99999);
         assertNotSame(zombie.getExp(), -99999);
@@ -52,13 +53,13 @@ public class ActiveCardTest {
         assertEquals((int) zombie.getExp(), 0);
 
         zombie.addExp(2);
-        assertEquals((int) zombie.getExp(), 2);
+        assertEquals((int) zombie.getExp(), 0);
 
         zombie.addExp(2);
-        assertEquals((int) zombie.getExp(), 1);
+        assertEquals((int) zombie.getExp(), 0);
 
         zombie.addExp(3);
-        assertEquals((int) zombie.getExp(), 4);
+        assertEquals((int) zombie.getExp(), 0);
 
         zombie.addExp(10000);
         assertNotSame(zombie.getExp(), 10000);
@@ -66,7 +67,7 @@ public class ActiveCardTest {
 
     @Test
     public void levelTest() {
-        ActiveCharacter mobita = new ActiveCharacter();
+        ActiveCharacter mobita = new ActiveCharacter(new Character("Mobita", "Bau", new Type(CharacterType.NETHER), "aaw", 5, 5, 1, 1, 1));
         assertEquals((int) mobita.getLevel(), 1);
 
         mobita.addExp(1);
