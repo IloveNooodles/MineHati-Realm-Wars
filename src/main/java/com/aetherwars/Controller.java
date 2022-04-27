@@ -364,6 +364,14 @@ public class Controller {
     @FXML
     private Button addExpBtn;
 
+    /* Game end stuff */
+    @FXML
+    private Rectangle gameEndRect;
+    @FXML
+    private ImageView gameEndImage;
+    @FXML
+    private Label gameEndText;
+
     /* Variables */
     private Game game;
     private int selectedHand;
@@ -789,13 +797,28 @@ public class Controller {
 
     public void initializeDrawOverlay() {
         drawOverlay.setVisible(true);
-        /* Initialize ketiga card */
-        int cardID = 1;
-        while (cardID <= 3) {
-            /* Ambil kartunya */
-            CardData cd = game.getPlayer().getDeck().getCards().get(cardID - 1).getCardData();
-            showDrawCard(cardID, cd);
-            cardID ++;
+        List<Card> cardList = game.getPlayer().getDeck().getCards();
+        if (cardList.size() == 0) {
+            if (game.getState().getPlayerTurn() == 0) {
+                /* Steve kehabisan kartu di deck */
+                showWinner("Alex");
+            } else {
+                /* Alex kehabisan kartu di deck */
+                showWinner("Steve");
+            }
+            return;
+        }
+        if (cardList.size() >= 1) {
+            CardData cd = game.getPlayer().getDeck().getCards().get(0).getCardData();
+            showDrawCard(1, cd);
+        }
+        if (cardList.size() >= 2) {
+            CardData cd = game.getPlayer().getDeck().getCards().get(1).getCardData();
+            showDrawCard(2, cd);
+        }
+        if (cardList.size() >= 3) {
+            CardData cd = game.getPlayer().getDeck().getCards().get(2).getCardData();
+            showDrawCard(3, cd);
         }
     }
 
@@ -813,6 +836,7 @@ public class Controller {
             resetHandFillColor();
             nextPhase();
             selectedBoard = -1;
+            resetBoardFills();
             disableButtons();
         } else if (state.getPhase() == TurnPhase.ATTACK) {
             selectedBoard = -1;
@@ -1967,6 +1991,9 @@ public class Controller {
                     game.getPlayer().attack(selectedBoard - 1, -1);
                     setSteveAttacked(selectedBoard);
                     updateHP();
+                    if (game.getEnemy().getHp() <= 0) {
+                        showWinner("Steve");
+                    }
                 }
                 selectedBoard = -1;
                 resetSteveBoardFill();
@@ -1981,6 +2008,9 @@ public class Controller {
                     game.getPlayer().attack(selectedBoard - 1, -1);
                     setAlexAttacked(selectedBoard);
                     updateHP();
+                    if (game.getEnemy().getHp() <= 0) {
+                        showWinner("Alex");
+                    }
                 }
                 selectedBoard = -1;
                 resetAlexBoardFill();
@@ -2041,6 +2071,20 @@ public class Controller {
         }
     }
 
+    public void hideGameEnd() {
+        gameEndImage.setVisible(false);
+        gameEndRect.setVisible(false);
+        gameEndText.setVisible(false);
+    }
+
+    public void showWinner(String name) {
+        drawOverlay.setVisible(true);
+        gameEndImage.setVisible(true);
+        gameEndRect.setVisible(true);
+        gameEndText.setVisible(true);
+        gameEndText.setText(name + " has won the game!");
+    }
+
     /* Mulai controller */
     public void initialize() {
         /* Mulai game! */
@@ -2073,5 +2117,6 @@ public class Controller {
         selectedHand = -1;
         /* Inisialisasi progress bar */
         updateHP();
+        hideGameEnd();
     }
 }
