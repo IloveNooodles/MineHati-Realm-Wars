@@ -2,6 +2,7 @@ package com.aetherwars.models.game;
 
 import com.aetherwars.enums.CharacterType;
 import com.aetherwars.enums.LVLSpell;
+import com.aetherwars.exception.BoardAlreadyFilledException;
 import com.aetherwars.models.activecard.ActiveCharacter;
 import com.aetherwars.models.card.Card;
 import com.aetherwars.models.carddata.Character;
@@ -71,42 +72,47 @@ public class PlayerTest {
 
     @Test
     public void TestPlayandAttack() {
-        Game g = Game.getInstance();
-        Player p = g.getPlayer();
-        Player enemy = g.getEnemy();
-        p.setMana(10);
-        Character zombie = new Character("zombie", "Pedang", new Type(CharacterType.OVERWORLD), "-", 5, 5, 1, 2, 3);
-        Character skeleton = new Character("skeleton", "Panah", new Type(CharacterType.OVERWORLD), "-", 6, 6, 1, 1, 1);
-        Spell PTN = new PTN("UP", "-", "-", 999, 999, 2, 1);
-        Card Skeleton = new Card(skeleton);
-        Card potion = new Card(PTN);
-        ActiveCharacter Zombie = new ActiveCharacter(zombie);
-        ActiveCharacter s = new ActiveCharacter(skeleton);
+        try {
+            Game g = Game.getInstance();
+            g.getPlayer().setMana(10);
+            System.out.println(g.toString());
+            Character zombie = new Character("zombie", "Pedang", new Type(CharacterType.OVERWORLD), "-", 5, 5, 1, 2, 3);
+            Character skeleton = new Character("skeleton", "Panah", new Type(CharacterType.OVERWORLD), "-", 6, 6, 1, 1, 1);
+            Spell PTN = new PTN("UP", "-", "-", 999, 999, 2, 1);
+            Card Skeleton = new Card(skeleton);
+            Card potion = new Card(PTN);
+            ActiveCharacter Zombie = new ActiveCharacter(zombie);
+            ActiveCharacter s = new ActiveCharacter(skeleton);
 
 
-        p.getHand().getCards().set(0, Skeleton);
-        p.getHand().getCards().set(1, potion);
-        p.toString();
+            g.getPlayer().getHand().getCards().set(0, Skeleton);
+            g.getPlayer().getHand().getCards().set(1, potion);
+            g.getPlayerBoard().remove(0);
+            g.getPlayer().toString();
 
-        p.play(0, 0);
+            g.getPlayer().play(0, 0);
 
-        assertEquals(p.getMana(), 9);
-        assertEquals(g.getPlayerBoard().get(0).getCard().getName(), "skeleton");
-        assertEquals(g.getPlayerBoard().get(0).getCard().getBaseAtk(), skeleton.getBaseAtk());
+            assertEquals(g.getPlayerBoard().get(0).getCard().getName(), "skeleton");
+            assertEquals(g.getPlayerBoard().get(0).getCard().getBaseAtk(), skeleton.getBaseAtk());
 
-        p.attack(0, -1);
-        assertEquals(enemy.getHp(), 74);
+            g.getPlayer().attack(0, -1);
+            assertEquals(g.getEnemy().getHp(), 74);
 
-        g.getEnemyBoard().getCards().set(0, Zombie);
-        g.getPlayerBoard().getCards().set(1, s);
-        p.attack(1,0);
-        assertEquals(g.getPlayerBoard().get(1).getHp() ,7.0);
-        assertEquals(g.getEnemyBoard().get(0).getHp(), 0.0);
+            g.getEnemyBoard().getCards().set(0, Zombie);
+            g.getPlayerBoard().getCards().set(1, s);
+            g.getPlayer().attack(1,0);
+            assertEquals(g.getPlayerBoard().get(1).getHp() ,7.0);
+            assertEquals(g.getEnemyBoard().get(0).getHp(), 0.0);
+            assertEquals(g.getEnemy().getHp(), 74);
 
-        p.play(0,0);
+            g.getPlayer().play(0,0);
 
-        assertEquals(p.getMana(), 7);
-        assertEquals(g.getPlayerBoard().get(0).getAtk(), 1005.0);
-        assertEquals(g.getPlayerBoard().get(0).getMaxHp() ,1005.0);
+            assertEquals(g.getPlayer().getMana(), 7);
+            assertEquals(g.getPlayerBoard().get(0).getAtk(), 1005.0);
+            assertEquals(g.getPlayerBoard().get(0).getMaxHp() ,1005.0);
+        }
+        catch (Exception e) {
+            assert false;
+        }
     }
 }
