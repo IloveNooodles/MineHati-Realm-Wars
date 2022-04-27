@@ -636,5 +636,16 @@
       <Rectangle fx:id="drawCard1" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="319.0" layoutX="122.0" layoutY="106.0" onMouseClicked="#clickDraw1" onMouseEntered="#hoverDraw1" onMouseExited="#exitDraw" stroke="BLACK" strokeType="INSIDE" width="220.0" />
       <Rectangle fx:id="drawCard2" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="319.0" layoutX="402.0" layoutY="106.0" onMouseClicked="#clickDraw2" onMouseEntered="#hoverDraw2" onMouseExited="#exitDraw" stroke="BLACK" strokeType="INSIDE" width="220.0" />
       <Rectangle fx:id="drawCard3" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="319.0" layoutX="682.0" layoutY="106.0" onMouseClicked="#clickDraw3" onMouseEntered="#hoverDraw3" onMouseExited="#exitDraw" stroke="BLACK" strokeType="INSIDE" width="220.0" />
+      <Rectangle fx:id="gameEndRect" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="319.0" layoutX="122.0" layoutY="106.0" stroke="BLACK" strokeType="INSIDE" width="779.0" />
+      <ImageView fx:id="gameEndImage" fitHeight="150.0" fitWidth="718.0" layoutX="153.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/gameFinish.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="gameEndText" alignment="CENTER" layoutX="122.0" layoutY="297.0" prefHeight="17.0" prefWidth="779.0" text="Steve has won the game!">
+         <font>
+            <Font name="Arial" size="32.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
