@@ -272,9 +272,35 @@ public class CardContainerTest {
             hand.activate(0, 0);
             assertEquals(board.get(0).getAtk(), 1004.0);
             assertEquals(board.get(0).getMaxHp(), 1004.0);
+            hand.add(Pigment);
+            hand.activate(0,0);
         }
         catch (Exception e) {
-            assert false;
+            if (e.getMessage().equals("Cannot replace existing card")) {
+                assert true;
+            }
+            else {
+                assert false;
+            }
+        }
+    }
+
+    @Test
+    public void TestActivatetoEmpty() {
+        try {
+            Spell PTN = new PTN("UP", "-", "-", 999, 999, 0, 1);
+            Card potion = new Card(PTN);
+            Hand hand = new Hand();
+            hand.add(potion);
+            hand.activate(0, 1);
+        }
+        catch (Exception e) {
+            if (e.getMessage().equals("Slot is empty!")) {
+                assert true;
+            }
+            else {
+                assert false;
+            }
         }
     }
 }
