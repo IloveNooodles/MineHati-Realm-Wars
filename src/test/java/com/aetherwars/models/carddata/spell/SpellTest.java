@@ -97,4 +97,33 @@ public class SpellTest {
 
         assertFalse(empty == enderman);
     }
+
+    @Test
+    public void PTNTest() {
+        ActiveCharacter enderman = new ActiveCharacter(new Character("endermen", "tinggi", new Type(CharacterType.END), "-", 8, 20, 5, 5, 5));
+        PTN statUp = new PTN("statUp", "stonks", "-", 10, 10, 1, 2);
+        PTN statDown = new PTN("statDown", "not stonks", "-", -20, -20, 1, 3);
+
+        assertTrue(statUp.getAtkBonus() == 10);
+        assertFalse(statDown.getHpBonus() == 20);
+        assertFalse(statUp.getDuration() == 3);
+        assertFalse(statDown.getDuration() == 2);
+
+        assertEquals(enderman.getName(), "endermen");
+        assertEquals(enderman.getDescription(), "tinggi");
+        assertEquals(enderman.getHp(), 20.0);
+        assertEquals(enderman.getAtk(), 8.0);
+        assertEquals(enderman.getMaxHp(), 20.0);
+        assertEquals(enderman.getCard().getType().getCharacterType(), CharacterType.END);
+
+        statUp.activateEffect(enderman);
+        assertEquals(enderman.getAtk(), 18.0);
+        assertFalse(enderman.getHp() == 30.0);
+        assertTrue(enderman.getMaxHp() == 30.0);
+
+        statDown.activateEffect(enderman);
+        statDown.activateEffect(enderman);
+        assertEquals(enderman.getHp(), 0.0);
+        assertEquals(enderman.getAtk(), 0.0);
+    }
 }

@@ -206,8 +206,15 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     }
 
     public void increaseStats(double atk, double hp) {
+        if (this.getHp() + hp <= 0) {
+            this.die();
+            return;
+        }
+
         this.atk += atk;
         this.maxHp += hp;
+
+        if (this.atk <= 0) this.atk = 0;
     }
 
     // ini bisa null pointer exception gara2 type nya ntar kosong
