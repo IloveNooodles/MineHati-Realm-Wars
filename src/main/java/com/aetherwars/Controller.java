@@ -538,7 +538,7 @@ public class Controller {
         } else if (bonus < 0) {
             return String.valueOf(bonus);
         } else {
-            return "";
+            return "0";
         }
     }
 

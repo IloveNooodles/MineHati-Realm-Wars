@@ -16,6 +16,7 @@ public class AetherWars extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/com/aetherwars/fxml/gui.fxml"));
         stage.setTitle("Minecraft: Aether Wars");
         stage.setScene(new Scene(root));
+        stage.setResizable(false);
         stage.show();
     }
 
