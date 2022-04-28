@@ -700,7 +700,7 @@ public class Controller {
             } else if (s instanceof SWAP) {
                 SWAP sw = (SWAP) s;
                 hoverAttack.setText("Type: Swap");
-                hoverHealth.setVisible(false);
+                hoverHealth.setText("Duration: " + s.getDuration());
                 hoverLevel.setVisible(false);
                 hoverExp.setVisible(false);
                 hoverType.setVisible(false);
@@ -1467,6 +1467,9 @@ public class Controller {
                     Card selectedCard = getCardFromSelectedHand();
                     CardData cd = selectedCard.getCardData();
                     int manaCost = cd.getManaCost();
+                    if (cd instanceof LVL) {
+                        manaCost = (int) Math.ceil((double) getSteveCardFromBoard(0).getLevel() / 2);
+                    }
                     /* Pastikan player sekarang punya mana yang cukup ... */
                     if (game.getPlayer().getMana() >= manaCost) {
                         if (cd instanceof Spell) {
@@ -1553,6 +1556,9 @@ public class Controller {
                     Card selectedCard = getCardFromSelectedHand();
                     CardData cd = selectedCard.getCardData();
                     int manaCost = cd.getManaCost();
+                    if (cd instanceof LVL) {
+                        manaCost = (int) Math.ceil((double) getSteveCardFromBoard(1).getLevel() / 2);
+                    }
                     /* Pastikan player sekarang punya mana yang cukup ... */
                     if (game.getPlayer().getMana() >= manaCost) {
                         if (cd instanceof Spell) {
@@ -1639,6 +1645,9 @@ public class Controller {
                     Card selectedCard = getCardFromSelectedHand();
                     CardData cd = selectedCard.getCardData();
                     int manaCost = cd.getManaCost();
+                    if (cd instanceof LVL) {
+                        manaCost = (int) Math.ceil((double) getSteveCardFromBoard(2).getLevel() / 2);
+                    }
                     /* Pastikan player sekarang punya mana yang cukup ... */
                     if (game.getPlayer().getMana() >= manaCost) {
                         if (cd instanceof Spell) {
@@ -1725,6 +1734,9 @@ public class Controller {
                     Card selectedCard = getCardFromSelectedHand();
                     CardData cd = selectedCard.getCardData();
                     int manaCost = cd.getManaCost();
+                    if (cd instanceof LVL) {
+                        manaCost = (int) Math.ceil((double) getSteveCardFromBoard(3).getLevel() / 2);
+                    }
                     /* Pastikan player sekarang punya mana yang cukup ... */
                     if (game.getPlayer().getMana() >= manaCost) {
                         if (cd instanceof Spell) {
@@ -1811,6 +1823,9 @@ public class Controller {
                     Card selectedCard = getCardFromSelectedHand();
                     CardData cd = selectedCard.getCardData();
                     int manaCost = cd.getManaCost();
+                    if (cd instanceof LVL) {
+                        manaCost = (int) Math.ceil((double) getSteveCardFromBoard(4).getLevel() / 2);
+                    }
                     /* Pastikan player sekarang punya mana yang cukup ... */
                     if (game.getPlayer().getMana() >= manaCost) {
                         if (cd instanceof Spell) {
@@ -1897,6 +1912,9 @@ public class Controller {
                     Card selectedCard = getCardFromSelectedHand();
                     CardData cd = selectedCard.getCardData();
                     int manaCost = cd.getManaCost();
+                    if (cd instanceof LVL) {
+                        manaCost = (int) Math.ceil((double) getAlexCardFromBoard(0).getLevel() / 2);
+                    }
                     /* Pastikan player sekarang punya mana yang cukup ... */
                     if (game.getPlayer().getMana() >= manaCost) {
                         if (cd instanceof Spell) {
@@ -1983,6 +2001,9 @@ public class Controller {
                     Card selectedCard = getCardFromSelectedHand();
                     CardData cd = selectedCard.getCardData();
                     int manaCost = cd.getManaCost();
+                    if (cd instanceof LVL) {
+                        manaCost = (int) Math.ceil((double) getAlexCardFromBoard(1).getLevel() / 2);
+                    }
                     /* Pastikan player sekarang punya mana yang cukup ... */
                     if (game.getPlayer().getMana() >= manaCost) {
                         if (cd instanceof Spell) {
@@ -2069,6 +2090,9 @@ public class Controller {
                     Card selectedCard = getCardFromSelectedHand();
                     CardData cd = selectedCard.getCardData();
                     int manaCost = cd.getManaCost();
+                    if (cd instanceof LVL) {
+                        manaCost = (int) Math.ceil((double) getAlexCardFromBoard(2).getLevel() / 2);
+                    }
                     /* Pastikan player sekarang punya mana yang cukup ... */
                     if (game.getPlayer().getMana() >= manaCost) {
                         if (cd instanceof Spell) {
@@ -2155,6 +2179,9 @@ public class Controller {
                     Card selectedCard = getCardFromSelectedHand();
                     CardData cd = selectedCard.getCardData();
                     int manaCost = cd.getManaCost();
+                    if (cd instanceof LVL) {
+                        manaCost = (int) Math.ceil((double) getAlexCardFromBoard(3).getLevel() / 2);
+                    }
                     /* Pastikan player sekarang punya mana yang cukup ... */
                     if (game.getPlayer().getMana() >= manaCost) {
                         if (cd instanceof Spell) {
@@ -2241,6 +2268,9 @@ public class Controller {
                     Card selectedCard = getCardFromSelectedHand();
                     CardData cd = selectedCard.getCardData();
                     int manaCost = cd.getManaCost();
+                    if (cd instanceof LVL) {
+                        manaCost = (int) Math.ceil((double) getAlexCardFromBoard(4).getLevel() / 2);
+                    }
                     /* Pastikan player sekarang punya mana yang cukup ... */
                     if (game.getPlayer().getMana() >= manaCost) {
                         if (cd instanceof Spell) {
