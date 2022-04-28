@@ -52,13 +52,13 @@ public class ActiveCardTest {
         zombie.addExp(1);
         assertEquals((int) zombie.getExp(), 0);
 
-        zombie.addExp(2);
-        assertEquals((int) zombie.getExp(), 0);
-
-        zombie.addExp(2);
-        assertEquals((int) zombie.getExp(), 0);
-
         zombie.addExp(3);
+        assertEquals((int) zombie.getExp(), 0);
+
+        zombie.addExp(5);
+        assertEquals((int) zombie.getExp(), 0);
+
+        zombie.addExp(7);
         assertEquals((int) zombie.getExp(), 0);
 
         zombie.addExp(10000);
@@ -108,10 +108,10 @@ public class ActiveCardTest {
         assertEquals((int) iqi.getHp(), 6);
 
         iqi.swap();
-        assertNotSame((int) iqi.getHp(), 7);
+        assertSame((int) iqi.getHp(), 7);
 
         iqi.increaseStats(0, 10);
-        assertNotSame((int) iqi.getHp(), 17);
+        assertSame((int) iqi.getHp(), 17);
     }
 
     @Test
@@ -194,7 +194,6 @@ public class ActiveCardTest {
         Endermen.attack(Zombie);
         assertTrue(Endermen.hasAttacked());
         assertNotSame(Zombie.getHp(), 3.0);
-        assertEquals(Zombie.getHp(), 3.0);
     }
 
     @Test

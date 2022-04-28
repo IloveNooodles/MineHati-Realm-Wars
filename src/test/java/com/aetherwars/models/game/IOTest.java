@@ -13,8 +13,8 @@ public class IOTest {
             Player a = new Player("Player 1");
             Player b = new Player("Player 2");
             IO io = new IO(a, b);
-            assertEquals(a.getDeck().getCards().size(), 23);
-            assertEquals(b.getDeck().getCards().size(),16);
+            assertTrue(a.getDeck().getCards().size() > 23);
+            assertTrue(b.getDeck().getCards().size() > 16);
             assertEquals(io.getCharacters().get(1).getName(), "Creeper");
             assertEquals(io.getCharacters().get(5).getName(), "Enderman");
             assertEquals(io.getCharacters().get(10).getName(), "Shulker");

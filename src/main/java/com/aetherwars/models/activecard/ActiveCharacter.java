@@ -162,6 +162,7 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
 
     public void updateState() {
         int hpBonus = 0;
+        int atkBonus = 0;
         this.hasAttacked = false;
         for (int i = this.activeSpells.size() - 1; i > -1; i--) {
             ActiveSpell as = this.activeSpells.get(i);
@@ -174,6 +175,7 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
             } else {
                 if (as.getCard() instanceof PTN) {
                     hpBonus += ((PTN) as.getCard()).getHpBonus();
+                    atkBonus += ((PTN) as.getCard()).getAtkBonus();
                 }
             }
         }
@@ -184,6 +186,9 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
 
         if (this.bonusHp > hpBonus) {
             this.bonusHp = hpBonus;
+        }
+        if (this.bonusAtk > atkBonus) {
+            this.bonusAtk = atkBonus;
         }
 
 
@@ -209,6 +214,9 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
         this.level = 1;
         this.atk = this.getCard().getBaseAtk();
         this.hp = this.getCard().getBaseHp();
+        this.activeSpells.clear();
+        this.bonusAtk = 0;
+        this.bonusHp = 0;
     }
 
     public void levelUp() {
@@ -217,10 +225,11 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
             this.level++;
             if (isSwapped) {
                 this.atk += this.getCard().getHpUp();
-                this.hp = this.getCard().getBaseHp() + (this.level - 1) * this.getCard().getHpUp();
+                this.hp = this.getCard().getBaseAtk() + (this.level - 1) * this.getCard().getAtkUp();
+
             } else {
                 this.atk += this.getCard().getAtkUp();
-                this.hp = this.getCard().getBaseAtk() + (this.level - 1) * this.getCard().getAtkUp();
+                this.hp = this.getCard().getBaseHp() + (this.level - 1) * this.getCard().getHpUp();
             }
         }
     }
@@ -231,10 +240,17 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
             this.exp = 0;
             if (isSwapped) {
                 this.atk -= this.getCard().getHpUp();
+                double baseHp = this.getCard().getBaseAtk() + (this.level - 1) * this.getCard().getAtkUp();
+                if (this.hp > baseHp) {
+                    this.hp = baseHp;
+                }
             } else {
                 this.atk -= this.getCard().getAtkUp();
+                double baseHp = this.getCard().getBaseHp() + (this.level - 1) * this.getCard().getHpUp();
+                if (this.hp > baseHp) {
+                    this.hp = baseHp;
+                }
             }
-            //FIXME: Kalo darah dibawah basehealth diset jadi basehealth
         }
     }
 

@@ -39,7 +39,6 @@ public class GameTest {
             g.manaToExp(8, 0);
             assertEquals(g.getBoards()[g.getState().getPlayerTurn()].get(0).getExp(), (Integer) 4);
             assertEquals(g.getBoards()[g.getState().getPlayerTurn()].get(0).getLevel(), (Integer) 3);
-            assertFalse(g.getCards().equals(g.toString()));
             assertEquals(g.endGame(), -1);
 
             Spell PTN = new PTN("UP", "-", "-", 999, 999, 2, 1);
@@ -68,8 +67,7 @@ public class GameTest {
 //            g.nextPhase();
 //            assertEquals(g.getState().getTurn(), 2);
 //            assertFalse(g.toString().equals("Turn: 2 Player Turn: 0 Phase: DRAW"));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             assert false;
         }
 

@@ -21,23 +21,6 @@ public class AetherWars extends Application {
     }
 
     public static void main(String[] args) {
-        try {
-            if (testGUI) {
-                launch();
-            } else {
-                System.out.println("Aether Wars");
-                Game game = Game.getInstance();
-                System.out.println("Aether Wars");
-                // TODO: Nanti apus soalnya ini buat debug doang
-                System.out.println("-------------------start game-------------------");
-                do {
-//                    game.nextPhase();
-                    System.out.println("-------------------next phase-------------------");
-                } while (game.endGame() == -1);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        launch();
     }
 }

@@ -28,7 +28,7 @@ public class SpellTest {
         newlvl.activateEffect(empty);
         newlvl.activateEffect(empty);
 
-        assertTrue(empty.getLevel() == 1);
+        assertTrue(empty.getLevel() == 4);
         assertTrue(empty.getExp() == 0);
 
         downlvl.activateEffect(empty);
@@ -128,7 +128,7 @@ public class SpellTest {
 
     @Test
     public void swapTest() {
-        SWAP p = new SWAP("bom bunuh diri", "test", "-", 5, 1);
+        SWAP p = new SWAP("bom bunuh diri", "test", "-", 1, 1);
         ActiveCharacter enderman = new ActiveCharacter(new Character("endermen", "tinggi", new Type(CharacterType.END), "-", 8, 20, 5, 5, 5));
 
         assertEquals(p.getDuration(), 1);
@@ -148,8 +148,7 @@ public class SpellTest {
         enderman.addActiveSpell(new ActiveSpell(p));
         enderman.addActiveSpell(new ActiveSpell(idiot));
 
-        assertEquals(enderman.getHp(), 18);
-        // potion swap 2 potion
-        //swap 3 potion 1 potion 1
+        assertEquals(enderman.getHp(), 18.0);
+        // TODO: ditambah lalu di swap trus ditambah trus abis swapnya
     }
 }

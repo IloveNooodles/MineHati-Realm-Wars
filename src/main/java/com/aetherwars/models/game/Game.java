@@ -6,7 +6,6 @@ import com.aetherwars.models.cardcontainer.Board;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.Scanner;
 
 public class Game {
     public static final int MAX_CARDS_ON_BOARD = 5;
@@ -15,10 +14,7 @@ public class Game {
     private final Board[] player_boards;
     private final Player[] players;
     private final GameState state;
-    private final IO io;
 
-    // TODO: Hapus klo gamake cli
-    private final Scanner sc;
 
     public Game(String player1, String player2) throws Exception {
         player_boards = new Board[2];
@@ -28,7 +24,7 @@ public class Game {
         player_boards[0] = new Board();
         player_boards[1] = new Board();
         state = new GameState();
-        io = new IO(players[0], players[1]);
+        new IO(players[0], players[1]);
 
         for (Player player : players) {
             player.draw(0);
@@ -36,8 +32,6 @@ public class Game {
             player.draw(0);
         }
 
-        // TODO: Hapus klo gamake cli
-        sc = new Scanner(System.in);
     }
 
     public static Game getInstance() {
