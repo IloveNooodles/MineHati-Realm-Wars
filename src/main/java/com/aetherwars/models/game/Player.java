@@ -4,13 +4,14 @@ import com.aetherwars.interfaces.Attackable;
 import com.aetherwars.models.activecard.ActiveCharacter;
 import com.aetherwars.models.cardcontainer.Deck;
 import com.aetherwars.models.cardcontainer.Hand;
+import com.aetherwars.models.carddata.spell.LVL;
 
 public class Player implements Attackable {
     private final String name;
     private int hp;
     private int mana;
-    private Deck deck;
-    private Hand hand;
+    private final Deck deck;
+    private final Hand hand;
 
     public Player(String name) {
         this.name = name;
@@ -54,9 +55,14 @@ public class Player implements Attackable {
 
     public void play(int hand_idx, int board_idx) {
         System.out.println("Hand Size: " + hand.getCards().size());
+        int cost = hand.get(hand_idx).getCardData().getManaCost();
+        Game game = Game.getInstance();
+        if (hand.get(hand_idx).getCardData() instanceof LVL) {
+            cost = (int) Math.ceil(game.getPlayerBoard().get(board_idx).getLevel() / 2);
+        }
         if (hand.get(hand_idx).getCardData().getManaCost() <= mana) {
             try {
-                int cost = hand.get(hand_idx).getCardData().getManaCost();
+
                 hand.activate(hand_idx, board_idx);
                 mana -= cost;
             } catch (Exception e) {

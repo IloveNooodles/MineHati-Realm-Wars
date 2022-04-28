@@ -139,4 +139,20 @@ public class SpellTest {
         assertEquals(enderman.getAtk(), 20.0);
         enderman.toString();
     }
+
+    @Test
+    public void ptnspellTest() {
+        ActiveCharacter enderman = new ActiveCharacter(new Character("endermen", "tinggi", new Type(CharacterType.END), "-", 8, 20, 5, 5, 5));
+
+        PTN swapaneh = new PTN("aneh", "sakit keapla", "-", 1, 1, 11, 1);
+        SWAP p = new SWAP("bom bunuh diri", "test", "-", 2, 1);
+        PTN idiot = new PTN("statUp", "stonks", "-", 5, 10, 1, 2);
+
+        enderman.addActiveSpell(new ActiveSpell(p));
+        enderman.addActiveSpell(new ActiveSpell(idiot));
+
+        assertEquals(enderman.getHp(), 0.0);
+        // potion swap 2 potion
+        //swap 3 potion 1 potion 1
+    }
 }
