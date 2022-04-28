@@ -71,7 +71,7 @@ public class IO {
             if (kind.equals("lvl")) {
                 LVL lvl = new LVL("LVLUP", "Stonks!", "card/image/spell/lvl/lvlup.jpg", LVLSpell.LVLUP);
                 this.Spells.put(401, lvl);
-                LVL lvl2 = new LVL("LVLDOWN", "Not stonks!", "card/image/spell/lvl/lvldown.jpg", LVLSpell.LVLDOWN);
+                LVL lvl2 = new LVL("LVLDOWN", "Not stonks!", "card/image/spell/lvl/lvldown.png", LVLSpell.LVLDOWN);
                 this.Spells.put(402, lvl2);
                 continue;
             }
@@ -136,6 +136,9 @@ public class IO {
                 totalCharacter++;
             }
         }
+        if (totalSpell + totalCharacter > 45) {
+            return;
+        }
         int remaining = 45 - totalSpell - totalCharacter;
         int remainingCharacter = 20 - totalCharacter;
         if (remainingCharacter < 0) {
@@ -165,7 +168,6 @@ public class IO {
                 player.getDeck().add(this.Spells.get(100*type_spell + new_spell).createCard());
             }
         }
-        player.getDeck().toString();
         player.getDeck().shuffle();
     }
 }
