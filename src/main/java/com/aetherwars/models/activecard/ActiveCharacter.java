@@ -257,14 +257,11 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     // ini bisa null pointer exception gara2 type nya ntar kosong
     public void attack(Attackable target) {
         if (this.getCard().getType() == null) {
-            System.out.println("Karakter sudah mati");
             return;
         }
-        if (!hasAttacked) { // TODO : kalau udah ada ui, bisa diganti dengan disable button
+        if (!hasAttacked) {
             target.attacked(this);
             this.hasAttacked = true;
-        } else {
-            System.out.println("sudah menyerang");
         }
     }
 

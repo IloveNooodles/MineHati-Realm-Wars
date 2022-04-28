@@ -88,97 +88,10 @@ public class Game {
         return -1;
     }
 
-    public void nextPhase() throws Exception {
-        int inp1;
-        int inp2;
-        switch (state.getPhase()) {
-            case DRAW:
-                System.out.println(this);
-                System.out.println(getPlayer().getDeck().getCards().get(0).getName());
-                System.out.println(getPlayer().getDeck().getCards().get(1).getName());
-                System.out.println(getPlayer().getDeck().getCards().get(2).getName());
-                System.out.print("choose card: ");
-                inp1 = sc.nextInt();
-                while (inp1 < 0 || inp1 > 2) {
-                    System.out.print("choose card: ");
-                    inp1 = sc.nextInt();
-                }
-                getPlayer().draw(inp1);
-                System.out.println(sc.nextLine());
-                break;
-            case PLAN:
-                System.out.println(this);
-                System.out.print("hand index: ");
-                inp1 = sc.nextInt();
-                System.out.print("board index: ");
-                inp2 = sc.nextInt();
-                while (inp1 >= 0) {
-                    getPlayer().play(inp1, inp2);
-                    System.out.println(this);
-                    System.out.print("hand index: ");
-                    inp1 = sc.nextInt();
-                    System.out.print("board index: ");
-                    inp2 = sc.nextInt();
-                }
-
-                // TODO : kalau ada gui, ini hapus, biar langsung panggil fungsi dari button
-                // saja
-                System.out.println(this);
-                System.out.print("mana to convert to exp: ");
-                inp1 = sc.nextInt();
-                System.out.print("board index: ");
-                inp2 = sc.nextInt();
-                while (inp1 > 0) {
-                    try {
-                        manaToExp(inp1, inp2);
-                    } catch (EmptySlotException e) {
-                        System.out.println("Empty slot");
-                    } catch (Exception e) {
-                        System.out.println("Not enough mana");
-                    }
-                    System.out.println(this);
-                    System.out.print("mana to convert to exp: ");
-                    inp1 = sc.nextInt();
-                    System.out.print("board index: ");
-                    inp2 = sc.nextInt();
-                }
-                break;
-            case ATTACK:
-                System.out.println(this);
-                if (!this.getPlayerBoard().isEmpty()) {
-                    System.out.print("from: ");
-                    inp1 = sc.nextInt();
-                    System.out.print("to: ");
-                    inp2 = sc.nextInt();
-                    while (inp1 >= 0) {
-                        getPlayer().attack(inp1, inp2);
-                        System.out.println(this);
-                        System.out.print("from: ");
-                        inp1 = sc.nextInt();
-                        System.out.print("to: ");
-                        inp2 = sc.nextInt();
-                    }
-                }
-                break;
-            case END:
-                System.out.println(this);
-                System.out.print("ok? ");
-                sc.nextLine();
-                nextTurn();
-                System.out.println("===================next turn===================");
-                break;
-        }
-        state.nextPhase();
-    }
 
     public void nextTurn() {
-        for (Player player : players) {
-            player.setMana(Math.min(state.getTurn(), 10));
-        }
-
-        for (Board board : player_boards) {
-            board.updateState();
-        }
+        getPlayer().setMana(Math.min(state.getTurn(), 10));
+        getPlayerBoard().updateState();
     }
 
     public void manaToExp(int mana, int target) throws Exception { // TODO : bikin exception buat
