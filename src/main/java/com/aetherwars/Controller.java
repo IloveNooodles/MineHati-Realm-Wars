@@ -846,10 +846,7 @@ public class Controller {
             nextPhase();
         } else if (state.getPhase() == TurnPhase.END) {
             nextPhase();
-            if (game.getState().getPlayerTurn() == 0) {
-                /* Tambah mana dan update status board */
-                game.nextTurn();
-            }
+            game.nextTurn();
             updateTurn();
             renderHand(game.getPlayer().getHand());
             renderBoards();

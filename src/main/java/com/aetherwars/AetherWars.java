@@ -31,7 +31,7 @@ public class AetherWars extends Application {
                 // TODO: Nanti apus soalnya ini buat debug doang
                 System.out.println("-------------------start game-------------------");
                 do {
-                    game.nextPhase();
+//                    game.nextPhase();
                     System.out.println("-------------------next phase-------------------");
                 } while (game.endGame() == -1);
             }
