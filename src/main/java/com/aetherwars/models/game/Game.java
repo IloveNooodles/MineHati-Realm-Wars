@@ -1,11 +1,8 @@
 package com.aetherwars.models.game;
 
 import com.aetherwars.enums.TurnPhase;
-import com.aetherwars.exception.EmptyDeckException;
 import com.aetherwars.exception.EmptySlotException;
-import com.aetherwars.models.card.Card;
 import com.aetherwars.models.cardcontainer.Board;
-import com.aetherwars.models.carddata.Character;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -15,15 +12,15 @@ public class Game {
     public static final int MAX_CARDS_ON_BOARD = 5;
 
     public static Game current_game = null;
-    private Board[] player_boards;
-    private Player[] players;
-    private GameState state;
-    private IO io;
+    private final Board[] player_boards;
+    private final Player[] players;
+    private final GameState state;
+    private final IO io;
 
     // TODO: Hapus klo gamake cli
-    private Scanner sc;
+    private final Scanner sc;
 
-    public Game(String player1, String player2) throws IOException, URISyntaxException, Exception {
+    public Game(String player1, String player2) throws Exception {
         player_boards = new Board[2];
         players = new Player[2];
         players[0] = new Player(player1);
@@ -55,21 +52,6 @@ public class Game {
         return current_game;
     }
 
-    // TODO: Nanti apus soalnya ini buat debug doang
-    public String getCards() {
-        String res = "";
-        for (Card card : players[0].getDeck().getCards()) {
-            res += card.toString() + "\n";
-        }
-
-        for (Card card : players[1].getDeck().getCards()) {
-            res += card.toString() + "\n";
-        }
-
-        res += "player 1 decklength: " + players[0].getDeck().getCards().size() + "\n";
-        res += "player 2 decklength: " + players[1].getDeck().getCards().size() + "\n";
-        return res;
-    }
 
     public GameState getState() {
         return state;
@@ -98,11 +80,9 @@ public class Game {
     public int endGame() {
         if (getEnemy().getHp() <= 0) {
             return state.getPlayerTurn();
-        }
-        else if (getPlayer().getHp() <= 0) {
+        } else if (getPlayer().getHp() <= 0) {
             return (state.getPlayerTurn() + 1) % 2;
-        }
-        else if (state.getPhase() == TurnPhase.DRAW && getPlayer().getDeck().getCards().size() == 0) {
+        } else if (state.getPhase() == TurnPhase.DRAW && getPlayer().getDeck().getCards().size() == 0) {
             return (state.getPlayerTurn() + 1) % 2;
         }
         return -1;
@@ -201,8 +181,8 @@ public class Game {
         }
     }
 
-    public void manaToExp(int mana, int target) throws EmptySlotException, Exception { // TODO : bikin exception buat
-                                                                                       // ini
+    public void manaToExp(int mana, int target) throws Exception { // TODO : bikin exception buat
+        // ini
         int playerMana = getPlayer().getMana();
         if (getPlayerBoard().get(target).getName().equals("")) {
             throw new EmptySlotException();

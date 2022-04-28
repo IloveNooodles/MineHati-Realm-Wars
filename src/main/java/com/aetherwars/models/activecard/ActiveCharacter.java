@@ -146,19 +146,17 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
                         activeSpell.decrementActiveDuration();
                         activeSpells.add(activeSpell);
                     }
-                    return;
+                } else {
+                    activeSpell.getCard().activateEffect(this);
+                    activeSpell.decrementActiveDuration();
+                    activeSpells.add(activeSpell);
                 }
 
-                activeSpell.getCard().activateEffect(this);
-
-                if (this.getHp() <= 0) {
-                    this.die();
-                    return;
-                }
-
-                activeSpell.decrementActiveDuration();
-                activeSpells.add(activeSpell);
                 break;
+        }
+        if (this.getHp() <= 0) {
+            this.die();
+            return;
         }
     }
 
@@ -179,10 +177,15 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
                 }
             }
         }
+        //
+        // 5 4 (2+3) 0
+        // 4 5 0 (2+3)
+        // 4 5 0 3
 
         if (this.bonusHp > hpBonus) {
             this.bonusHp = hpBonus;
         }
+
 
         if (this.getHp() <= 0) {
             this.die();
@@ -190,6 +193,7 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     }
 
     private void die() {
+        // Masukin animasi mati :D
         this.morph(new Character());
     }
 
@@ -216,7 +220,7 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
                 this.hp = this.getCard().getBaseHp() + (this.level - 1) * this.getCard().getHpUp();
             } else {
                 this.atk += this.getCard().getAtkUp();
-                this.hp = this.getCard().getBaseHp() + (this.level - 1) * this.getCard().getHpUp();
+                this.hp = this.getCard().getBaseAtk() + (this.level - 1) * this.getCard().getAtkUp();
             }
         }
     }
@@ -225,8 +229,12 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
         if (this.level > 1) {
             this.level--;
             this.exp = 0;
-            this.atk -= this.getCard().getAtkUp();
-            this.hp = this.getCard().getBaseHp() + (this.level - 1) * this.getCard().getHpUp();
+            if (isSwapped) {
+                this.atk -= this.getCard().getHpUp();
+            } else {
+                this.atk -= this.getCard().getAtkUp();
+            }
+            //FIXME: Kalo darah dibawah basehealth diset jadi basehealth
         }
     }
 
