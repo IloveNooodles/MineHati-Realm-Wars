@@ -3,6 +3,7 @@ package com.aetherwars.models.carddata.spell;
 import com.aetherwars.enums.CharacterType;
 import com.aetherwars.enums.LVLSpell;
 import com.aetherwars.models.activecard.ActiveCharacter;
+import com.aetherwars.models.activecard.ActiveSpell;
 import com.aetherwars.models.carddata.Character;
 import com.aetherwars.models.extras.Type;
 import org.junit.Test;
@@ -116,13 +117,13 @@ public class SpellTest {
         assertEquals(enderman.getMaxHp(), 20.0);
         assertEquals(enderman.getCard().getType().getCharacterType(), CharacterType.END);
 
-        statUp.activateEffect(enderman);
+        enderman.addActiveSpell(new ActiveSpell(statUp));
         assertEquals(enderman.getAtk(), 18.0);
-        assertFalse(enderman.getHp() == 30.0);
-        assertTrue(enderman.getMaxHp() == 30.0);
+        assertEquals(enderman.getHp(), 30.0);
+        assertEquals(enderman.getMaxHp(), 20.0);
 
-        statDown.activateEffect(enderman);
-        statDown.activateEffect(enderman);
+        enderman.addActiveSpell(new ActiveSpell(statDown));
+        enderman.addActiveSpell(new ActiveSpell(statDown));
         assertEquals(enderman.getHp(), 0.0);
         assertEquals(enderman.getAtk(), 0.0);
     }

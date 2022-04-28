@@ -239,36 +239,36 @@ public class ActiveCardTest {
         assertEquals((int) Zombie.getLevel(), 2);
 
         //PTN
-
-        //HARUSNYA ERROR??
-//        ActiveSpell ptn = new ActiveSpell(new PTN("idiotic", "-", "-", -999, -999, -999, -999));
         ActiveSpell ptnATK = new ActiveSpell(new PTN("atkUP", "-", "-", 999, 0, 0, 1));
-        ActiveSpell ptnHEALTH = new ActiveSpell(new PTN("healthUP", "-", "-", 0, 999, 0, 3));
+        ActiveSpell ptnHEALTH = new ActiveSpell(new PTN("healthUP", "-", "-", 0, -999, 0, 3));
         Zombie.addActiveSpell(ptnATK);
         Zombie.addActiveSpell(ptnHEALTH);
-        assertEquals(Zombie.getAtk(), 1006.0);
-        assertEquals(Zombie.getMaxHp(), 1007.0);
+
+        assertEquals(Zombie.getHp(), 0.0);
+        assertEquals(Zombie.getAtk(), 0.0);
+
+        assertEquals(Zombie.getMaxHp(), 0.0);
 
         Zombie.updateState();
 
         assertNotSame(Zombie.getAtk(), 1006.0);
-        assertEquals(Zombie.getAtk(), 7.0);
+        assertEquals(Zombie.getAtk(), 0.0);
 
         Zombie.updateState();
         Zombie.updateState();
-        assertNotSame(Zombie.getMaxHp(), 1007.0);
-        assertEquals(Zombie.getMaxHp(), 8.0);
+        assertNotSame(Zombie.getMaxHp(), 0.0);
+        assertEquals(Zombie.getMaxHp(), 0.0);
 
         //SWAP
         ActiveSpell swap = new ActiveSpell(new SWAP("AMOGUS", "-", "-", 1, 2));
         Zombie.addActiveSpell(swap);
-        assertEquals(Zombie.getMaxHp(), 7.0);
-        assertEquals(Zombie.getAtk(), 8.0);
+        assertEquals(Zombie.getMaxHp(), 0.0);
+        assertEquals(Zombie.getAtk(), 0.0);
 
         Zombie.updateState();
 
-        assertEquals(Zombie.getMaxHp(), 8.0);
-        assertEquals(Zombie.getAtk(), 7.0);
+        assertEquals(Zombie.getMaxHp(), 0.0);
+        assertEquals(Zombie.getAtk(), 0.0);
 
 
         //MORPH

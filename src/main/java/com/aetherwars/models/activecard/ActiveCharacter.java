@@ -120,7 +120,14 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     }
 
     public double getHp() {
-        return hp;
+        double hpBonus = 0;
+        for (ActiveSpell activeSpell : this.activeSpells) {
+            if (activeSpell.getCard() instanceof PTN) {
+                hpBonus += ((PTN) activeSpell.getCard()).getHpBonus();
+            }
+        }
+
+        return hp + hpBonus >= 0 ? hp + hpBonus : 0;
     }
 
     public double getMaxHp() {
@@ -142,6 +149,12 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
                 break;
             case TEMPORARY:
                 activeSpell.getCard().activateEffect(this);
+                if (activeSpell.getCard() instanceof PTN) {
+                    if (this.getHp() + ((PTN) activeSpell.getCard()).getHpBonus() <= 0) {
+                        this.die();
+                        return;
+                    }
+                }
                 activeSpell.decrementActiveDuration();
                 activeSpells.add(activeSpell);
                 break;
@@ -155,7 +168,6 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
 
         for (int i = this.activeSpells.size() - 1; i > -1; i--) {
             if (this.activeSpells.get(i).getActiveDuration() <= 0) {
-                
                 this.activeSpells.remove(i);
             } else {
                 this.activeSpells.get(i).activateEffect(this);
@@ -170,7 +182,7 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
             this.hp = this.maxHp;
         }
 
-        if (this.hp <= 0) {
+        if (this.getHp() <= 0) {
             this.die();
         }
     }
