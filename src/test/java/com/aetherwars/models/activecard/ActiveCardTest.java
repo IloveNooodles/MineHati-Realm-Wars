@@ -106,16 +106,12 @@ public class ActiveCardTest {
 
         iqi.levelDown();
         assertEquals((int) iqi.getHp(), 6);
-        assertEquals((int) iqi.getMaxHp(), 6);
 
         iqi.swap();
-        assertNotSame((int) iqi.getMaxHp(), 6);
         assertNotSame((int) iqi.getHp(), 7);
-        assertEquals((int) iqi.getMaxHp(), 7);
 
         iqi.increaseStats(0, 10);
         assertNotSame((int) iqi.getHp(), 17);
-        assertEquals((int) iqi.getMaxHp(), 17);
     }
 
     @Test
@@ -219,7 +215,6 @@ public class ActiveCardTest {
         assertNotSame(Zombie.getHp(), 5.0);
         assertEquals(Zombie.getHp(), 20.0);
 
-        assertEquals(Zombie.getMaxHp(), 20.0);
     }
 
     @Test
@@ -247,7 +242,6 @@ public class ActiveCardTest {
         assertEquals(Zombie.getHp(), 0.0);
         assertEquals(Zombie.getAtk(), 0.0);
 
-        assertEquals(Zombie.getMaxHp(), 0.0);
 
         Zombie.updateState();
 
@@ -256,18 +250,14 @@ public class ActiveCardTest {
 
         Zombie.updateState();
         Zombie.updateState();
-        assertNotSame(Zombie.getMaxHp(), 0.0);
-        assertEquals(Zombie.getMaxHp(), 0.0);
 
         //SWAP
         ActiveSpell swap = new ActiveSpell(new SWAP("AMOGUS", "-", "-", 1, 2));
         Zombie.addActiveSpell(swap);
-        assertEquals(Zombie.getMaxHp(), 0.0);
         assertEquals(Zombie.getAtk(), 0.0);
 
         Zombie.updateState();
 
-        assertEquals(Zombie.getMaxHp(), 0.0);
         assertEquals(Zombie.getAtk(), 0.0);
 
 
@@ -276,7 +266,6 @@ public class ActiveCardTest {
         Zombie.addActiveSpell(morph);
         assertEquals(Zombie.getAtk(), 7.0);
         assertEquals(Zombie.getHp(), 10.0);
-        assertEquals(Zombie.getMaxHp(), 10.0);
         assertEquals((int) Zombie.getExp(), 0);
         assertEquals((int) Zombie.getLevel(), 1);
     }

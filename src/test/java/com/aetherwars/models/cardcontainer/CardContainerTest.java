@@ -1,12 +1,15 @@
 package com.aetherwars.models.cardcontainer;
 
 import com.aetherwars.enums.CharacterType;
-import com.aetherwars.models.activecard.*;
-import com.aetherwars.models.carddata.spell.*;
-import com.aetherwars.models.extras.Type;
-import com.aetherwars.models.carddata.Character;
-import com.aetherwars.exception.*;
+import com.aetherwars.exception.BoardFullException;
+import com.aetherwars.models.activecard.ActiveCharacter;
+import com.aetherwars.models.activecard.ActiveSpell;
 import com.aetherwars.models.card.Card;
+import com.aetherwars.models.carddata.Character;
+import com.aetherwars.models.carddata.spell.PTN;
+import com.aetherwars.models.carddata.spell.SWAP;
+import com.aetherwars.models.carddata.spell.Spell;
+import com.aetherwars.models.extras.Type;
 import com.aetherwars.models.game.Game;
 import org.junit.Test;
 
@@ -27,8 +30,7 @@ public class CardContainerTest {
             assertEquals(board.getCards().get(0), Zombie);
             assertEquals(board.get(2).getAtk(), 6.0);
             assertFalse(board.isEmpty());
-        }
-        catch (BoardFullException e) {
+        } catch (BoardFullException e) {
             assert false;
         }
     }
@@ -47,8 +49,7 @@ public class CardContainerTest {
             assertEquals(removed, Skeleton);
             assertEquals(board.getCards().get(2).getDescription(), "An Empty Card");
             assertEquals(board.get(0).getName(), "zombie");
-        }
-        catch (BoardFullException e) {
+        } catch (BoardFullException e) {
             assert false;
         }
     }
@@ -68,8 +69,7 @@ public class CardContainerTest {
             board.add(4, Skeleton);
             board.add(Zombie);
             board.add(Skeleton);
-        }
-        catch (BoardFullException e) {
+        } catch (BoardFullException e) {
             assert true;
         }
     }
@@ -86,8 +86,7 @@ public class CardContainerTest {
             assertEquals(board.getCards().get(0).getHp(), Zombie.getHp());
             assertTrue(board.getCards().get(0).getDescription().equals(Zombie.getDescription()));
             assertTrue(board.getCards().get(0).getName().equals(Zombie.getName()));
-        }
-        catch (BoardFullException e) {
+        } catch (BoardFullException e) {
             assert false;
         }
     }
@@ -108,19 +107,15 @@ public class CardContainerTest {
             board.get(0).addActiveSpell(ptn);
             board.get(1).addActiveSpell(swap);
             assertEquals(board.get(0).getAtk(), 1004.0);
-            assertEquals(board.get(0).getMaxHp(), 1004.0);
             assertEquals(board.get(1).getAtk(), 7.0);
-            assertEquals(board.get(1).getMaxHp(), 6.0);
             board.updateState();
             assertEquals(board.get(0).getAtk(), 5.0);
-            assertEquals(board.get(0).getMaxHp(), 5.0);
             assertEquals(board.get(1).getAtk(), 6.0);
-            assertEquals(board.get(1).getMaxHp(), 7.0);
-        }
-        catch (BoardFullException e) {
+        } catch (BoardFullException e) {
             assert false;
         }
     }
+
     @Test
     public void TestAddDeck() {
         Deck deck = new Deck();
@@ -147,8 +142,7 @@ public class CardContainerTest {
             assertEquals(removed, Pigment);
             assertEquals(deck.get(0), Skeleton);
             assertEquals(deck.getCards().size(), 1);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             assert false;
         }
     }
@@ -158,12 +152,10 @@ public class CardContainerTest {
         try {
             Deck deck = new Deck();
             deck.remove(0);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             if (e.getMessage().equals("Deck is empty!")) {
                 assert true;
-            }
-            else {
+            } else {
                 assert false;
             }
         }
@@ -177,16 +169,15 @@ public class CardContainerTest {
             Card Pigment = new Card(pigment);
             deck.add(Pigment);
             deck.remove(2);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             if (e.getMessage().equals("Slot is empty!")) {
                 assert true;
-            }
-            else {
+            } else {
                 assert false;
             }
         }
     }
+
     @Test
     public void TestAddHand() {
         Hand hand = new Hand();
@@ -194,7 +185,7 @@ public class CardContainerTest {
         Card Pigment = new Card(pigment);
         hand.add(Pigment);
         assertEquals(hand.getCards().get(0), Pigment);
-        assertTrue(hand.toString().equals(Pigment.getName() + " " + Integer.toString(Pigment.getCost()) + "\n"));
+        assertTrue(hand.toString().equals(Pigment.getName() + " " + Pigment.getCost() + "\n"));
     }
 
     @Test
@@ -211,11 +202,10 @@ public class CardContainerTest {
             assertEquals(removed, Pigment);
             assertEquals(hand.get(0), Skeleton);
             assertEquals(hand.getCards().size(), 1);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             assert false;
         }
-        
+
     }
 
     @Test
@@ -223,12 +213,10 @@ public class CardContainerTest {
         try {
             Hand hand = new Hand();
             hand.remove(0);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             if (e.getMessage().equals("Hand is empty!")) {
                 assert true;
-            }
-            else {
+            } else {
                 assert false;
             }
         }
@@ -242,12 +230,10 @@ public class CardContainerTest {
             Card Pigment = new Card(pigment);
             hand.add(Pigment);
             hand.remove(2);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             if (e.getMessage().equals("Slot is empty!")) {
                 assert true;
-            }
-            else {
+            } else {
                 assert false;
             }
         }
@@ -271,15 +257,12 @@ public class CardContainerTest {
 
             hand.activate(0, 0);
             assertEquals(board.get(0).getAtk(), 1004.0);
-            assertEquals(board.get(0).getMaxHp(), 1004.0);
             hand.add(Pigment);
-            hand.activate(0,0);
-        }
-        catch (Exception e) {
+            hand.activate(0, 0);
+        } catch (Exception e) {
             if (e.getMessage().equals("Cannot replace existing card")) {
                 assert true;
-            }
-            else {
+            } else {
                 assert false;
             }
         }
@@ -293,12 +276,10 @@ public class CardContainerTest {
             Hand hand = new Hand();
             hand.add(potion);
             hand.activate(0, 1);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             if (e.getMessage().equals("Slot is empty!")) {
                 assert true;
-            }
-            else {
+            } else {
                 assert false;
             }
         }

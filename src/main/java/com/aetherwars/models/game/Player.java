@@ -8,10 +8,10 @@ import com.aetherwars.models.carddata.spell.LVL;
 
 public class Player implements Attackable {
     private final String name;
-    private int hp;
-    private int mana;
     private final Deck deck;
     private final Hand hand;
+    private int hp;
+    private int mana;
 
     public Player(String name) {
         this.name = name;
@@ -58,11 +58,10 @@ public class Player implements Attackable {
         int cost = hand.get(hand_idx).getCardData().getManaCost();
         Game game = Game.getInstance();
         if (hand.get(hand_idx).getCardData() instanceof LVL) {
-            cost = (int) Math.ceil(game.getPlayerBoard().get(board_idx).getLevel() / 2);
+            cost = (int) Math.ceil((double) game.getPlayerBoard().get(board_idx).getLevel() / 2);
         }
-        if (hand.get(hand_idx).getCardData().getManaCost() <= mana) {
+        if (cost <= mana) {
             try {
-
                 hand.activate(hand_idx, board_idx);
                 mana -= cost;
             } catch (Exception e) {
@@ -89,8 +88,8 @@ public class Player implements Attackable {
 
     public String toString() {
         String res = name + ": " + hp + " hp, " + mana + " mana";
-        res += "\n" + deck.toString();
-        res += "\nHand:\n" + hand.toString();
+        res += "\n" + deck;
+        res += "\nHand:\n" + hand;
         return res;
     }
 }

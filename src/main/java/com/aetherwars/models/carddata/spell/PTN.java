@@ -33,7 +33,7 @@ public class PTN extends Spell {
 
     @Override
     public void activateEffect(ActiveCharacter activeCharacter) {
-        activeCharacter.increaseStats(atkBonus, 0);
+        activeCharacter.increaseStats(atkBonus, hpBonus);
     }
 
 }

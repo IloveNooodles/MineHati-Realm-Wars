@@ -114,13 +114,11 @@ public class SpellTest {
         assertEquals(enderman.getDescription(), "tinggi");
         assertEquals(enderman.getHp(), 20.0);
         assertEquals(enderman.getAtk(), 8.0);
-        assertEquals(enderman.getMaxHp(), 20.0);
         assertEquals(enderman.getCard().getType().getCharacterType(), CharacterType.END);
 
         enderman.addActiveSpell(new ActiveSpell(statUp));
         assertEquals(enderman.getAtk(), 18.0);
         assertEquals(enderman.getHp(), 30.0);
-        assertEquals(enderman.getMaxHp(), 20.0);
 
         enderman.addActiveSpell(new ActiveSpell(statDown));
         enderman.addActiveSpell(new ActiveSpell(statDown));
@@ -130,14 +128,13 @@ public class SpellTest {
 
     @Test
     public void swapTest() {
-        SWAP p = new SWAP("bom bunuh diri", "test", "-", 1, 1);
+        SWAP p = new SWAP("bom bunuh diri", "test", "-", 5, 1);
         ActiveCharacter enderman = new ActiveCharacter(new Character("endermen", "tinggi", new Type(CharacterType.END), "-", 8, 20, 5, 5, 5));
 
         assertEquals(p.getDuration(), 1);
         p.activateEffect(enderman);
         assertEquals(enderman.getHp(), 8.0);
         assertEquals(enderman.getAtk(), 20.0);
-        enderman.toString();
     }
 
     @Test
@@ -151,7 +148,7 @@ public class SpellTest {
         enderman.addActiveSpell(new ActiveSpell(p));
         enderman.addActiveSpell(new ActiveSpell(idiot));
 
-        assertEquals(enderman.getHp(), 0.0);
+        assertEquals(enderman.getHp(), 18);
         // potion swap 2 potion
         //swap 3 potion 1 potion 1
     }

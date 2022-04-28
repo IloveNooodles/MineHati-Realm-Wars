@@ -2,20 +2,20 @@ package com.aetherwars.models.game;
 
 import com.aetherwars.enums.CharacterType;
 import com.aetherwars.enums.LVLSpell;
-import com.aetherwars.exception.BoardAlreadyFilledException;
 import com.aetherwars.models.activecard.ActiveCharacter;
 import com.aetherwars.models.card.Card;
 import com.aetherwars.models.carddata.Character;
-import com.aetherwars.models.carddata.spell.*;
+import com.aetherwars.models.carddata.spell.LVL;
+import com.aetherwars.models.carddata.spell.PTN;
+import com.aetherwars.models.carddata.spell.Spell;
 import com.aetherwars.models.extras.Type;
 import org.junit.Test;
 
-import java.util.Optional;
-
-import static junit.framework.TestCase.*;
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 
 public class PlayerTest {
-    
+
     @Test
     public void TestDraw() {
         try {
@@ -51,11 +51,10 @@ public class PlayerTest {
             assertEquals(p.getHand().getCards().size(), 5);
             assertEquals(p.getHand().get(3), Pigment);
             assertEquals(p.getHand().get(4), potion);
-            
+
             p.draw(0);
             assertEquals(p.getHand().get(0), lvlUp);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             assert false;
         }
     }
@@ -76,7 +75,7 @@ public class PlayerTest {
             Game.current_game = new Game("Player 1", "Player 2");
             Game g = Game.getInstance();
             g.getPlayer().setMana(10);
-            System.out.println(g.toString());
+            System.out.println(g);
             Character zombie = new Character("zombie", "Pedang", new Type(CharacterType.OVERWORLD), "-", 5, 5, 1, 2, 3);
             Character skeleton = new Character("skeleton", "Panah", new Type(CharacterType.OVERWORLD), "-", 6, 6, 1, 1, 1);
             Spell PTN = new PTN("UP", "-", "-", 999, 999, 2, 1);
@@ -101,18 +100,16 @@ public class PlayerTest {
 
             g.getEnemyBoard().getCards().set(0, Zombie);
             g.getPlayerBoard().getCards().set(1, s);
-            g.getPlayer().attack(1,0);
-            assertEquals(g.getPlayerBoard().get(1).getHp() ,7.0);
+            g.getPlayer().attack(1, 0);
+            assertEquals(g.getPlayerBoard().get(1).getHp(), 7.0);
             assertEquals(g.getEnemyBoard().get(0).getHp(), 0.0);
             assertEquals(g.getEnemy().getHp(), 74);
 
-            g.getPlayer().play(0,0);
+            g.getPlayer().play(0, 0);
 
             assertEquals(g.getPlayer().getMana(), 7);
             assertEquals(g.getPlayerBoard().get(0).getAtk(), 1005.0);
-            assertEquals(g.getPlayerBoard().get(0).getMaxHp() ,1005.0);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             assert false;
         }
     }

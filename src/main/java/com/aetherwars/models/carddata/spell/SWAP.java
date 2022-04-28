@@ -14,6 +14,9 @@ public class SWAP extends Spell {
         return duration;
     }
 
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
 
     @Override
     public void activateEffect(ActiveCharacter activeCharacter) {
