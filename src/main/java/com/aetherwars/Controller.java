@@ -1,7 +1,9 @@
 package com.aetherwars;
 
 import com.aetherwars.enums.TurnPhase;
+import com.aetherwars.models.activecard.ActiveCard;
 import com.aetherwars.models.activecard.ActiveCharacter;
+import com.aetherwars.models.activecard.ActiveSpell;
 import com.aetherwars.models.card.Card;
 import com.aetherwars.models.cardcontainer.Board;
 import com.aetherwars.models.cardcontainer.Deck;
@@ -1418,6 +1420,23 @@ public class Controller {
         }
     }
 
+    public Card getCardFromSelectedHand() {
+        if (selectedHand != -1) {
+            return game.getPlayer().getHand().getCards().get(selectedHand - 1);
+        }
+        return null;
+    }
+
+    public ActiveCharacter getSteveCardFromBoard(int index) {
+        Board b = getSteveBoard();
+        return b.getCards().get(index);
+    }
+
+    public ActiveCharacter getAlexCardFromBoard(int index) {
+        Board b = getAlexBoard();
+        return b.getCards().get(index);
+    }
+
     public void clickASteve() {
         if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 0) {
             if (selectedHand != -1) {
@@ -1436,6 +1455,43 @@ public class Controller {
                 selectedBoard = 1;
                 resetSteveBoardFill();
                 boardSteveARect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+            }
+        }
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 1) {
+            /* Plan phase, Alex mengeklik board milik Steve */
+            if (selectedHand != -1) {
+                /* Alex sudah memilih hand, */
+                if (isSteveBoardOccupied(0)) {
+                    /* Dan board yang dipilih sudah ada ActiveCharacternya. */
+                    /* Cek dulu kartu handnya apa */
+                    Card selectedCard = getCardFromSelectedHand();
+                    CardData cd = selectedCard.getCardData();
+                    int manaCost = cd.getManaCost();
+                    /* Pastikan player sekarang punya mana yang cukup ... */
+                    if (game.getPlayer().getMana() >= manaCost) {
+                        if (cd instanceof Spell) {
+                            /* Bisa digunakan pada board musuh! */
+                            ActiveCard active = selectedCard.activate();
+                            /* Ambil ActiveCharacter milik Steve */
+                            ActiveCharacter ac = getSteveCardFromBoard(0);
+                            /* ac akan diberikan ActiveSpell active */
+                            ac.addActiveSpell((ActiveSpell) active);
+                            /* Hapus card dari hand */
+                            try {
+                                game.getPlayer().getHand().remove(selectedHand - 1);
+                            } catch (Exception e) {
+                                /* pass */
+                            }
+                            /* Lakukan rerender */
+                            selectedHand = -1;
+                            resetHandFillColor();
+                            renderHand(game.getPlayer().getHand());
+                            renderBoards();
+                            game.getPlayer().setMana(game.getPlayer().getMana() - manaCost);
+                            updateDeckManaLabel();
+                        }
+                    }
+                }
             }
         }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
@@ -1487,6 +1543,43 @@ public class Controller {
                 boardSteveBRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             }
         }
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 1) {
+            /* Plan phase, Alex mengeklik board milik Steve */
+            if (selectedHand != -1) {
+                /* Alex sudah memilih hand, */
+                if (isSteveBoardOccupied(1)) {
+                    /* Dan board yang dipilih sudah ada ActiveCharacternya. */
+                    /* Cek dulu kartu handnya apa */
+                    Card selectedCard = getCardFromSelectedHand();
+                    CardData cd = selectedCard.getCardData();
+                    int manaCost = cd.getManaCost();
+                    /* Pastikan player sekarang punya mana yang cukup ... */
+                    if (game.getPlayer().getMana() >= manaCost) {
+                        if (cd instanceof Spell) {
+                            /* Bisa digunakan pada board musuh! */
+                            ActiveCard active = selectedCard.activate();
+                            /* Ambil ActiveCharacter milik Steve */
+                            ActiveCharacter ac = getSteveCardFromBoard(1);
+                            /* ac akan diberikan ActiveSpell active */
+                            ac.addActiveSpell((ActiveSpell) active);
+                            /* Hapus card dari hand */
+                            try {
+                                game.getPlayer().getHand().remove(selectedHand - 1);
+                            } catch (Exception e) {
+                                /* pass */
+                            }
+                            /* Lakukan rerender */
+                            selectedHand = -1;
+                            resetHandFillColor();
+                            renderHand(game.getPlayer().getHand());
+                            renderBoards();
+                            game.getPlayer().setMana(game.getPlayer().getMana() - manaCost);
+                            updateDeckManaLabel();
+                        }
+                    }
+                }
+            }
+        }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
             if (game.getState().getPlayerTurn() == 0) {
                 /* Memilih kartu untuk menyerang */
@@ -1534,6 +1627,43 @@ public class Controller {
                 selectedBoard = 3;
                 resetSteveBoardFill();
                 boardSteveCRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+            }
+        }
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 1) {
+            /* Plan phase, Alex mengeklik board milik Steve */
+            if (selectedHand != -1) {
+                /* Alex sudah memilih hand, */
+                if (isSteveBoardOccupied(2)) {
+                    /* Dan board yang dipilih sudah ada ActiveCharacternya. */
+                    /* Cek dulu kartu handnya apa */
+                    Card selectedCard = getCardFromSelectedHand();
+                    CardData cd = selectedCard.getCardData();
+                    int manaCost = cd.getManaCost();
+                    /* Pastikan player sekarang punya mana yang cukup ... */
+                    if (game.getPlayer().getMana() >= manaCost) {
+                        if (cd instanceof Spell) {
+                            /* Bisa digunakan pada board musuh! */
+                            ActiveCard active = selectedCard.activate();
+                            /* Ambil ActiveCharacter milik Steve */
+                            ActiveCharacter ac = getSteveCardFromBoard(2);
+                            /* ac akan diberikan ActiveSpell active */
+                            ac.addActiveSpell((ActiveSpell) active);
+                            /* Hapus card dari hand */
+                            try {
+                                game.getPlayer().getHand().remove(selectedHand - 1);
+                            } catch (Exception e) {
+                                /* pass */
+                            }
+                            /* Lakukan rerender */
+                            selectedHand = -1;
+                            resetHandFillColor();
+                            renderHand(game.getPlayer().getHand());
+                            renderBoards();
+                            game.getPlayer().setMana(game.getPlayer().getMana() - manaCost);
+                            updateDeckManaLabel();
+                        }
+                    }
+                }
             }
         }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
@@ -1585,6 +1715,43 @@ public class Controller {
                 boardSteveDRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             }
         }
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 1) {
+            /* Plan phase, Alex mengeklik board milik Steve */
+            if (selectedHand != -1) {
+                /* Alex sudah memilih hand, */
+                if (isSteveBoardOccupied(3)) {
+                    /* Dan board yang dipilih sudah ada ActiveCharacternya. */
+                    /* Cek dulu kartu handnya apa */
+                    Card selectedCard = getCardFromSelectedHand();
+                    CardData cd = selectedCard.getCardData();
+                    int manaCost = cd.getManaCost();
+                    /* Pastikan player sekarang punya mana yang cukup ... */
+                    if (game.getPlayer().getMana() >= manaCost) {
+                        if (cd instanceof Spell) {
+                            /* Bisa digunakan pada board musuh! */
+                            ActiveCard active = selectedCard.activate();
+                            /* Ambil ActiveCharacter milik Steve */
+                            ActiveCharacter ac = getSteveCardFromBoard(3);
+                            /* ac akan diberikan ActiveSpell active */
+                            ac.addActiveSpell((ActiveSpell) active);
+                            /* Hapus card dari hand */
+                            try {
+                                game.getPlayer().getHand().remove(selectedHand - 1);
+                            } catch (Exception e) {
+                                /* pass */
+                            }
+                            /* Lakukan rerender */
+                            selectedHand = -1;
+                            resetHandFillColor();
+                            renderHand(game.getPlayer().getHand());
+                            renderBoards();
+                            game.getPlayer().setMana(game.getPlayer().getMana() - manaCost);
+                            updateDeckManaLabel();
+                        }
+                    }
+                }
+            }
+        }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
             if (game.getState().getPlayerTurn() == 0) {
                 /* Memilih kartu untuk menyerang */
@@ -1632,6 +1799,43 @@ public class Controller {
                 selectedBoard = 5;
                 resetSteveBoardFill();
                 boardSteveERect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+            }
+        }
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 1) {
+            /* Plan phase, Alex mengeklik board milik Steve */
+            if (selectedHand != -1) {
+                /* Alex sudah memilih hand, */
+                if (isSteveBoardOccupied(4)) {
+                    /* Dan board yang dipilih sudah ada ActiveCharacternya. */
+                    /* Cek dulu kartu handnya apa */
+                    Card selectedCard = getCardFromSelectedHand();
+                    CardData cd = selectedCard.getCardData();
+                    int manaCost = cd.getManaCost();
+                    /* Pastikan player sekarang punya mana yang cukup ... */
+                    if (game.getPlayer().getMana() >= manaCost) {
+                        if (cd instanceof Spell) {
+                            /* Bisa digunakan pada board musuh! */
+                            ActiveCard active = selectedCard.activate();
+                            /* Ambil ActiveCharacter milik Steve */
+                            ActiveCharacter ac = getSteveCardFromBoard(4);
+                            /* ac akan diberikan ActiveSpell active */
+                            ac.addActiveSpell((ActiveSpell) active);
+                            /* Hapus card dari hand */
+                            try {
+                                game.getPlayer().getHand().remove(selectedHand - 1);
+                            } catch (Exception e) {
+                                /* pass */
+                            }
+                            /* Lakukan rerender */
+                            selectedHand = -1;
+                            resetHandFillColor();
+                            renderHand(game.getPlayer().getHand());
+                            renderBoards();
+                            game.getPlayer().setMana(game.getPlayer().getMana() - manaCost);
+                            updateDeckManaLabel();
+                        }
+                    }
+                }
             }
         }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
@@ -1683,6 +1887,43 @@ public class Controller {
                 boardAlexARect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             }
         }
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 0) {
+            /* Plan phase, Steve mengeklik board milik Alex */
+            if (selectedHand != -1) {
+                /* Steve sudah memilih hand, */
+                if (isAlexBoardOccupied(0)) {
+                    /* Dan board yang dipilih sudah ada ActiveCharacternya. */
+                    /* Cek dulu kartu handnya apa */
+                    Card selectedCard = getCardFromSelectedHand();
+                    CardData cd = selectedCard.getCardData();
+                    int manaCost = cd.getManaCost();
+                    /* Pastikan player sekarang punya mana yang cukup ... */
+                    if (game.getPlayer().getMana() >= manaCost) {
+                        if (cd instanceof Spell) {
+                            /* Bisa digunakan pada board musuh! */
+                            ActiveCard active = selectedCard.activate();
+                            /* Ambil ActiveCharacter milik Alex */
+                            ActiveCharacter ac = getAlexCardFromBoard(0);
+                            /* ac akan diberikan ActiveSpell active */
+                            ac.addActiveSpell((ActiveSpell) active);
+                            /* Hapus card dari hand */
+                            try {
+                                game.getPlayer().getHand().remove(selectedHand - 1);
+                            } catch (Exception e) {
+                                /* pass */
+                            }
+                            /* Lakukan rerender */
+                            selectedHand = -1;
+                            resetHandFillColor();
+                            renderHand(game.getPlayer().getHand());
+                            renderBoards();
+                            game.getPlayer().setMana(game.getPlayer().getMana() - manaCost);
+                            updateDeckManaLabel();
+                        }
+                    }
+                }
+            }
+        }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
             if (game.getState().getPlayerTurn() == 1) {
                 /* Memilih kartu untuk menyerang */
@@ -1730,6 +1971,43 @@ public class Controller {
                 selectedBoard = 2;
                 resetAlexBoardFill();
                 boardAlexBRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+            }
+        }
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 0) {
+            /* Plan phase, Steve mengeklik board milik Alex */
+            if (selectedHand != -1) {
+                /* Steve sudah memilih hand, */
+                if (isAlexBoardOccupied(1)) {
+                    /* Dan board yang dipilih sudah ada ActiveCharacternya. */
+                    /* Cek dulu kartu handnya apa */
+                    Card selectedCard = getCardFromSelectedHand();
+                    CardData cd = selectedCard.getCardData();
+                    int manaCost = cd.getManaCost();
+                    /* Pastikan player sekarang punya mana yang cukup ... */
+                    if (game.getPlayer().getMana() >= manaCost) {
+                        if (cd instanceof Spell) {
+                            /* Bisa digunakan pada board musuh! */
+                            ActiveCard active = selectedCard.activate();
+                            /* Ambil ActiveCharacter milik Alex */
+                            ActiveCharacter ac = getAlexCardFromBoard(1);
+                            /* ac akan diberikan ActiveSpell active */
+                            ac.addActiveSpell((ActiveSpell) active);
+                            /* Hapus card dari hand */
+                            try {
+                                game.getPlayer().getHand().remove(selectedHand - 1);
+                            } catch (Exception e) {
+                                /* pass */
+                            }
+                            /* Lakukan rerender */
+                            selectedHand = -1;
+                            resetHandFillColor();
+                            renderHand(game.getPlayer().getHand());
+                            renderBoards();
+                            game.getPlayer().setMana(game.getPlayer().getMana() - manaCost);
+                            updateDeckManaLabel();
+                        }
+                    }
+                }
             }
         }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
@@ -1781,6 +2059,43 @@ public class Controller {
                 boardAlexCRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             }
         }
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 0) {
+            /* Plan phase, Steve mengeklik board milik Alex */
+            if (selectedHand != -1) {
+                /* Steve sudah memilih hand, */
+                if (isAlexBoardOccupied(2)) {
+                    /* Dan board yang dipilih sudah ada ActiveCharacternya. */
+                    /* Cek dulu kartu handnya apa */
+                    Card selectedCard = getCardFromSelectedHand();
+                    CardData cd = selectedCard.getCardData();
+                    int manaCost = cd.getManaCost();
+                    /* Pastikan player sekarang punya mana yang cukup ... */
+                    if (game.getPlayer().getMana() >= manaCost) {
+                        if (cd instanceof Spell) {
+                            /* Bisa digunakan pada board musuh! */
+                            ActiveCard active = selectedCard.activate();
+                            /* Ambil ActiveCharacter milik Alex */
+                            ActiveCharacter ac = getAlexCardFromBoard(2);
+                            /* ac akan diberikan ActiveSpell active */
+                            ac.addActiveSpell((ActiveSpell) active);
+                            /* Hapus card dari hand */
+                            try {
+                                game.getPlayer().getHand().remove(selectedHand - 1);
+                            } catch (Exception e) {
+                                /* pass */
+                            }
+                            /* Lakukan rerender */
+                            selectedHand = -1;
+                            resetHandFillColor();
+                            renderHand(game.getPlayer().getHand());
+                            renderBoards();
+                            game.getPlayer().setMana(game.getPlayer().getMana() - manaCost);
+                            updateDeckManaLabel();
+                        }
+                    }
+                }
+            }
+        }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
             if (game.getState().getPlayerTurn() == 1) {
                 /* Memilih kartu untuk menyerang */
@@ -1830,6 +2145,43 @@ public class Controller {
                 boardAlexDRect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
             }
         }
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 0) {
+            /* Plan phase, Steve mengeklik board milik Alex */
+            if (selectedHand != -1) {
+                /* Steve sudah memilih hand, */
+                if (isAlexBoardOccupied(3)) {
+                    /* Dan board yang dipilih sudah ada ActiveCharacternya. */
+                    /* Cek dulu kartu handnya apa */
+                    Card selectedCard = getCardFromSelectedHand();
+                    CardData cd = selectedCard.getCardData();
+                    int manaCost = cd.getManaCost();
+                    /* Pastikan player sekarang punya mana yang cukup ... */
+                    if (game.getPlayer().getMana() >= manaCost) {
+                        if (cd instanceof Spell) {
+                            /* Bisa digunakan pada board musuh! */
+                            ActiveCard active = selectedCard.activate();
+                            /* Ambil ActiveCharacter milik Alex */
+                            ActiveCharacter ac = getAlexCardFromBoard(3);
+                            /* ac akan diberikan ActiveSpell active */
+                            ac.addActiveSpell((ActiveSpell) active);
+                            /* Hapus card dari hand */
+                            try {
+                                game.getPlayer().getHand().remove(selectedHand - 1);
+                            } catch (Exception e) {
+                                /* pass */
+                            }
+                            /* Lakukan rerender */
+                            selectedHand = -1;
+                            resetHandFillColor();
+                            renderHand(game.getPlayer().getHand());
+                            renderBoards();
+                            game.getPlayer().setMana(game.getPlayer().getMana() - manaCost);
+                            updateDeckManaLabel();
+                        }
+                    }
+                }
+            }
+        }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
             if (game.getState().getPlayerTurn() == 1) {
                 /* Memilih kartu untuk menyerang */
@@ -1877,6 +2229,43 @@ public class Controller {
                 selectedBoard = 5;
                 resetAlexBoardFill();
                 boardAlexERect.setFill(Color.web("rgba(0, 222, 0, 0.3)"));
+            }
+        }
+        if (game.getState().getPhase() == TurnPhase.PLAN && game.getState().getPlayerTurn() == 0) {
+            /* Plan phase, Steve mengeklik board milik Alex */
+            if (selectedHand != -1) {
+                /* Steve sudah memilih hand, */
+                if (isAlexBoardOccupied(4)) {
+                    /* Dan board yang dipilih sudah ada ActiveCharacternya. */
+                    /* Cek dulu kartu handnya apa */
+                    Card selectedCard = getCardFromSelectedHand();
+                    CardData cd = selectedCard.getCardData();
+                    int manaCost = cd.getManaCost();
+                    /* Pastikan player sekarang punya mana yang cukup ... */
+                    if (game.getPlayer().getMana() >= manaCost) {
+                        if (cd instanceof Spell) {
+                            /* Bisa digunakan pada board musuh! */
+                            ActiveCard active = selectedCard.activate();
+                            /* Ambil ActiveCharacter milik Alex */
+                            ActiveCharacter ac = getAlexCardFromBoard(4);
+                            /* ac akan diberikan ActiveSpell active */
+                            ac.addActiveSpell((ActiveSpell) active);
+                            /* Hapus card dari hand */
+                            try {
+                                game.getPlayer().getHand().remove(selectedHand - 1);
+                            } catch (Exception e) {
+                                /* pass */
+                            }
+                            /* Lakukan rerender */
+                            selectedHand = -1;
+                            resetHandFillColor();
+                            renderHand(game.getPlayer().getHand());
+                            renderBoards();
+                            game.getPlayer().setMana(game.getPlayer().getMana() - manaCost);
+                            updateDeckManaLabel();
+                        }
+                    }
+                }
             }
         }
         if (game.getState().getPhase() == TurnPhase.ATTACK) {
