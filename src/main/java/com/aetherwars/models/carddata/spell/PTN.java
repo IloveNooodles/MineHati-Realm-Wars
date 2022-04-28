@@ -5,7 +5,7 @@ import com.aetherwars.models.activecard.ActiveCharacter;
 
 public class PTN extends Spell {
     private final int atkBonus;
-    private final int hpBonus;
+    private double hpBonus;
 
     public PTN(String name, String description, String image, int atkBonus, int hpBonus, int mana, int duration) {
         super(name, description, mana, SpellEffect.TEMPORARY, image);
@@ -18,8 +18,12 @@ public class PTN extends Spell {
         return atkBonus;
     }
 
-    public int getHpBonus() {
+    public double getHpBonus() {
         return hpBonus;
+    }
+
+    public void setHpBonus(double hpBonus) {
+        this.hpBonus = hpBonus;
     }
 
     @Override
@@ -29,7 +33,7 @@ public class PTN extends Spell {
 
     @Override
     public void activateEffect(ActiveCharacter activeCharacter) {
-        activeCharacter.increaseStats(atkBonus, hpBonus);
+        activeCharacter.increaseStats(atkBonus, 0);
     }
 
 }

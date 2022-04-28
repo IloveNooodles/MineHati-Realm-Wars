@@ -3,6 +3,7 @@ package com.aetherwars.models.activecard;
 import com.aetherwars.interfaces.Attackable;
 import com.aetherwars.models.carddata.CardData;
 import com.aetherwars.models.carddata.Character;
+import com.aetherwars.models.carddata.spell.PTN;
 
 import java.util.ArrayList;
 
@@ -66,8 +67,21 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
             attackingModifier = 0.5;
             attackedModifier = 2;
         }
+
+        double totalAttack = attacker.getAtk() * attackedModifier;
+
+        for (ActiveSpell activeSpell : this.activeSpells) {
+            if (activeSpell.getCard() instanceof PTN) {
+                if (totalAttack <= 0) break;
+                double spellHealth = ((PTN) activeSpell.getCard()).getHpBonus();
+                double decrementHealth = spellHealth - totalAttack >= 0 ? spellHealth - totalAttack : 0;
+                ((PTN) activeSpell.getCard()).setHpBonus(decrementHealth);
+                totalAttack = totalAttack - spellHealth > 0 ? totalAttack - spellHealth : 0;
+            }
+        }
+
         System.out.println("attacked.hp sebelum = " + this.hp);
-        this.hp -= attacker.getAtk() * attackedModifier;
+        this.hp -= totalAttack;
         System.out.println("attacked.hp sesudah = " + this.hp);
 
         if (this.hp <= 0) {
@@ -141,6 +155,7 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
 
         for (int i = this.activeSpells.size() - 1; i > -1; i--) {
             if (this.activeSpells.get(i).getActiveDuration() <= 0) {
+                
                 this.activeSpells.remove(i);
             } else {
                 this.activeSpells.get(i).activateEffect(this);

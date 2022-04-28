@@ -1,6 +1,5 @@
 package com.aetherwars;
 
-import com.aetherwars.enums.CharacterType;
 import com.aetherwars.enums.TurnPhase;
 import com.aetherwars.models.activecard.ActiveCharacter;
 import com.aetherwars.models.card.Card;
@@ -22,9 +21,10 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.aetherwars.enums.CharacterType.*;
 import static com.aetherwars.enums.LVLSpell.LVLUP;
@@ -530,11 +530,11 @@ public class Controller {
         hoverDescription.setVisible(false);
     }
 
-    public String formatBonus(int bonus) {
+    public String formatBonus(double bonus) {
         if (bonus > 0) {
             return "+" + bonus;
         } else if (bonus < 0) {
-            return "-" + bonus;
+            return String.valueOf(bonus);
         } else {
             return "";
         }
@@ -578,7 +578,7 @@ public class Controller {
             hand1Mana.setVisible(true);
             hand1Info.setVisible(true);
             hand1Image.setVisible(true);
-            hand1Mana.setText("MANA " + String.valueOf(manaCost));
+            hand1Mana.setText("MANA " + manaCost);
             hand1Info.setText(info);
             hand1Image.setImage(image);
         } else if (i == 2) {
@@ -586,7 +586,7 @@ public class Controller {
             hand2Mana.setVisible(true);
             hand2Info.setVisible(true);
             hand2Image.setVisible(true);
-            hand2Mana.setText("MANA " + String.valueOf(manaCost));
+            hand2Mana.setText("MANA " + manaCost);
             hand2Info.setText(info);
             hand2Image.setImage(image);
         } else if (i == 3) {
@@ -594,7 +594,7 @@ public class Controller {
             hand3Mana.setVisible(true);
             hand3Info.setVisible(true);
             hand3Image.setVisible(true);
-            hand3Mana.setText("MANA " + String.valueOf(manaCost));
+            hand3Mana.setText("MANA " + manaCost);
             hand3Info.setText(info);
             hand3Image.setImage(image);
         } else if (i == 4) {
@@ -602,7 +602,7 @@ public class Controller {
             hand4Mana.setVisible(true);
             hand4Info.setVisible(true);
             hand4Image.setVisible(true);
-            hand4Mana.setText("MANA " + String.valueOf(manaCost));
+            hand4Mana.setText("MANA " + manaCost);
             hand4Info.setText(info);
             hand4Image.setImage(image);
         } else if (i == 5) {
@@ -610,7 +610,7 @@ public class Controller {
             hand5Mana.setVisible(true);
             hand5Info.setVisible(true);
             hand5Image.setVisible(true);
-            hand5Mana.setText("MANA " + String.valueOf(manaCost));
+            hand5Mana.setText("MANA " + manaCost);
             hand5Info.setText(info);
             hand5Image.setImage(image);
         }
@@ -620,16 +620,16 @@ public class Controller {
         /* Ambil kartu-kartu dari hand */
         List<Card> cards = h.getCards();
         int currentHand = 1;
-        for (Card c: cards) {
+        for (Card c : cards) {
             /* Ambil CardData dari card */
             CardData cd = c.getCardData();
             showHand(currentHand, cd);
-            currentHand ++;
+            currentHand++;
         }
         /* Hide hand yang tidak diperlukan */
         while (currentHand <= 5) {
             hideHand(currentHand);
-            currentHand ++;
+            currentHand++;
         }
     }
 
@@ -1165,7 +1165,7 @@ public class Controller {
     }
 
     public char boardNumberToChar(int i) {
-        switch(i) {
+        switch (i) {
             case 0:
                 return 'A';
             case 1:
@@ -1328,7 +1328,7 @@ public class Controller {
         Board boardAlex = game.getBoards()[1];
         /* Render kartu milik Steve */
         ArrayList<ActiveCharacter> cardsSteve = boardSteve.getCards();
-        for (int i = 0; i < 5; i ++) {
+        for (int i = 0; i < 5; i++) {
             ActiveCharacter ac = cardsSteve.get(i);
             if (ac.getName().equals("")) {
                 hideSteveBoard(boardNumberToChar(i));
@@ -1338,7 +1338,7 @@ public class Controller {
         }
         /* Render kartu milik Alex */
         ArrayList<ActiveCharacter> cardsAlex = boardAlex.getCards();
-        for (int i = 0; i < 5; i ++) {
+        for (int i = 0; i < 5; i++) {
             ActiveCharacter ac = cardsAlex.get(i);
             if (ac.getName().equals("")) {
                 hideAlexBoard(boardNumberToChar(i));
@@ -1967,7 +1967,7 @@ public class Controller {
     }
 
     public boolean isSteveBoardOccupied() {
-        for (int i = 0; i < 5; i ++) {
+        for (int i = 0; i < 5; i++) {
             if (isSteveBoardOccupied(i)) {
                 return true;
             }
@@ -1976,7 +1976,7 @@ public class Controller {
     }
 
     public boolean isAlexBoardOccupied() {
-        for (int i = 0; i < 5; i ++) {
+        for (int i = 0; i < 5; i++) {
             if (isAlexBoardOccupied(i)) {
                 return true;
             }
