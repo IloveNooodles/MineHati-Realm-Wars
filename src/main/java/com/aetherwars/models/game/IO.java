@@ -18,6 +18,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class IO {
     public static final String DATA_FILE_PATH = "/com/aetherwars/card/data";
@@ -120,16 +121,51 @@ public class IO {
     }
 
     private void loadDeck(Player player) throws IOException, URISyntaxException {
+        Random rand = new Random();
         URL resource = getClass().getResource(DATA_FILE_PATH + "/deck_" + player.getName() + ".txt");
         assert resource != null;
+        int totalCharacter = 0;
+        int totalSpell = 0;
         List<String> lines = Files.readAllLines(Paths.get(resource.toURI()), StandardCharsets.UTF_8);
         for (int i = 0; i < lines.size(); i++) {
             if (Integer.parseInt(lines.get(i)) >= 100) {
                 player.getDeck().add(this.Spells.get(Integer.parseInt(lines.get(i))).createCard());
+                totalSpell++;
             } else {
                 player.getDeck().add(this.Characters.get(Integer.parseInt(lines.get(i))).createCard());
+                totalCharacter++;
             }
         }
+        int remaining = 45 - totalSpell - totalCharacter;
+        int remainingCharacter = 20 - totalCharacter;
+        if (remainingCharacter < 0) {
+            remainingCharacter = 0;
+        }
+        int remainingSpell = remaining - remainingCharacter;
+        for (int i = 0; i < remainingCharacter; i++) {
+            int x = rand.nextInt(18) + 1;
+            player.getDeck().add(this.Characters.get(x).createCard());
+        }
+        for (int i = 0; i < remainingSpell; i++) {
+            int type_spell = rand.nextInt(4) + 1;
+            if (type_spell == 1) {
+                int new_spell = rand.nextInt(18) + 1;
+                player.getDeck().add(this.Spells.get(100*type_spell + new_spell).createCard());
+            }
+            else if (type_spell == 2) {
+                int new_spell = rand.nextInt(10) + 1;
+                player.getDeck().add(this.Spells.get(100*type_spell + new_spell).createCard());
+            }
+            else if (type_spell == 3) {
+                int new_spell = rand.nextInt(6) + 1;
+                player.getDeck().add(this.Spells.get(100*type_spell + new_spell).createCard());
+            }
+            else if (type_spell == 4) {
+                int new_spell = rand.nextInt(2) + 1;
+                player.getDeck().add(this.Spells.get(100*type_spell + new_spell).createCard());
+            }
+        }
+        player.getDeck().toString();
         player.getDeck().shuffle();
     }
 }
