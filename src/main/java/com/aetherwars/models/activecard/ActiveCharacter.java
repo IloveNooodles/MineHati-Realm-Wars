@@ -203,9 +203,8 @@ public class ActiveCharacter extends ActiveCard implements Attackable {
     }
 
     public String toString() {
-        return this.getName() + " lvl" + this.getLevel() + " exp: (" + this.getExp() + "/" + (level * 2 - 1) + ") hp: ("
-                + this.getHp() + "/"
-                + this.getAtk() + " + this.getAtk()";
+        return this.getName() + " lvl" + this.getLevel() + " exp: (" + this.getExp() + "/" + (level * 2 - 1) + ") hp: "
+                + this.getHp() + " atk: " + this.getAtk();
     }
 
     public void morph(CardData card) {

@@ -18,6 +18,7 @@ public class GameTest {
         try {
             Character zombie = new Character("zombie", "Pedang", new Type(CharacterType.OVERWORLD), "-", 5, 5, 1, 2, 3);
             ActiveCharacter Zombie = new ActiveCharacter(zombie);
+            Game.current_game = new Game("Player 1", "Player 2");
             Game g = Game.getInstance();
             assertEquals(1, g.getPlayer().getMana());
             assertEquals(1, g.getState().getTurn());
@@ -55,18 +56,6 @@ public class GameTest {
             g.getState().nextPhase();
             g.nextTurn();
             assertEquals(g.endGame(), (g.getState().getPlayerTurn() + 1) % 2);
-//            g.nextPhase();
-//            assertEquals(g.getState().getPhase(), TurnPhase.PLAN);
-//            g.nextPhase();
-//            g.nextPhase();
-//            g.nextPhase();
-//            assertEquals(g.getState().getPlayerTurn(), 1);
-//            g.nextPhase();
-//            g.nextPhase();
-//            g.nextPhase();
-//            g.nextPhase();
-//            assertEquals(g.getState().getTurn(), 2);
-//            assertFalse(g.toString().equals("Turn: 2 Player Turn: 0 Phase: DRAW"));
         } catch (Exception e) {
             assert false;
         }
