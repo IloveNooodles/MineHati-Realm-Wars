@@ -18,7 +18,7 @@ As a continuation of previous projects, MineHati Realm Wars focuses on Mobita's 
 
 ## Demo
 
-![video of demo](https://cdn.discordapp.com/attachments/876675493762576414/969562749434732674/2022-04-29_17-53-43.gif)
+![video of demo](https://user-images.githubusercontent.com/88304292/165942780-1f2d36c1-f637-4cea-b159-ae1108cd766e.gif)
 
 ## Program Requirement
 
